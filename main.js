@@ -27,18 +27,16 @@ getCookie('wordCount') === '' ? setWordCount(50) : setWordCount(getCookie('wordC
 setText(textType);
 
 // When redo button is click reset text
-redoButton.addEventListener('click', e => {
+redoButton.addEventListener('click', e => setText(textType));
+
+// Find a list of words and display it to textDisplay
+function setText(typeOfText) {
   // Reset variables
   wordList = [];
   currentWord = 0;
   correctKeys = 0;
+  inputField.value = '';
 
-  // Display new text
-  setText(textType);
-});
-
-// Find a list of words and display it to textDisplay
-function setText(typeOfText) {
   switch (typeOfText) {
     case 'random':
       fetch('texts/random.json')
@@ -57,7 +55,6 @@ function setText(typeOfText) {
         })
         .catch(err => console.error(err));
   }
-  inputField.value = '';
   inputField.focus();
 }
 
