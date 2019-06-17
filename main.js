@@ -35,7 +35,6 @@ redoButton.addEventListener('click', e => {
 
   // Display new text
   setText(textType);
-  inputField.value = '';
 });
 
 // Find a list of words and display it to textDisplay
@@ -46,6 +45,7 @@ function setText(typeOfText) {
         .then(response => response.json())
         .then(json => {
           textDisplay.innerHTML = '';
+          wordList = [];
           for (i = 0; i < wordCount; i++) {
             let span = document.createElement('span');
             let n = Math.floor(Math.random() * json[language].length);
@@ -57,6 +57,7 @@ function setText(typeOfText) {
         })
         .catch(err => console.error(err));
   }
+  inputField.value = '';
   inputField.focus();
 }
 
