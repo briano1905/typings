@@ -1,0 +1,45 @@
+body {
+  background: #575d5e;
+}
+
+#heading {
+  color: #e3d9c6;
+}
+
+#left-wing {
+  color: #ed6b21;
+}
+
+#right-wing {
+  color: #ed6b21;
+}
+
+#typing-area {
+  background: #e3d9c6;
+}
+
+#text-display {
+  color: #575d5e;
+}
+
+#input-field {
+  background: #c9c0af;
+  color: #575d5e;
+}
+
+#redo-button {
+  background: #ed6b21;
+  color: #575d5e;
+}
+
+.highlight {
+  color: #a56de2;
+}
+
+.correct {
+  color: #68b723;
+}
+
+.incorrect {
+  color: #c6262e;
+}
