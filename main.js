@@ -24,20 +24,17 @@ getCookie('language') === '' ? setLanguage('english') : setLanguage(getCookie('l
 getCookie('wordCount') === '' ? setWordCount(50) : setWordCount(getCookie('wordCount'));
 
 // Start
-setText(textType);
-
-// When redo button is click reset text
-redoButton.addEventListener('click', e => setText(textType));
+setText();
 
 // Find a list of words and display it to textDisplay
-function setText(typeOfText) {
+function setText() {
   // Reset variables
   wordList = [];
   currentWord = 0;
   correctKeys = 0;
   inputField.value = '';
 
-  switch (typeOfText) {
+  switch (textType) {
     case 'random':
       fetch('texts/random.json')
         .then(response => response.json())
@@ -58,49 +55,29 @@ function setText(typeOfText) {
   inputField.focus();
 }
 
-// Calculate and display result
-function showResult() {
-  let words = correctKeys / 5;
-  let minute = (Date.now() - startDate) / 1000 / 60;
-  let wpm = Math.floor(words / minute);
-  let totalKeys = 0;
-  wordList.forEach(e => {
-    totalKeys += e.length + 1;
-  });
-  totalKeys--;
-  let acc = Math.floor((correctKeys / totalKeys) * 100);
-  rightWing.innerHTML = `WPM: ${wpm} / ACC: ${acc}`;
-}
-
-// Setup word count changer
-leftWing.childNodes.forEach(e => {
-  if (e.localName === 'span') {
-    e.onclick = event => {
-      setWordCount(e.innerHTML);
-    };
-  }
-});
-
-// Space key pressed in input field
+// Key is pressed in input field
 inputField.addEventListener('keydown', e => {
   // Start date if its the first word and inputField is empty
   if (currentWord === 0 && inputField.value === '') startDate = Date.now();
 
-  // If current word is not the last word and space key is pressed, add correctKeys and currentWord
-  if (currentWord < wordList.length - 1) {
-    if (e.key === ' ') {
+  // If it is the space key check the word and add correct/incorrect class
+  if (e.key === ' ') {
+    e.preventDefault();
+    if (currentWord < wordList.length - 1) {
       if (inputField.value === wordList[currentWord]) {
         textDisplay.childNodes[currentWord].classList.add('correct');
         correctKeys += wordList[currentWord].length + 1;
       } else {
         textDisplay.childNodes[currentWord].classList.add('incorrect');
       }
-      currentWord++;
-      textDisplay.childNodes[currentWord].classList.add('highlight');
-      inputField.value = '';
+      textDisplay.childNodes[currentWord + 1].classList.add('highlight');
+    } else if (currentWord === wordList.length - 1) {
+      textDisplay.childNodes[currentWord].classList.add('incorrect');
+      showResult();
     }
-
-    // else if it is the last word add correctKeys
+    inputField.value = '';
+    currentWord++;
+    // Else if it is the last word and input word is correct show the result
   } else if (currentWord === wordList.length - 1) {
     if (inputField.value + e.key === wordList[currentWord]) {
       textDisplay.childNodes[currentWord].classList.add('correct');
@@ -108,24 +85,32 @@ inputField.addEventListener('keydown', e => {
       currentWord++;
       showResult();
     }
-    if (e.key === ' ') {
-      textDisplay.childNodes[currentWord].classList.add('incorrect');
-      currentWord++;
-      showResult();
-    }
-  } else {
-    if (e.key === ' ') {
-      inputField.value = '';
-    }
   }
 });
 
-// Remove white space after pressing space in input field
-inputField.addEventListener('keyup', e => {
-  if (e.key === ' ') {
-    inputField.value = inputField.value.trim();
+// Calculate and display result
+function showResult() {
+  let words = correctKeys / 5;
+  let minute = (Date.now() - startDate) / 1000 / 60;
+  let wpm = Math.floor(words / minute);
+
+  let totalKeys = 0;
+  wordList.forEach(e => (totalKeys += e.length + 1));
+  totalKeys--;
+  let acc = Math.floor((correctKeys / totalKeys) * 100);
+
+  rightWing.innerHTML = `WPM: ${wpm} / ACC: ${acc}`;
+}
+
+// Setup word count changer
+leftWing.childNodes.forEach(e => {
+  if (e.localName === 'span') {
+    e.onclick = event => setWordCount(e.innerHTML);
   }
 });
+
+// When redo button is click reset text
+redoButton.addEventListener('click', e => setText());
 
 // Command actions
 document.addEventListener('keydown', e => {
@@ -150,7 +135,7 @@ function setTheme(theme) {
 function setLanguage(lang) {
   setCookie('language', lang, 90);
   language = lang;
-  setText(textType);
+  setText();
 }
 
 function setWordCount(wc) {
@@ -158,7 +143,7 @@ function setWordCount(wc) {
   wordCount = wc;
   document.querySelectorAll('.word-count-preset').forEach(e => (e.style.borderBottom = ''));
   document.querySelector(`#word-count-${wordCount}`).style.borderBottom = '2px solid';
-  setText(textType);
+  setText();
 }
 
 function setCookie(cname, cvalue, exdays) {
