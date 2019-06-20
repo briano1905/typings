@@ -1,6 +1,6 @@
 # typings
 
-typings.gg is a sleek and modern typing test website. it support many custom themes
+[typings.gg](https://typings.gg) is a sleek and modern typing test website. it supports many custom themes
 
 ## features
 
@@ -25,6 +25,7 @@ currently here are the themes available:
 - `rama` inspired by ramaworks by u/kingrama
 - `oblivion` inspired by SA Oblivion by u/Oblotzky
 - `solarizeddark` [bonus: `solarizedlight`] inspired by GMK Solarized Dark by u/thesiscamper
+- `vilebloom` inspired by SA Vilebloom by u/UKKeycaps
 
 to apply theme just type the theme name for example `dracula` in the text box then hit [windows: `alt` + `t`]    [mac: `cmd`+`ctrl`+`t`]
 
