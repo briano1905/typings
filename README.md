@@ -1,6 +1,6 @@
 # typings
 
-typings.gg is a sleek and modern typing test website. it support many custom themes
+[typings.gg](https://typings.gg) is a sleek and modern typing test website. it support many custom themes
 
 ## features
 
