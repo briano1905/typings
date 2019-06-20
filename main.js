@@ -8,8 +8,8 @@ const redoButton = document.querySelector('#redo-button');
 
 // Initialize variables
 let theme = 'light';
-let language = 'english';
 let textType = 'random';
+let randomWords = [];
 let wordCount = 10;
 
 // Initialize dynamic variables
@@ -23,9 +23,6 @@ getCookie('theme') === '' ? setTheme('light') : setTheme(getCookie('theme'));
 getCookie('language') === '' ? setLanguage('english') : setLanguage(getCookie('language'));
 getCookie('wordCount') === '' ? setWordCount(50) : setWordCount(getCookie('wordCount'));
 
-// Start
-setText();
-
 // Find a list of words and display it to textDisplay
 function setText() {
   // Reset variables
@@ -36,21 +33,16 @@ function setText() {
 
   switch (textType) {
     case 'random':
-      fetch('texts/random.json')
-        .then(response => response.json())
-        .then(json => {
-          textDisplay.innerHTML = '';
-          wordList = [];
-          for (i = 0; i < wordCount; i++) {
-            let span = document.createElement('span');
-            let n = Math.floor(Math.random() * json[language].length);
-            wordList.push(json[language][n]);
-            span.innerHTML = json[language][n] + ' ';
-            textDisplay.appendChild(span);
-          }
-          textDisplay.firstChild.classList.add('highlight');
-        })
-        .catch(err => console.error(err));
+      textDisplay.innerHTML = '';
+      wordList = [];
+      for (i = 0; i < wordCount; i++) {
+        let span = document.createElement('span');
+        let n = Math.floor(Math.random() * randomWords.length);
+        wordList.push(randomWords[n]);
+        span.innerHTML = randomWords[n] + ' ';
+        textDisplay.appendChild(span);
+      }
+      textDisplay.firstChild.classList.add('highlight');
   }
   inputField.focus();
 }
@@ -102,15 +94,15 @@ function showResult() {
   rightWing.innerHTML = `WPM: ${wpm} / ACC: ${acc}`;
 }
 
+// When redo button is click reset text
+redoButton.addEventListener('click', e => setText());
+
 // Setup word count changer
 leftWing.childNodes.forEach(e => {
   if (e.localName === 'span') {
     e.onclick = event => setWordCount(e.innerHTML);
   }
 });
-
-// When redo button is click reset text
-redoButton.addEventListener('click', e => setText());
 
 // Command actions
 document.addEventListener('keydown', e => {
@@ -134,8 +126,14 @@ function setTheme(theme) {
 
 function setLanguage(lang) {
   setCookie('language', lang, 90);
-  language = lang;
-  setText();
+  fetch('texts/random.json')
+    .then(response => response.json())
+    .then(json => {
+      textDisplay.innerHTML = '';
+      randomWords = json[lang];
+      setText();
+    })
+    .catch(err => console.error(err));
 }
 
 function setWordCount(wc) {
