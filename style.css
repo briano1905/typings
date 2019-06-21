@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap");
 
 body {
   height: 100vh;
@@ -66,4 +66,5 @@ body {
   padding: 0.4rem 1rem;
   border-radius: 0.2rem;
   font-size: 1.2rem;
+  cursor: pointer;
 }
