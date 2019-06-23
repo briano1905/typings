@@ -1,0 +1,53 @@
+/*
+Inspired by GMK Eclipse by T0mb3ry
+https://drop.com/buy/massdrop-x-t0mb3ry-gmk-eclipse-custom-keycap-set
+dark blue: #314f6f
+dark grey: #3a3a3a
+light blue: #abc6dc
+*/
+
+body {
+  background: #314f6f;
+}
+
+#heading {
+  color: #abc6dc;
+}
+
+#left-wing {
+  color: #abc6dc;
+}
+
+#right-wing {
+  color: #abc6dc;
+}
+
+#typing-area {
+  background: #3a3a3a;
+}
+
+#text-display {
+  color: #abc6dc;
+}
+
+#input-field {
+  background: #333333;
+  color: #abc6dc;
+}
+
+#redo-button {
+  background: #abc6dc;
+  color: #3a3a3a;
+}
+
+.highlight {
+  color: #a56de2;
+}
+
+.correct {
+  color: #68b723;
+}
+
+.incorrect {
+  color: #c6262e;
+}
