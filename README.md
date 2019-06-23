@@ -27,6 +27,7 @@ currently here are the themes available:
 - `solarizeddark` [bonus: `solarizedlight`] inspired by GMK Solarized Dark by u/thesiscamper
 - `vilebloom` inspired by SA Vilebloom by u/UKKeycaps
 - `mizu` inspired by GMK Mizu by u/Rensuya
+- `denim` inspired by GMK Denim by u/T0mb3ry
 
 to apply theme just type the theme name for example `dracula` in the text box then hit [windows: `alt` + `t`]    [mac: `cmd`+`ctrl`+`t`]
 
