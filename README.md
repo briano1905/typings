@@ -26,6 +26,7 @@ currently here are the themes available:
 - `oblivion` inspired by SA Oblivion by u/Oblotzky
 - `solarizeddark` [bonus: `solarizedlight`] inspired by GMK Solarized Dark by u/thesiscamper
 - `vilebloom` inspired by SA Vilebloom by u/UKKeycaps
+- `mizu` inspired by GMK Mizu by u/Rensuya
 
 to apply theme just type the theme name for example `dracula` in the text box then hit [windows: `alt` + `t`]    [mac: `cmd`+`ctrl`+`t`]
 
