@@ -29,6 +29,7 @@ currently here are the themes available:
 - `mizu` inspired by GMK Mizu by u/Rensuya
 - `denim` inspired by GMK Denim by u/T0mb3ry
 - `eclipse` inspired by GMK Eclipse by u/T0mb3ry
+- `yuri` inspired by GMK Yuri by u/T0mb3ry
 
 to apply theme just type the theme name for example `dracula` in the text box then hit [windows: `alt` + `t`]    [mac: `cmd`+`ctrl`+`t`]
 

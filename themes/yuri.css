@@ -1,0 +1,53 @@
+/*
+Inspired by GMK Yuri by T0mb3ry
+https://drop.com/buy/massdrop-x-t0mb3ry-gmk-yuri-custom-keycap-set
+orange: #ea4221
+navy: #293649
+light blue: #abc6dc
+*/
+
+body {
+  background: #293649;
+}
+
+#heading {
+  color: #ea4221;
+}
+
+#left-wing {
+  color: #ea4221;
+}
+
+#right-wing {
+  color: #ea4221;
+}
+
+#typing-area {
+  background: #abc6dc;
+}
+
+#text-display {
+  color: #293649;
+}
+
+#input-field {
+  background: #97afc2;
+  color: #ea4221;
+}
+
+#redo-button {
+  background: #ea4221;
+  color: #293649;
+}
+
+.highlight {
+  color: #a56de2;
+}
+
+.correct {
+  color: #68b723;
+}
+
+.incorrect {
+  color: #c6262e;
+}
