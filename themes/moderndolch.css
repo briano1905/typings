@@ -1,0 +1,54 @@
+/*
+Colors inspired by GMK Modern Dolch by Janglad
+https://clavier.xyz/moderndolch
+dark gray: 494b4f
+light gray: 7c7e81
+Red: bc5868
+Cyan: 81d8d0
+*/
+
+body {
+  background: #494b4f;
+}
+
+#heading {
+  color: #fafafa;
+}
+
+#left-wing {
+  color: #fafafa;
+}
+
+#right-wing {
+  color: #fafafa;
+}
+
+#typing-area {
+  background: #7c7e81;
+}
+
+#text-display {
+  color: #fafafa;
+}
+
+#input-field {
+  background: #494b4f;
+  color: #fafafa;
+}
+
+#redo-button {
+  background: #81d8d0;
+  color: #fafafa;
+}
+
+.highlight {
+  color: #81d8d0;
+}
+
+.correct {
+  color: #68b723;
+}
+
+.incorrect {
+  color: #bc5868;
+}
