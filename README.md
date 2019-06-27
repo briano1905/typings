@@ -2,17 +2,11 @@
 
 [typings.gg](https://typings.gg) is a sleek and modern typing test website. it supports many custom themes
 
-## features
+## theme
 
-- no ads
-- variable sentence length
-- color themes
-- that's it
-- no really that's it
+to apply a theme, type the theme code for example `dracula` in the text box then hit [ windows: `alt` + `t` ] or [ mac: `cmd`+`ctrl`+`t` ]
 
-## themes
-
-currently here are the themes available:
+available themes:
 
 - `light`
 - `dark`
@@ -33,7 +27,19 @@ currently here are the themes available:
 - `moderndolch` inspired by GMK Modern Dolch by u/janglad
 - `mrsleeves` inspired by GMK Mr. Sleeves by u/TaehaTypes
 
-to apply theme just type the theme name for example `dracula` in the text box then hit [windows: `alt` + `t`]    [mac: `cmd`+`ctrl`+`t`]
+## language
+
+to change the language, type the language code for example `german` in the text box then hit [ windows: `alt` + `l` ] or [ mac: `cmd`+`ctrl`+`l` ]
+
+available languages:
+
+- `english`
+- `english1000`
+- `italian`
+- `german`
+- `spanish`
+- `chinese`
+- `korean`
 
 ## calculations
 
