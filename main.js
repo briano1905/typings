@@ -122,6 +122,7 @@ document.addEventListener('keydown', e => {
 function setTheme(theme) {
   setCookie('theme', theme, 90);
   pageTheme.setAttribute('href', `themes/${theme}.css`);
+  inputField.value = '';
 }
 
 function setLanguage(lang) {
