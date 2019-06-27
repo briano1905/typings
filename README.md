@@ -31,6 +31,7 @@ currently here are the themes available:
 - `eclipse` inspired by GMK Eclipse by u/T0mb3ry
 - `yuri` inspired by GMK Yuri by u/T0mb3ry
 - `moderndolch` inspired by GMK Modern Dolch by u/janglad
+- `mrsleeves` inspired by GMK Mr. Sleeves by u/TaehaTypes
 
 to apply theme just type the theme name for example `dracula` in the text box then hit [windows: `alt` + `t`]    [mac: `cmd`+`ctrl`+`t`]
 

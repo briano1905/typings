@@ -1,0 +1,52 @@
+/*
+Colors inspired by GMK Mr. Sleeves by Taeha Types
+https://novelkeys.xyz/products/gmk-mr-sleeves
+light blue: #adcff1
+light pink: #f5c7b8
+*/
+
+body {
+  background: #d4d4d4;
+}
+
+#heading {
+  color: #1a1a1a;
+}
+
+#left-wing {
+  color: #1a1a1a;
+}
+
+#right-wing {
+  color: #1a1a1a;
+}
+
+#typing-area {
+  background: #fafafa;
+}
+
+#text-display {
+  color: #1a1a1a;
+}
+
+#input-field {
+  background: #eaeaea;
+  color: #1a1a1a;
+}
+
+#redo-button {
+  background: #f5c7b8;
+  color: #1a1a1a;
+}
+
+.highlight {
+  color: #ceaef2;
+}
+
+.correct {
+  color: #adcff1;
+}
+
+.incorrect {
+  color: #f5c7b8;
+}
