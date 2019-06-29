@@ -6,22 +6,26 @@ const textDisplay = document.querySelector('#text-display');
 const inputField = document.querySelector('#input-field');
 const redoButton = document.querySelector('#redo-button');
 
-// Initialize variables
-let theme = 'light';
-let textType = 'random';
-let randomWords = [];
-let wordCount = 10;
+// Initialize typing mode variables
+let typingMode = 'wordcount';
+let wordCount;
+let timeCount;
 
 // Initialize dynamic variables
+let randomWords = [];
 let wordList = [];
 let currentWord = 0;
 let correctKeys = 0;
 let startDate = 0;
+let timer;
+let timerFinish = false;
 
 // Get cookies
 getCookie('theme') === '' ? setTheme('light') : setTheme(getCookie('theme'));
 getCookie('language') === '' ? setLanguage('english') : setLanguage(getCookie('language'));
 getCookie('wordCount') === '' ? setWordCount(50) : setWordCount(getCookie('wordCount'));
+getCookie('timeCount') === '' ? setTimeCount(60) : setTimeCount(getCookie('timeCount'));
+getCookie('typingMode') === '' ? setTypingMode('wordcount') : setTypingMode(getCookie('typingMode'));
 
 // Find a list of words and display it to textDisplay
 function setText() {
@@ -30,12 +34,29 @@ function setText() {
   currentWord = 0;
   correctKeys = 0;
   inputField.value = '';
+  clearTimeout(timer);
 
-  switch (textType) {
-    case 'random':
+  switch (typingMode) {
+    case 'wordcount':
+      textDisplay.style.height = 'auto';
       textDisplay.innerHTML = '';
       wordList = [];
       for (i = 0; i < wordCount; i++) {
+        let span = document.createElement('span');
+        let n = Math.floor(Math.random() * randomWords.length);
+        wordList.push(randomWords[n]);
+        span.innerHTML = randomWords[n] + ' ';
+        textDisplay.appendChild(span);
+      }
+      textDisplay.firstChild.classList.add('highlight');
+      break;
+
+    case 'time':
+      textDisplay.style.height = '3.2rem';
+      document.querySelector(`#tc-${timeCount}`).innerHTML = timeCount;
+      textDisplay.innerHTML = '';
+      wordList = [];
+      for (i = 0; i < 300; i++) {
         let span = document.createElement('span');
         let n = Math.floor(Math.random() * randomWords.length);
         wordList.push(randomWords[n]);
@@ -49,13 +70,48 @@ function setText() {
 
 // Key is pressed in input field
 inputField.addEventListener('keydown', e => {
-  // Start date if its the first word and inputField is empty
-  if (currentWord === 0 && inputField.value === '') startDate = Date.now();
+
+  // If it is the first character entered
+  if (currentWord === 0 && inputField.value === '') {
+    switch (typingMode) {
+      case 'wordcount': startDate = Date.now()
+        break;
+
+      case 'time':
+        timerFinish = false;
+        startTimer(timeCount);
+        function startTimer(time) {
+          if (time > 0) {
+            document.querySelector(`#tc-${timeCount}`).innerHTML = time;
+            timer = setTimeout(() => {
+              time--;
+              startTimer(time);
+            }, 1000);
+          } else {
+            timerFinish = true;
+            document.querySelector(`#tc-${timeCount}`).innerHTML = timeCount;
+            showResult();
+          }
+        }
+    }
+  }
 
   // If it is the space key check the word and add correct/incorrect class
   if (e.key === ' ') {
     e.preventDefault();
-    if (currentWord < wordList.length - 1) {
+
+    // Scroll down text when reach new line
+    if (typingMode === 'time') {
+      const currentWordPosition = textDisplay.childNodes[currentWord].getBoundingClientRect();
+      const nextWordPosition = textDisplay.childNodes[currentWord + 1].getBoundingClientRect();
+      if (currentWordPosition.top < nextWordPosition.top) {
+        for (i = 0; i < currentWord + 1; i++)
+        textDisplay.childNodes[i].style.display = 'none';
+      };
+    }
+
+    // If it is not the last word increment currentWord, 
+    if (!timerFinish && currentWord < wordList.length - 1) {
       if (inputField.value === wordList[currentWord]) {
         textDisplay.childNodes[currentWord].classList.add('correct');
         correctKeys += wordList[currentWord].length + 1;
@@ -67,8 +123,10 @@ inputField.addEventListener('keydown', e => {
       textDisplay.childNodes[currentWord].classList.add('incorrect');
       showResult();
     }
+
     inputField.value = '';
     currentWord++;
+
     // Else if it is the last word and input word is correct show the result
   } else if (currentWord === wordList.length - 1) {
     if (inputField.value + e.key === wordList[currentWord]) {
@@ -82,50 +140,63 @@ inputField.addEventListener('keydown', e => {
 
 // Calculate and display result
 function showResult() {
-  let words = correctKeys / 5;
-  let minute = (Date.now() - startDate) / 1000 / 60;
+  let words, minute, acc;
+  switch (typingMode) {
+    case 'wordcount':
+      words = correctKeys / 5;
+      minute = (Date.now() - startDate) / 1000 / 60;
+      let totalKeys = -1;
+      wordList.forEach(e => (totalKeys += e.length + 1));
+      acc = Math.floor((correctKeys / totalKeys) * 100);
+      break;
+
+    case 'time':
+      words = correctKeys / 5;
+      minute = timeCount / 60;
+      let sumKeys = -1;
+      for (i = 0; i < currentWord; i++) {
+        sumKeys += wordList[i].length + 1
+      }
+      acc = 
+      acc = Math.min(Math.floor((correctKeys / sumKeys) * 100), 100);
+    }
   let wpm = Math.floor(words / minute);
-
-  let totalKeys = 0;
-  wordList.forEach(e => (totalKeys += e.length + 1));
-  totalKeys--;
-  let acc = Math.floor((correctKeys / totalKeys) * 100);
-
   rightWing.innerHTML = `WPM: ${wpm} / ACC: ${acc}`;
 }
 
 // When redo button is click reset text
 redoButton.addEventListener('click', e => setText());
 
-// Setup word count changer
-leftWing.childNodes.forEach(e => {
-  if (e.localName === 'span') {
-    e.onclick = event => setWordCount(e.innerHTML);
-  }
-});
 
 // Command actions
 document.addEventListener('keydown', e => {
   // Modifiers Windows: [Alt], Mac: [Cmd + Ctrl]
   if (e.altKey || (e.metaKey && e.ctrlKey)) {
-    // [ + t] => Change the theme
+    // [mod + t] => Change the theme
     if (e.key === 't') {
       setTheme(inputField.value);
     }
-    // [ + l] => Change the language
+    // [mod + l] => Change the language
     if (e.key === 'l') {
-      setLanguage(inputField.value.trim());
+      setLanguage(inputField.value);
+    }
+
+    // [mod + m] => Change the typing mode
+    if (e.key === 'm') {
+      setTypingMode(inputField.value);
     }
   }
 });
 
-function setTheme(theme) {
+function setTheme(_theme) {
+  const theme = _theme.toLowerCase();
   setCookie('theme', theme, 90);
   pageTheme.setAttribute('href', `themes/${theme}.css`);
   inputField.value = '';
 }
 
-function setLanguage(lang) {
+function setLanguage(_lang) {
+  const lang = _lang.toLowerCase();
   setCookie('language', lang, 90);
   fetch('texts/random.json')
     .then(response => response.json())
@@ -137,11 +208,41 @@ function setLanguage(lang) {
     .catch(err => console.error(err));
 }
 
+function setTypingMode(_mode) {
+  const mode = _mode.toLowerCase();
+  switch(mode) {
+    case 'wordcount':
+      typingMode = mode;
+      setCookie('typingMode', mode, 90);
+      document.querySelector('#word-count').style.display = 'inline';
+      document.querySelector('#time-count').style.display = 'none';
+      break;
+
+    case 'time':
+      typingMode = mode;
+      setCookie('typingMode', mode, 90);
+      document.querySelector('#word-count').style.display = 'none';
+      document.querySelector('#time-count').style.display = 'inline';
+  }
+  setText();
+}
+
 function setWordCount(wc) {
   setCookie('wordCount', wc, 90);
   wordCount = wc;
-  document.querySelectorAll('.word-count-preset').forEach(e => (e.style.borderBottom = ''));
-  document.querySelector(`#word-count-${wordCount}`).style.borderBottom = '2px solid';
+  document.querySelectorAll('#word-count > span').forEach(e => e.style.borderBottom = '');
+  document.querySelector(`#wc-${wordCount}`).style.borderBottom = '2px solid';
+  setText();
+}
+
+function setTimeCount(tc) {
+  setCookie('timeCount', tc, 90);
+  timeCount = tc;
+  document.querySelectorAll('#time-count > span').forEach(e => {
+    e.style.borderBottom = ''
+    e.innerHTML = e.id.substring(3, 6)
+  });
+  document.querySelector(`#tc-${timeCount}`).style.borderBottom = '2px solid';
   setText();
 }
 

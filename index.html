@@ -25,15 +25,29 @@
     <div id="command-center">
       <div class="bar">
         <div id="left-wing">
-          <span id="word-count-10" class="word-count-preset">10</span>
-          <text> / </text>
-          <span id="word-count-25" class="word-count-preset">25</span>
-          <text> / </text>
-          <span id="word-count-50" class="word-count-preset">50</span>
-          <text> / </text>
-          <span id="word-count-100" class="word-count-preset">100</span>
-          <text> / </text>
-          <span id="word-count-250" class="word-count-preset">250</span>
+          <!-- <span id="typing-mode">WORDS:</span> -->
+          <span id="word-count">
+            <span id="wc-10" onclick="setWordCount(10)">10</span>
+            <text> / </text>
+            <span id="wc-25" onclick="setWordCount(25)">25</span>
+            <text> / </text>
+            <span id="wc-50" onclick="setWordCount(50)">50</span>
+            <text> / </text>
+            <span id="wc-100" onclick="setWordCount(100)">100</span>
+            <text> / </text>
+            <span id="wc-250" onclick="setWordCount(250)">250</span>
+          </span>
+          <span id="time-count">
+            <span id="tc-15" onclick="setTimeCount(15)">15</span>
+            <text> / </text>
+            <span id="tc-30" onclick="setTimeCount(30)">30</span>
+            <text> / </text>
+            <span id="tc-60" onclick="setTimeCount(60)">60</span>
+            <text> / </text>
+            <span id="tc-120" onclick="setTimeCount(120)">120</span>
+            <text> / </text>
+            <span id="tc-240" onclick="setTimeCount(240)">240</span>
+          </span>
         </div>
         <div id="right-wing">WPM: XX / ACC: XX</div>
       </div>

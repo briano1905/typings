@@ -1,10 +1,12 @@
 # typings
 
-[typings.gg](https://typings.gg) is a sleek and modern typing test website. it supports many custom themes
+<a href="https://typings.gg" target="_blank">typings.gg</a> is a sleek and modern typing test website. it supports many custom themes
+
+![typings.gg](img/typings-screen-shot.png)
 
 ## theme
 
-to apply a theme, type the theme code for example `dracula` in the text box then hit [ windows: `alt` + `t` ] or [ mac: `cmd`+`ctrl`+`t` ]
+type the theme code for example `dracula` in the text box then hit [ windows: `alt` + `t` ], [ mac: `cmd` + `ctrl`+`t` ] or [ linux: `super` + `ctrl` + `t` ]
 
 available themes:
 
@@ -12,7 +14,7 @@ available themes:
 - `dark`
 - `olivia` inspired by GMK Olivia by u/msollie
 - `dracula` inspired by GMK Dracula by u/pikku-allu
-- `phantom` inspired by GMK Phantom by yours truly
+- `phantom` inspired by GMK Phantom by u/briano1905
 - `hyperfuse` inspired by GMK HyperFuse origins by BunnyLake
 - `carbon` inspired by SA Carbon by u/spoonyluv47
 - `burgundy` inspired by GMK Burgundy by cocobrais
@@ -29,7 +31,7 @@ available themes:
 
 ## language
 
-to change the language, type the language code for example `german` in the text box then hit [ windows: `alt` + `l` ] or [ mac: `cmd`+`ctrl`+`l` ]
+type the language code for example `german` in the text box then hit [ windows: `alt` + `l` ], [ mac: `cmd` + `ctrl`+`l` ] or [ linux: `super` + `ctrl` + `l` ]
 
 available languages:
 
@@ -41,12 +43,21 @@ available languages:
 - `chinese`
 - `korean`
 
+## typing mode
+
+type the mode code for example `time` in the text box then hit [ windows: `alt` + `m` ], [ mac: `cmd` + `ctrl`+`m` ] or [ linux: `super` + `ctrl` + `m` ]
+
+available modes:
+
+- `wordcount`
+- `time`
+
 ## calculations
 
 wpm: total number of characters (including spaces) of words you got right divided by five then divided by the time starting from first character typed
 
 acc: total number of characters (including spaces) of words you got right divided by all character in the list of words
 
-## donation
+## support
 
-- [Paypal](https://www.paypal.me/briano1905)
+- <a href="https://www.paypal.me/briano1905" target="_blank">PayPal</a>

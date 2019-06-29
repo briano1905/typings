@@ -7,7 +7,7 @@ body {
   align-items: center;
   justify-content: center;
   font-family: Roboto Mono;
-  line-height: 1.6;
+  line-height: 1.6rem;
   overflow: hidden;
 }
 
@@ -16,12 +16,7 @@ body {
   justify-content: space-between;
 }
 
-.word-count-preset:hover {
-  cursor: pointer;
-}
-
-#heading {
-}
+/* #heading {} */
 
 #command-center {
   margin: 0 0.4rem;
@@ -33,14 +28,16 @@ body {
   margin-bottom: 10vh;
 }
 
-#left-wing {
+/* #left-wing {} */
+
+#left-wing span[onclick] {
+  cursor: pointer;
 }
 
-#right-wing {
-}
+/* #right-wing {} */
 
 #typing-area {
-  margin: 1rem 0;
+  margin-top: 1rem;
   padding: 1.4rem 1rem;
   border-radius: 0.4rem;
   background: #eaeaea;
@@ -48,6 +45,7 @@ body {
 
 #text-display {
   margin-bottom: 1rem;
+  overflow: hidden;
 }
 
 #input-field {
