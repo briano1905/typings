@@ -18,6 +18,7 @@ let currentWord = 0;
 let correctKeys = 0;
 let startDate = 0;
 let timer;
+let timerActive = false;
 
 // Get cookies
 getCookie('theme') === '' ? setTheme('light') : setTheme(getCookie('theme'));
@@ -33,8 +34,9 @@ function setText() {
   currentWord = 0;
   correctKeys = 0;
   inputField.value = '';
-  inputField.disabled = false;
+  timerActive = false;
   clearTimeout(timer);
+  textDisplay.style.display = 'block';
 
   switch (typingMode) {
     case 'wordcount':
@@ -56,7 +58,7 @@ function setText() {
       document.querySelector(`#tc-${timeCount}`).innerHTML = timeCount;
       textDisplay.innerHTML = '';
       wordList = [];
-      for (i = 0; i < 300; i++) {
+      for (i = 0; i < 500; i++) {
         let span = document.createElement('span');
         let n = Math.floor(Math.random() * randomWords.length);
         wordList.push(randomWords[n]);
@@ -70,15 +72,18 @@ function setText() {
 
 // Key is pressed in input field
 inputField.addEventListener('keydown', e => {
-
   // If it is the first character entered
   if (currentWord === 0 && inputField.value === '') {
     switch (typingMode) {
-      case 'wordcount': startDate = Date.now()
+      case 'wordcount':
+        startDate = Date.now();
         break;
 
       case 'time':
-        startTimer(timeCount);
+        if (!timerActive) {
+          startTimer(timeCount);
+          timerActive = true;
+        }
         function startTimer(time) {
           if (time > 0) {
             document.querySelector(`#tc-${timeCount}`).innerHTML = time;
@@ -87,7 +92,7 @@ inputField.addEventListener('keydown', e => {
               startTimer(time);
             }, 1000);
           } else {
-            inputField.disabled = true;
+            textDisplay.style.display = 'none';
             document.querySelector(`#tc-${timeCount}`).innerHTML = timeCount;
             showResult();
           }
@@ -104,12 +109,11 @@ inputField.addEventListener('keydown', e => {
       const currentWordPosition = textDisplay.childNodes[currentWord].getBoundingClientRect();
       const nextWordPosition = textDisplay.childNodes[currentWord + 1].getBoundingClientRect();
       if (currentWordPosition.top < nextWordPosition.top) {
-        for (i = 0; i < currentWord + 1; i++)
-        textDisplay.childNodes[i].style.display = 'none';
-      };
+        for (i = 0; i < currentWord + 1; i++) textDisplay.childNodes[i].style.display = 'none';
+      }
     }
 
-    // If it is not the last word increment currentWord, 
+    // If it is not the last word increment currentWord,
     if (currentWord < wordList.length - 1) {
       if (inputField.value === wordList[currentWord]) {
         textDisplay.childNodes[currentWord].classList.add('correct');
@@ -154,18 +158,16 @@ function showResult() {
       minute = timeCount / 60;
       let sumKeys = -1;
       for (i = 0; i < currentWord; i++) {
-        sumKeys += wordList[i].length + 1
+        sumKeys += wordList[i].length + 1;
       }
-      acc = 
-      acc = Math.min(Math.floor((correctKeys / sumKeys) * 100), 100);
-    }
+      acc = acc = Math.min(Math.floor((correctKeys / sumKeys) * 100), 100);
+  }
   let wpm = Math.floor(words / minute);
   rightWing.innerHTML = `WPM: ${wpm} / ACC: ${acc}`;
 }
 
 // When redo button is click reset text
 redoButton.addEventListener('click', e => setText());
-
 
 // Command actions
 document.addEventListener('keydown', e => {
@@ -209,7 +211,7 @@ function setLanguage(_lang) {
 
 function setTypingMode(_mode) {
   const mode = _mode.toLowerCase();
-  switch(mode) {
+  switch (mode) {
     case 'wordcount':
       typingMode = mode;
       setCookie('typingMode', mode, 90);
@@ -229,7 +231,7 @@ function setTypingMode(_mode) {
 function setWordCount(wc) {
   setCookie('wordCount', wc, 90);
   wordCount = wc;
-  document.querySelectorAll('#word-count > span').forEach(e => e.style.borderBottom = '');
+  document.querySelectorAll('#word-count > span').forEach(e => (e.style.borderBottom = ''));
   document.querySelector(`#wc-${wordCount}`).style.borderBottom = '2px solid';
   setText();
 }
@@ -238,8 +240,8 @@ function setTimeCount(tc) {
   setCookie('timeCount', tc, 90);
   timeCount = tc;
   document.querySelectorAll('#time-count > span').forEach(e => {
-    e.style.borderBottom = ''
-    e.innerHTML = e.id.substring(3, 6)
+    e.style.borderBottom = '';
+    e.innerHTML = e.id.substring(3, 6);
   });
   document.querySelector(`#tc-${timeCount}`).style.borderBottom = '2px solid';
   setText();

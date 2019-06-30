@@ -20,6 +20,7 @@ body {
 
 #command-center {
   margin: 0 0.4rem;
+  width: 100%;
   max-width: 40rem;
   flex-grow: 1;
   display: flex;
