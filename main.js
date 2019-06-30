@@ -34,6 +34,7 @@ function setText() {
   currentWord = 0;
   correctKeys = 0;
   inputField.value = '';
+  timerFinish = false;
   clearTimeout(timer);
 
   switch (typingMode) {
