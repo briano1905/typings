@@ -1,6 +1,7 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap');
 
 body {
+  margin: 0;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -8,7 +9,10 @@ body {
   justify-content: center;
   font-family: Roboto Mono;
   line-height: 1.6rem;
-  overflow: hidden;
+}
+
+*[onclick] {
+  cursor: pointer;
 }
 
 .bar {
@@ -26,14 +30,10 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-bottom: 10vh;
+  transform: translateY(-5vh);
 }
 
 /* #left-wing {} */
-
-#left-wing span[onclick] {
-  cursor: pointer;
-}
 
 /* #right-wing {} */
 

@@ -1,10 +1,6 @@
 // Get document element
-const pageTheme = document.querySelector('#theme');
-const leftWing = document.querySelector('#left-wing');
-const rightWing = document.querySelector('#right-wing');
 const textDisplay = document.querySelector('#text-display');
 const inputField = document.querySelector('#input-field');
-const redoButton = document.querySelector('#redo-button');
 
 // Initialize typing mode variables
 let typingMode = 'wordcount';
@@ -163,11 +159,8 @@ function showResult() {
       acc = acc = Math.min(Math.floor((correctKeys / sumKeys) * 100), 100);
   }
   let wpm = Math.floor(words / minute);
-  rightWing.innerHTML = `WPM: ${wpm} / ACC: ${acc}`;
+  document.querySelector('#right-wing').innerHTML = `WPM: ${wpm} / ACC: ${acc}`;
 }
-
-// When redo button is click reset text
-redoButton.addEventListener('click', e => setText());
 
 // Command actions
 document.addEventListener('keydown', e => {
@@ -192,7 +185,7 @@ document.addEventListener('keydown', e => {
 function setTheme(_theme) {
   const theme = _theme.toLowerCase();
   setCookie('theme', theme, 90);
-  pageTheme.setAttribute('href', `themes/${theme}.css`);
+  document.querySelector('#theme').setAttribute('href', `themes/${theme}.css`);
   inputField.value = '';
 }
 
