@@ -18,7 +18,6 @@ let currentWord = 0;
 let correctKeys = 0;
 let startDate = 0;
 let timer;
-let timerFinish = false;
 
 // Get cookies
 getCookie('theme') === '' ? setTheme('light') : setTheme(getCookie('theme'));
@@ -34,7 +33,7 @@ function setText() {
   currentWord = 0;
   correctKeys = 0;
   inputField.value = '';
-  timerFinish = false;
+  inputField.disabled = false;
   clearTimeout(timer);
 
   switch (typingMode) {
@@ -79,7 +78,6 @@ inputField.addEventListener('keydown', e => {
         break;
 
       case 'time':
-        timerFinish = false;
         startTimer(timeCount);
         function startTimer(time) {
           if (time > 0) {
@@ -89,7 +87,7 @@ inputField.addEventListener('keydown', e => {
               startTimer(time);
             }, 1000);
           } else {
-            timerFinish = true;
+            inputField.disabled = true;
             document.querySelector(`#tc-${timeCount}`).innerHTML = timeCount;
             showResult();
           }
@@ -112,7 +110,7 @@ inputField.addEventListener('keydown', e => {
     }
 
     // If it is not the last word increment currentWord, 
-    if (!timerFinish && currentWord < wordList.length - 1) {
+    if (currentWord < wordList.length - 1) {
       if (inputField.value === wordList[currentWord]) {
         textDisplay.childNodes[currentWord].classList.add('correct');
         correctKeys += wordList[currentWord].length + 1;
