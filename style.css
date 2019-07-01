@@ -20,7 +20,7 @@ body {
   justify-content: space-between;
 }
 
-/* #heading {} */
+/* #header {} */
 
 #command-center {
   margin: 0 0.4rem;
@@ -66,4 +66,9 @@ body {
   border-radius: 0.2rem;
   font-size: 1.2rem;
   cursor: pointer;
+}
+
+#footer {
+  margin-bottom: 0.4rem;
+  text-decoration: none;
 }

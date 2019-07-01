@@ -12,8 +12,8 @@ body {
   background: #454f63;
 }
 
-#heading {
-  color: #a62700;
+#header {
+  color: #b8835f;
 }
 
 #left-wing {
@@ -42,6 +42,10 @@ body {
   color: #a62700;
 }
 
+#footer {
+  color: #b8835f;
+}
+
 .highlight {
   color: #a56de2;
 }
@@ -50,6 +54,6 @@ body {
   color: #68b723;
 }
 
-.incorrect {
+.wrong {
   color: #c6262e;
 }

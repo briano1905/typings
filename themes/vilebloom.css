@@ -8,51 +8,55 @@ white:  #FFFFFF
 */
 
 body {
-  background-color: #34657F;
-  background-image: linear-gradient(135deg, #34657F 50%, #CD6C8F 50%);
-  background-image: -webkit-linear-gradient(135deg, #CD6C8F 50%, #34657F 50%);
-  background-image: -moz-linear-gradient(135deg, #CD6C8F 50%, #34657F 50%);
-  background-image: -ms-linear-gradient(135deg, #CD6C8F 50%, #34657F 50%);
+  background-color: #34657f;
+  background-image: linear-gradient(135deg, #34657f 50%, #cd6c8f 50%);
+  background-image: -webkit-linear-gradient(135deg, #cd6c8f 50%, #34657f 50%);
+  background-image: -moz-linear-gradient(135deg, #cd6c8f 50%, #34657f 50%);
+  background-image: -ms-linear-gradient(135deg, #cd6c8f 50%, #34657f 50%);
 }
 
-#heading {
-  color: #FFFFFF;
+#header {
+  color: #ffffff;
 }
 
 #left-wing {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 #right-wing {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 #typing-area {
-  background: #F6BD9D;
+  background: #f6bd9d;
 }
 
 #input-field {
-  background: #FFFFFF;
-  color: #34657F;
+  background: #ffffff;
+  color: #34657f;
 }
 
 #redo-button {
-  background: #34657F;
-  color: #FFFFFF;
+  background: #34657f;
+  color: #ffffff;
 }
 
 #text-display {
-  color: #CD6C8F;
+  color: #cd6c8f;
+}
+
+#footer {
+  color: #ffffff;
 }
 
 .highlight {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .correct {
-  color: #34657F;
+  color: #34657f;
 }
 
-.incorrect {
-  color: #FF808B;
+.wrong {
+  color: #ff808b;
 }

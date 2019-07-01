@@ -11,7 +11,7 @@ body {
   background: #494b4f;
 }
 
-#heading {
+#header {
   color: #fafafa;
 }
 
@@ -41,6 +41,10 @@ body {
   color: #fafafa;
 }
 
+#footer {
+  color: #fafafa;
+}
+
 .highlight {
   color: #81d8d0;
 }
@@ -49,6 +53,6 @@ body {
   color: #68b723;
 }
 
-.incorrect {
+.wrong {
   color: #bc5868;
 }

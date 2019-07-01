@@ -96,7 +96,7 @@ inputField.addEventListener('keydown', e => {
     }
   }
 
-  // If it is the space key check the word and add correct/incorrect class
+  // If it is the space key check the word and add correct/wrong class
   if (e.key === ' ') {
     e.preventDefault();
 
@@ -115,11 +115,11 @@ inputField.addEventListener('keydown', e => {
         textDisplay.childNodes[currentWord].classList.add('correct');
         correctKeys += wordList[currentWord].length + 1;
       } else {
-        textDisplay.childNodes[currentWord].classList.add('incorrect');
+        textDisplay.childNodes[currentWord].classList.add('wrong');
       }
       textDisplay.childNodes[currentWord + 1].classList.add('highlight');
     } else if (currentWord === wordList.length - 1) {
-      textDisplay.childNodes[currentWord].classList.add('incorrect');
+      textDisplay.childNodes[currentWord].classList.add('wrong');
       showResult();
     }
 
