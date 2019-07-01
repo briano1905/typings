@@ -20,7 +20,9 @@ body {
   justify-content: space-between;
 }
 
-/* #header {} */
+#header {
+  padding-top: 1.2rem;
+}
 
 #command-center {
   margin: 0 0.4rem;
