@@ -23,7 +23,7 @@ getCookie('language') === '' ? setLanguage('english') : setLanguage(getCookie('l
 getCookie('wordCount') === '' ? setWordCount(50) : setWordCount(getCookie('wordCount'));
 getCookie('timeCount') === '' ? setTimeCount(60) : setTimeCount(getCookie('timeCount'));
 getCookie('typingMode') === '' ? setTypingMode('wordcount') : setTypingMode(getCookie('typingMode'));
-getCookie('punctuation') === '' ? setPunctuation(false) : setPunctuation(getCookie('punctuation'));
+getCookie('punctuation') === '' ? setPunctuation('false') : setPunctuation(getCookie('punctuation'));
 
 // Find a list of words and display it to textDisplay
 function setText() {
