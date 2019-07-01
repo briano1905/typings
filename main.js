@@ -15,6 +15,7 @@ let correctKeys = 0;
 let startDate = 0;
 let timer;
 let timerActive = false;
+let punctuation = false;
 
 // Get cookies
 getCookie('theme') === '' ? setTheme('light') : setTheme(getCookie('theme'));
@@ -22,6 +23,7 @@ getCookie('language') === '' ? setLanguage('english') : setLanguage(getCookie('l
 getCookie('wordCount') === '' ? setWordCount(50) : setWordCount(getCookie('wordCount'));
 getCookie('timeCount') === '' ? setTimeCount(60) : setTimeCount(getCookie('timeCount'));
 getCookie('typingMode') === '' ? setTypingMode('wordcount') : setTypingMode(getCookie('typingMode'));
+getCookie('punctuation') === '' ? setPunctuation(false) : setPunctuation(getCookie('punctuation'));
 
 // Find a list of words and display it to textDisplay
 function setText() {
@@ -40,13 +42,9 @@ function setText() {
       textDisplay.innerHTML = '';
       wordList = [];
       for (i = 0; i < wordCount; i++) {
-        let span = document.createElement('span');
         let n = Math.floor(Math.random() * randomWords.length);
         wordList.push(randomWords[n]);
-        span.innerHTML = randomWords[n] + ' ';
-        textDisplay.appendChild(span);
       }
-      textDisplay.firstChild.classList.add('highlight');
       break;
 
     case 'time':
@@ -55,15 +53,57 @@ function setText() {
       textDisplay.innerHTML = '';
       wordList = [];
       for (i = 0; i < 500; i++) {
-        let span = document.createElement('span');
         let n = Math.floor(Math.random() * randomWords.length);
         wordList.push(randomWords[n]);
-        span.innerHTML = randomWords[n] + ' ';
-        textDisplay.appendChild(span);
       }
-      textDisplay.firstChild.classList.add('highlight');
   }
+
+  if (punctuation) addPunctuations();
+  showText();
   inputField.focus();
+}
+
+function addPunctuations() {
+  if (wordList[0] !== undefined) {
+    // Capitalize first word
+    wordList[0] = wordList[0][0].toUpperCase() + wordList[0].slice(1);
+
+    // Add comma, fullstop, question mark, exclamation mark, semicolon. Capitalize the next word
+    for (i = 0; i < wordList.length; i++) {
+      const ran = Math.random();
+      if (i < wordList.length - 1) {
+        if (ran < 0.03) {
+          wordList[i] += ',';
+          wordList[i + 1] = wordList[i + 1][0].toUpperCase() + wordList[i + 1].slice(1);
+        } else if (ran < 0.05) {
+          wordList[i] += '.';
+          wordList[i + 1] = wordList[i + 1][0].toUpperCase() + wordList[i + 1].slice(1);
+        } else if (ran < 0.06) {
+          wordList[i] += '?';
+          wordList[i + 1] = wordList[i + 1][0].toUpperCase() + wordList[i + 1].slice(1);
+        } else if (ran < 0.07) {
+          wordList[i] += '!';
+          wordList[i + 1] = wordList[i + 1][0].toUpperCase() + wordList[i + 1].slice(1);
+        } else if (ran < 0.08) {
+          wordList[i] += ';';
+          wordList[i + 1] = wordList[i + 1][0].toUpperCase() + wordList[i + 1].slice(1);
+        }
+      }
+    }
+    wordList[wordList.length - 1] += '.';
+
+    // Add quotation marks
+  }
+}
+
+// Display text to textDisplay
+function showText() {
+  wordList.forEach(word => {
+    let span = document.createElement('span');
+    span.innerHTML = word + ' ';
+    textDisplay.appendChild(span);
+  });
+  textDisplay.firstChild.classList.add('highlight');
 }
 
 // Key is pressed in input field
@@ -179,6 +219,11 @@ document.addEventListener('keydown', e => {
     if (e.key === 'm') {
       setTypingMode(inputField.value);
     }
+
+    // [mod + p] => Change punctuation active
+    if (e.key === 'p') {
+      setPunctuation(inputField.value);
+    }
   }
 });
 
@@ -231,6 +276,19 @@ function setTypingMode(_mode) {
       break;
     default:
       console.error(`mode ${mode} is undefine`);
+  }
+}
+
+function setPunctuation(_punc) {
+  const punc = _punc.toLowerCase();
+  if (punc === 'true') {
+    punctuation = true;
+    setCookie('punctuation', true, 90);
+    setText();
+  } else if (punc === 'false') {
+    punctuation = false;
+    setCookie('punctuation', false, 90);
+    setText();
   }
 }
 

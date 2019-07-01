@@ -53,6 +53,10 @@ available modes:
 - `wordcount`
 - `time`
 
+## punctuation
+
+type `true` or `false` then hit [ windows: `alt` + `p` ], [ mac: `cmd` + `ctrl`+`p` ] or [ linux: `super` + `ctrl` + `p` ] to activate/deactivate punctuations
+
 ## calculations
 
 wpm: total number of characters (including spaces) of words you got right divided by five then divided by the time starting from first character typed
