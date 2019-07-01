@@ -229,7 +229,7 @@ function showResult() {
       });
       acc = Math.min(Math.floor((correctKeys / totalKeys) * 100), 100);
   }
-  document.querySelector('#right-wing').innerHTML = `WPM: ${wpm} / ACC: ${acc || 0}`;
+  document.querySelector('#right-wing').innerHTML = `WPM: ${wpm || 0} / ACC: ${acc || 0}`;
 }
 
 // Command actions
