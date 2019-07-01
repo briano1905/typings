@@ -184,20 +184,30 @@ document.addEventListener('keydown', e => {
 
 function setTheme(_theme) {
   const theme = _theme.toLowerCase();
-  setCookie('theme', theme, 90);
-  document.querySelector('#theme').setAttribute('href', `themes/${theme}.css`);
-  inputField.value = '';
+  const xhttp = new XMLHttpRequest();
+  xhttp.open('GET', `themes/${theme}.css`);
+  xhttp.onload = () => {
+    if (xhttp.status === 200) {
+      setCookie('theme', theme, 90);
+      document.querySelector('#theme').setAttribute('href', `themes/${theme}.css`);
+      inputField.value = '';
+    }
+  };
+  xhttp.send();
 }
 
 function setLanguage(_lang) {
   const lang = _lang.toLowerCase();
-  setCookie('language', lang, 90);
   fetch('texts/random.json')
     .then(response => response.json())
     .then(json => {
-      textDisplay.innerHTML = '';
-      randomWords = json[lang];
-      setText();
+      if (typeof json[lang] !== 'undefined') {
+        randomWords = json[lang];
+        setCookie('language', lang, 90);
+        setText();
+      } else {
+        console.error(`language ${lang} is undefine`);
+      }
     })
     .catch(err => console.error(err));
 }
@@ -210,15 +220,18 @@ function setTypingMode(_mode) {
       setCookie('typingMode', mode, 90);
       document.querySelector('#word-count').style.display = 'inline';
       document.querySelector('#time-count').style.display = 'none';
+      setText();
       break;
-
     case 'time':
       typingMode = mode;
       setCookie('typingMode', mode, 90);
       document.querySelector('#word-count').style.display = 'none';
       document.querySelector('#time-count').style.display = 'inline';
+      setText();
+      break;
+    default:
+      console.error(`mode ${mode} is undefine`);
   }
-  setText();
 }
 
 function setWordCount(wc) {
