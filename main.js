@@ -158,8 +158,6 @@ inputField.addEventListener('keydown', e => {
     } else {
       correctKeys += 1;
     }
-  } else {
-    e.preventDefault();
   }
 
   // If it is the space key check the word and add correct/wrong class
