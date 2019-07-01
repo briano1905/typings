@@ -150,7 +150,16 @@ inputField.addEventListener('keydown', e => {
       correctKeys += 1;
     }
   } else if (e.which === 32) {
-    correctKeys += 1;
+    if (inputField.value !== wordList[currentWord]) {
+      correctKeys -= inputField.value.length;
+      if (correctKeys < 0) {
+        correctKeys = 0
+      }
+    } else {
+      correctKeys += 1;
+    }
+  } else {
+    e.preventDefault();
   }
 
   // If it is the space key check the word and add correct/wrong class
