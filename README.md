@@ -28,6 +28,7 @@ available themes:
 - `yuri` inspired by GMK Yuri by u/T0mb3ry
 - `moderndolch` inspired by GMK Modern Dolch by u/janglad
 - `mrsleeves` inspired by GMK Mr. Sleeves by u/TaehaTypes
+- `nord` inspired by nordtheme.com
 
 ## language
 
