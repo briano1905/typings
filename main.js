@@ -139,17 +139,18 @@ inputField.addEventListener('keydown', e => {
     }
   }
 
-  if (e.which === 8) {
+  if (e.key === "Backspace") {
     if (inputField.value.length > 0 &&
       inputField.value[inputField.value.length - 1] === wordList[currentWord][inputField.value.length - 1]) {
       correctKeys -= 1;
     }
-  } else if (e.which >= 65 && e.which <= 90) {
+  } else if ((e.key >= "A" && e.key <= "Z") ||
+              (e.key >= "a" && e.key <= "z")) {
     const word = `${inputField.value}${e.key}`;
     if (word[word.length - 1] === wordList[currentWord][word.length - 1]) {
       correctKeys += 1;
     }
-  } else if (e.which === 32) {
+  } else if (e.key === " ") {
     if (inputField.value !== wordList[currentWord]) {
       correctKeys -= inputField.value.length;
       if (correctKeys < 0) {
