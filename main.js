@@ -16,6 +16,7 @@ let startDate = 0;
 let timer;
 let timerActive = false;
 let punctuation = false;
+let resultTimeout = null;
 
 // Get cookies
 getCookie('theme') === '' ? setTheme('light') : setTheme(getCookie('theme'));
@@ -110,11 +111,12 @@ function showText() {
 inputField.addEventListener('keydown', e => {
   // If it is the first character entered
   if (currentWord === 0 && inputField.value === '') {
+    (function printResult() {
+      showResult();
+      resultTimeout = setTimeout(printResult, 1000);
+    })();
+    startDate = Date.now();
     switch (typingMode) {
-      case 'wordcount':
-        startDate = Date.now();
-        break;
-
       case 'time':
         if (!timerActive) {
           startTimer(timeCount);
@@ -131,9 +133,24 @@ inputField.addEventListener('keydown', e => {
             textDisplay.style.display = 'none';
             document.querySelector(`#tc-${timeCount}`).innerHTML = timeCount;
             showResult();
+            clearTimeout(resultTimeout);
           }
         }
     }
+  }
+
+  if (e.which === 8) {
+    if (inputField.value.length > 0 &&
+      inputField.value[inputField.value.length - 1] === wordList[currentWord][inputField.value.length - 1]) {
+      correctKeys -= 1;
+    }
+  } else if (e.which >= 65 && e.which <= 90) {
+    const word = `${inputField.value}${e.key}`;
+    if (word[word.length - 1] === wordList[currentWord][word.length - 1]) {
+      correctKeys += 1;
+    }
+  } else if (e.which === 32) {
+    correctKeys += 1;
   }
 
   // If it is the space key check the word and add correct/wrong class
@@ -153,7 +170,6 @@ inputField.addEventListener('keydown', e => {
     if (currentWord < wordList.length - 1) {
       if (inputField.value === wordList[currentWord]) {
         textDisplay.childNodes[currentWord].classList.add('correct');
-        correctKeys += wordList[currentWord].length + 1;
       } else {
         textDisplay.childNodes[currentWord].classList.add('wrong');
       }
@@ -170,36 +186,43 @@ inputField.addEventListener('keydown', e => {
   } else if (currentWord === wordList.length - 1) {
     if (inputField.value + e.key === wordList[currentWord]) {
       textDisplay.childNodes[currentWord].classList.add('correct');
-      correctKeys += wordList[currentWord].length;
       currentWord++;
       showResult();
+      clearTimeout(resultTimeout);
     }
   }
 });
 
 // Calculate and display result
 function showResult() {
-  let words, minute, acc;
+  let minute, acc;
+  let totalKeys = inputField.value.length;
+  const wpm = Math.floor(correctKeys / 5 / ((Date.now() - startDate) / 1000 / 60));
   switch (typingMode) {
     case 'wordcount':
-      words = correctKeys / 5;
       minute = (Date.now() - startDate) / 1000 / 60;
-      let totalKeys = -1;
-      wordList.forEach(e => (totalKeys += e.length + 1));
+      wordList.some((e, index) => {
+        if (currentWord === index) {
+          return true;
+        }
+        totalKeys += e.length + 1;
+        return false;
+      });
       acc = Math.floor((correctKeys / totalKeys) * 100);
       break;
 
     case 'time':
-      words = correctKeys / 5;
       minute = timeCount / 60;
-      let sumKeys = -1;
-      for (i = 0; i < currentWord; i++) {
-        sumKeys += wordList[i].length + 1;
-      }
-      acc = acc = Math.min(Math.floor((correctKeys / sumKeys) * 100), 100);
+      wordList.some((e, index) => {
+        if (currentWord === index) {
+          return true;
+        }
+        totalKeys += e.length + 1;
+        return false;
+      });
+      acc = Math.min(Math.floor((correctKeys / totalKeys) * 100), 100);
   }
-  let wpm = Math.floor(words / minute);
-  document.querySelector('#right-wing').innerHTML = `WPM: ${wpm} / ACC: ${acc}`;
+  document.querySelector('#right-wing').innerHTML = `WPM: ${wpm} / ACC: ${acc || 0}`;
 }
 
 // Command actions
