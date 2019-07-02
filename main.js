@@ -109,7 +109,7 @@ function showText() {
 // Key is pressed in input field
 inputField.addEventListener('keydown', e => {
   // If it is the first character entered
-  if (currentWord === 0 && inputField.value === '') {
+  if (currentWord === 0 && inputField.value === '' && !e.altKey && !e.shiftKey && !e.ctrlKey && !e.metaKey) {
     switch (typingMode) {
       case 'wordcount':
         startDate = Date.now();
