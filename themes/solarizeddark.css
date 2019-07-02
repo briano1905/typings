@@ -37,13 +37,13 @@ body {
 }
 
 .highlight {
-  color: #a56de2;
+  color: #6c71c4;
 }
 
 .correct {
-  color: #68b723;
+  color: #859900;
 }
 
 .wrong {
-  color: #c6262e;
+  color: #dc322f;
 }

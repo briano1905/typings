@@ -17,11 +17,11 @@ body {
 }
 
 #left-wing {
-  color: #b8835f;
+  color: #e3d5b9;
 }
 
 #right-wing {
-  color: #b8835f;
+  color: #e3d5b9;
 }
 
 #typing-area {
@@ -47,13 +47,13 @@ body {
 }
 
 .highlight {
-  color: #a56de2;
+  color: #b8835f;
 }
 
 .correct {
-  color: #68b723;
+  color: #e3d5b9;
 }
 
 .wrong {
-  color: #c6262e;
+  color: #a62700;
 }
