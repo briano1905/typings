@@ -27,7 +27,7 @@ getCookie('punctuation') === '' ? setPunctuation('false') : setPunctuation(getCo
 
 // Find a list of words and display it to textDisplay
 function setText() {
-  // Reset variables
+  // Reset
   wordList = [];
   currentWord = 0;
   correctKeys = 0;
@@ -35,6 +35,7 @@ function setText() {
   timerActive = false;
   clearTimeout(timer);
   textDisplay.style.display = 'block';
+  inputField.className = '';
 
   switch (typingMode) {
     case 'wordcount':
@@ -108,6 +109,27 @@ function showText() {
 
 // Key is pressed in input field
 inputField.addEventListener('keydown', e => {
+  // Add wrong class to input field
+  switch (typingMode) {
+    case 'wordcount':
+      if (currentWord < wordList.length) inputFieldClass();
+    case 'time':
+      if (timerActive) inputFieldClass();
+  }
+  function inputFieldClass() {
+    if (e.key >= 'a' && e.key <= 'z') {
+      let inputWordSlice = inputField.value + e.key;
+      let currentWordSlice = wordList[currentWord].slice(0, inputWordSlice.length);
+      inputField.className = inputWordSlice === currentWordSlice ? '' : 'wrong';
+    } else if (e.key === 'Backspace') {
+      let inputWordSlice = e.ctrlKey ? '' : inputField.value.slice(0, inputField.value.length - 1);
+      let currentWordSlice = wordList[currentWord].slice(0, inputWordSlice.length);
+      inputField.className = inputWordSlice === currentWordSlice ? '' : 'wrong';
+    } else if (e.key === ' ') {
+      inputField.className = '';
+    }
+  }
+
   // If it is the first character entered
   if (currentWord === 0 && inputField.value === '' && !e.altKey && !e.shiftKey && !e.ctrlKey && !e.metaKey) {
     switch (typingMode) {
@@ -128,7 +150,9 @@ inputField.addEventListener('keydown', e => {
               startTimer(time);
             }, 1000);
           } else {
+            timerActive = false;
             textDisplay.style.display = 'none';
+            inputField.className = '';
             document.querySelector(`#tc-${timeCount}`).innerHTML = timeCount;
             showResult();
           }

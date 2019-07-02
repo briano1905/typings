@@ -32,7 +32,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  transform: translateY(-5vh);
+  transform: translateY(-2vh);
 }
 
 /* #left-wing {} */
