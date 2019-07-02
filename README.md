@@ -53,6 +53,10 @@ available modes:
 - `wordcount`
 - `time`
 
+## other
+
+you can hit `mod` + `enter` to reset the text (shortcut for the `redo` button).
+
 ## calculations
 
 wpm: total number of characters (including spaces) of words you got right divided by five then divided by the time starting from first character typed

@@ -166,6 +166,10 @@ function showResult() {
 document.addEventListener('keydown', e => {
   // Modifiers Windows: [Alt], Mac: [Cmd + Ctrl]
   if (e.altKey || (e.metaKey && e.ctrlKey)) {
+    // [mod + enter] => Reset the text
+    if (e.key === 'Enter') {
+      setText();
+    }
     // [mod + t] => Change the theme
     if (e.key === 't') {
       setTheme(inputField.value);
