@@ -10,7 +10,7 @@ body {
   background: #293649;
 }
 
-#heading {
+#header {
   color: #ea4221;
 }
 
@@ -32,7 +32,7 @@ body {
 
 #input-field {
   background: #97afc2;
-  color: #ea4221;
+  color: #293649;
 }
 
 #redo-button {
@@ -40,14 +40,18 @@ body {
   color: #293649;
 }
 
+#footer {
+  color: #ea4221;
+}
+
 .highlight {
   color: #a56de2;
 }
 
 .correct {
-  color: #68b723;
+  color: #6a7e93;
 }
 
-.incorrect {
+.wrong {
   color: #c6262e;
 }

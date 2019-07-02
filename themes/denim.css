@@ -12,16 +12,16 @@ body {
   background: #454f63;
 }
 
-#heading {
-  color: #a62700;
+#header {
+  color: #b8835f;
 }
 
 #left-wing {
-  color: #b8835f;
+  color: #e3d5b9;
 }
 
 #right-wing {
-  color: #b8835f;
+  color: #e3d5b9;
 }
 
 #typing-area {
@@ -42,14 +42,18 @@ body {
   color: #a62700;
 }
 
+#footer {
+  color: #b8835f;
+}
+
 .highlight {
-  color: #a56de2;
+  color: #b8835f;
 }
 
 .correct {
-  color: #68b723;
+  color: #a6a6a8;
 }
 
-.incorrect {
-  color: #c6262e;
+.wrong {
+  color: #a62700;
 }

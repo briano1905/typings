@@ -12,6 +12,7 @@ available themes:
 
 - `light`
 - `dark`
+- `aurora`
 - `olivia` inspired by GMK Olivia by u/msollie
 - `dracula` inspired by GMK Dracula by u/pikku-allu
 - `phantom` inspired by GMK Phantom by u/briano1905
@@ -56,6 +57,10 @@ available modes:
 ## other
 
 you can hit `mod` + `enter` to reset the text (shortcut for the `redo` button).
+
+## punctuation
+
+type `true` or `false` then hit [ windows: `alt` + `p` ], [ mac: `cmd` + `ctrl`+`p` ] or [ linux: `super` + `ctrl` + `p` ] to activate/deactivate punctuations
 
 ## calculations
 

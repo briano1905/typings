@@ -1,8 +1,8 @@
 body {
-  background: #abacae;
+  background: #eaeaea;
 }
 
-#heading {
+#header {
   color: #ffc700;
 }
 
@@ -23,13 +23,17 @@ body {
 }
 
 #input-field {
-  background: #abacae;
+  background: #e0e0e0;
   color: #1a1a1a;
 }
 
 #redo-button {
   background: #ffc700;
   color: #1a1a1a;
+}
+
+#footer {
+  color: #ffc700;
 }
 
 .highlight {
@@ -40,6 +44,6 @@ body {
   color: #68b723;
 }
 
-.incorrect {
+.wrong {
   color: #c6262e;
 }

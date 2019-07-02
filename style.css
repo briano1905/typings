@@ -6,7 +6,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   font-family: Roboto Mono;
   line-height: 1.6rem;
 }
@@ -20,17 +20,19 @@ body {
   justify-content: space-between;
 }
 
-/* #heading {} */
+#header {
+  margin: 0;
+  margin: 1.2rem 0 0 0;
+}
 
 #command-center {
   margin: 0 0.4rem;
   width: 100%;
   max-width: 40rem;
-  flex-grow: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  transform: translateY(-5vh);
+  transform: translateY(-2vh);
 }
 
 /* #left-wing {} */
@@ -66,4 +68,9 @@ body {
   border-radius: 0.2rem;
   font-size: 1.2rem;
   cursor: pointer;
+}
+
+#footer {
+  margin-bottom: 0.4rem;
+  text-decoration: none;
 }

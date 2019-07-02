@@ -1,46 +1,49 @@
 body {
-    background: #211333;
-  }
-  
-  #heading {
-    color: #eed484;
-  }
-  
-  #left-wing {
-    color: #eed484;
-  }
-  
-  #right-wing {
-    color: #eed484;
-  }
-  
-  #typing-area {
-    background: #2e1a47;
-  }
-  
-  #text-display {
-    color: #eed484;
-  }
-  
-  #input-field {
-    background: #211333;
-    color: #eed484;
-  }
-  
-  #redo-button {
-    background: #211333;
-    color: #eed484;
-  }
-  
-  .highlight {
-    color: #a56de2;
-  }
-  
-  .correct {
-    color: #68b723;
-  }
-  
-  .incorrect {
-    color: #c6262e;
-  }
-  
+  background: #211333;
+}
+
+#header {
+  color: #eed484;
+}
+
+#left-wing {
+  color: #eed484;
+}
+
+#right-wing {
+  color: #eed484;
+}
+
+#typing-area {
+  background: #2e1a47;
+}
+
+#text-display {
+  color: #eed484;
+}
+
+#input-field {
+  background: #211333;
+  color: #eed484;
+}
+
+#redo-button {
+  background: #211333;
+  color: #eed484;
+}
+
+#footer {
+  color: #eed484;
+}
+
+.highlight {
+  color: #a56de2;
+}
+
+.correct {
+  color: #68b723;
+}
+
+.wrong {
+  color: #c6262e;
+}
