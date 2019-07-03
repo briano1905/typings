@@ -133,6 +133,7 @@ inputField.addEventListener('keydown', e => {
             textDisplay.style.display = 'none';
             document.querySelector(`#tc-${timeCount}`).innerHTML = timeCount;
             showResult();
+            clearTimeout(timer);
             clearTimeout(resultTimeout);
           }
         }
