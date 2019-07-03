@@ -26,7 +26,7 @@ getCookie('wordCount') === '' ? setWordCount(50) : setWordCount(getCookie('wordC
 getCookie('timeCount') === '' ? setTimeCount(60) : setTimeCount(getCookie('timeCount'));
 getCookie('typingMode') === '' ? setTypingMode('wordcount') : setTypingMode(getCookie('typingMode'));
 getCookie('punctuation') === '' ? setPunctuation('false') : setPunctuation(getCookie('punctuation'));
-setRealTime(getCookie("realTime") !== "" ? getCookie("realTime") : "false");
+setRealTime(getCookie("realTime"));
 
 // Find a list of words and display it to textDisplay
 function setText() {
@@ -144,25 +144,27 @@ inputField.addEventListener('keydown', e => {
     }
   }
 
-  if (e.key === "Backspace") {
-    if (inputField.value.length > 0 &&
-      inputField.value[inputField.value.length - 1] === wordList[currentWord][inputField.value.length - 1]) {
-      correctKeys -= 1;
-    }
-  } else if ((e.key >= "A" && e.key <= "Z") ||
-              (e.key >= "a" && e.key <= "z")) {
-    const word = `${inputField.value}${e.key}`;
-    if (word[word.length - 1] === wordList[currentWord][word.length - 1]) {
-      correctKeys += 1;
-    }
-  } else if (e.key === " ") {
-    if (inputField.value !== wordList[currentWord]) {
-      correctKeys -= inputField.value.length;
-      if (correctKeys < 0) {
-        correctKeys = 0
+  if (wordList[currentWord] !== undefined) {
+    if (e.key === "Backspace") {
+      if (inputField.value.length > 0 &&
+        inputField.value[inputField.value.length - 1] === wordList[currentWord][inputField.value.length - 1]) {
+        correctKeys -= 1;
       }
-    } else {
-      correctKeys += 1;
+    } else if ((e.key >= "A" && e.key <= "Z") ||
+                (e.key >= "a" && e.key <= "z")) {
+      const word = `${inputField.value}${e.key}`;
+      if (word[word.length - 1] === wordList[currentWord][word.length - 1]) {
+        correctKeys += 1;
+      }
+    } else if (e.key === " ") {
+      if (inputField.value !== wordList[currentWord]) {
+        correctKeys -= inputField.value.length;
+        if (correctKeys < 0) {
+          correctKeys = 0
+        }
+      } else {
+        correctKeys += 1;
+      }
     }
   }
 
