@@ -16,6 +16,7 @@ let startDate = 0;
 let timer;
 let timerActive = false;
 let punctuation = false;
+let realTime = false;
 let resultTimeout = null;
 
 // Get cookies
@@ -25,6 +26,7 @@ getCookie('wordCount') === '' ? setWordCount(50) : setWordCount(getCookie('wordC
 getCookie('timeCount') === '' ? setTimeCount(60) : setTimeCount(getCookie('timeCount'));
 getCookie('typingMode') === '' ? setTypingMode('wordcount') : setTypingMode(getCookie('typingMode'));
 getCookie('punctuation') === '' ? setPunctuation('false') : setPunctuation(getCookie('punctuation'));
+setRealTime(getCookie("realTime") !== "" ? getCookie("realTime") : "false");
 
 // Find a list of words and display it to textDisplay
 function setText() {
@@ -112,7 +114,9 @@ inputField.addEventListener('keydown', e => {
   // If it is the first character entered
   if (currentWord === 0 && inputField.value === '') {
     (function printResult() {
-      showResult();
+      if (realTime) {
+        showResult();
+      }
       resultTimeout = setTimeout(printResult, 1000);
     })();
     startDate = Date.now();
@@ -256,6 +260,11 @@ document.addEventListener('keydown', e => {
     if (e.key === 'p') {
       setPunctuation(inputField.value);
     }
+    
+    // [mod + r] => Real time stats
+    if (e.key === 'r') {
+      setRealTime(!realTime + "");
+    }
   }
 });
 
@@ -364,4 +373,9 @@ function getCookie(cname) {
     }
   }
   return '';
+}
+
+function setRealTime(value) {
+  realTime = value === "true";
+  setCookie('realTime', realTime, 90);
 }
