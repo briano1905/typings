@@ -259,7 +259,7 @@ function setTheme(_theme) {
     if (xhttp.status === 200) {
       setCookie('theme', theme, 90);
       document.querySelector('#theme').setAttribute('href', `themes/${theme}.css`);
-      inputField.value = '';
+      setText();
     }
   };
   xhttp.send();

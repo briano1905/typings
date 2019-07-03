@@ -27,6 +27,10 @@ body {
   color: #575d5e;
 }
 
+#input-field.wrong {
+  background: rgba(198, 38, 46, 0.3);
+}
+
 #redo-button {
   background: #ed6b21;
   color: #575d5e;
