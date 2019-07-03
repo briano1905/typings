@@ -17,11 +17,11 @@ body {
 }
 
 #left-wing {
-  color: #b8835f;
+  color: #e3d5b9;
 }
 
 #right-wing {
-  color: #b8835f;
+  color: #e3d5b9;
 }
 
 #typing-area {
@@ -37,6 +37,10 @@ body {
   color: #e3d5b9;
 }
 
+#input-field.wrong {
+  background: rgba(198, 38, 46, 0.3);
+}
+
 #redo-button {
   background: #b8835f;
   color: #a62700;
@@ -47,13 +51,13 @@ body {
 }
 
 .highlight {
-  color: #a56de2;
+  color: #b8835f;
 }
 
 .correct {
-  color: #68b723;
+  color: #a6a6a8;
 }
 
 .wrong {
-  color: #c6262e;
+  color: #a62700;
 }

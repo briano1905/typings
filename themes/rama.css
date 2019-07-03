@@ -1,5 +1,5 @@
 body {
-  background: #abacae;
+  background: #eaeaea;
 }
 
 #header {
@@ -23,8 +23,12 @@ body {
 }
 
 #input-field {
-  background: #abacae;
+  background: #e0e0e0;
   color: #1a1a1a;
+}
+
+#input-field.wrong {
+  background: rgba(198, 38, 46, 0.3);
 }
 
 #redo-button {

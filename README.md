@@ -12,6 +12,7 @@ available themes:
 
 - `light`
 - `dark`
+- `aurora`
 - `olivia` inspired by GMK Olivia by u/msollie
 - `dracula` inspired by GMK Dracula by u/pikku-allu
 - `phantom` inspired by GMK Phantom by u/briano1905

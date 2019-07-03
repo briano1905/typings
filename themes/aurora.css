@@ -1,0 +1,68 @@
+body {
+  background: linear-gradient(-20deg, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: Gradient 60s ease infinite;
+}
+
+@keyframes Gradient {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+#header {
+  color: #fafafa;
+}
+
+#left-wing {
+  color: #fafafa;
+}
+
+#right-wing {
+  color: #fafafa;
+}
+
+#typing-area {
+  background: rgba(250, 250, 250, 0.6);
+  backdrop-filter: blur(1rem);
+}
+
+#text-display {
+  color: #1a1a1a;
+}
+
+#input-field {
+  background: rgba(250, 250, 250, 0.6);
+  color: #1a1a1a;
+}
+
+#input-field.wrong {
+  background: rgb(250, 50, 90, 0.4);
+}
+
+#redo-button {
+  background: rgba(250, 250, 250, 0.6);
+  color: #1a1a1a;
+}
+
+#footer {
+  color: #fafafa;
+}
+
+.highlight {
+  color: #a56de2;
+}
+
+.correct {
+  color: #1a1a1a;
+}
+
+.wrong {
+  color: #c6262e;
+}

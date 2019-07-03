@@ -27,6 +27,10 @@ body {
   color: #575d5e;
 }
 
+#input-field.wrong {
+  background: rgba(198, 38, 46, 0.3);
+}
+
 #redo-button {
   background: #ed6b21;
   color: #575d5e;
@@ -37,11 +41,11 @@ body {
 }
 
 .highlight {
-  color: #a56de2;
+  color: #ed6b21;
 }
 
 .correct {
-  color: #68b723;
+  color: #9d9b92;
 }
 
 .wrong {

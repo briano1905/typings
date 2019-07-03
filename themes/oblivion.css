@@ -23,13 +23,17 @@ body {
 }
 
 #input-field {
-  background: #464746;
+  background: #6f7778;
   color: #c8c3b8;
 }
 
+#input-field.wrong {
+  background: rgba(198, 38, 46, 0.3);
+}
+
 #redo-button {
-  background: #464746;
-  color: #1a8ab7;
+  background: #6f7778;
+  color: #a698c5;
 }
 
 #footer {

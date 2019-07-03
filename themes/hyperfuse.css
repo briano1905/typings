@@ -3,7 +3,7 @@ body {
 }
 
 #header {
-  color: #25cdc5;
+  color: #d4d4d4;
 }
 
 #left-wing {
@@ -25,6 +25,10 @@ body {
 #input-field {
   background: #abacae;
   color: #6c3c9d;
+}
+
+#input-field.wrong {
+  background: rgba(198, 38, 46, 0.3);
 }
 
 #redo-button {
