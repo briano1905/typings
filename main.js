@@ -164,31 +164,33 @@ inputField.addEventListener('keydown', e => {
   if (e.key === ' ') {
     e.preventDefault();
 
-    // Scroll down text when reach new line
-    if (typingMode === 'time') {
-      const currentWordPosition = textDisplay.childNodes[currentWord].getBoundingClientRect();
-      const nextWordPosition = textDisplay.childNodes[currentWord + 1].getBoundingClientRect();
-      if (currentWordPosition.top < nextWordPosition.top) {
-        for (i = 0; i < currentWord + 1; i++) textDisplay.childNodes[i].style.display = 'none';
+    if (inputField.value !== '') {
+      // Scroll down text when reach new line
+      if (typingMode === 'time') {
+        const currentWordPosition = textDisplay.childNodes[currentWord].getBoundingClientRect();
+        const nextWordPosition = textDisplay.childNodes[currentWord + 1].getBoundingClientRect();
+        if (currentWordPosition.top < nextWordPosition.top) {
+          for (i = 0; i < currentWord + 1; i++) textDisplay.childNodes[i].style.display = 'none';
+        }
       }
-    }
 
-    // If it is not the last word increment currentWord,
-    if (currentWord < wordList.length - 1) {
-      if (inputField.value === wordList[currentWord]) {
-        textDisplay.childNodes[currentWord].classList.add('correct');
-        correctKeys += wordList[currentWord].length + 1;
-      } else {
+      // If it is not the last word increment currentWord,
+      if (currentWord < wordList.length - 1) {
+        if (inputField.value === wordList[currentWord]) {
+          textDisplay.childNodes[currentWord].classList.add('correct');
+          correctKeys += wordList[currentWord].length + 1;
+        } else {
+          textDisplay.childNodes[currentWord].classList.add('wrong');
+        }
+        textDisplay.childNodes[currentWord + 1].classList.add('highlight');
+      } else if (currentWord === wordList.length - 1) {
         textDisplay.childNodes[currentWord].classList.add('wrong');
+        showResult();
       }
-      textDisplay.childNodes[currentWord + 1].classList.add('highlight');
-    } else if (currentWord === wordList.length - 1) {
-      textDisplay.childNodes[currentWord].classList.add('wrong');
-      showResult();
-    }
 
-    inputField.value = '';
-    currentWord++;
+      inputField.value = '';
+      currentWord++;
+    }
 
     // Else if it is the last word and input word is correct show the result
   } else if (currentWord === wordList.length - 1) {
