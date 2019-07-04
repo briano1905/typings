@@ -1,0 +1,62 @@
+/*
+Inspired by GMK Nautilus by Zambumon
+https://zambumon.com
+accents: #eac004
+modidifers: #102c4e
+alphas: #155d94
+alphas legends: #1ae7ea
+*/
+
+body {
+  background: #102c4e;
+}
+
+#header {
+  color: #eac004;
+}
+
+#left-wing {
+  color: #eac004;
+}
+
+#right-wing {
+  color: #eac004;
+}
+
+#typing-area {
+  background: #155d94;
+}
+
+#text-display {
+  color: #1ae7ea;
+}
+
+#input-field {
+  background: #102c4e;
+  color: #1ae7ea;
+}
+
+#input-field.wrong {
+  background: rgba(198, 38, 46, 0.3);
+}
+
+#redo-button {
+  background: #eac004;
+  color: #102c4e;
+}
+
+#footer {
+  color: #eac004;
+}
+
+.highlight {
+  color: #eac004;
+}
+
+.correct {
+  color: #6a7e93;
+}
+
+.wrong {
+  color: #e2322e;
+}
