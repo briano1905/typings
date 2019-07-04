@@ -182,9 +182,10 @@ inputField.addEventListener('keydown', e => {
       }
     } else if (e.key === " ") {
       if (inputField.value !== wordList[currentWord]) {
-        correctKeys -= inputField.value.length;
-        if (correctKeys < 0) {
-          correctKeys = 0
+        let i = 0;
+        while (inputField.value[i] == wordList[currentWord][i]) {
+          correctKeys -= 1;
+          i += 1;
         }
       } else {
         correctKeys += 1;
@@ -235,7 +236,7 @@ inputField.addEventListener('keydown', e => {
 // Calculate and display result
 function showResult() {
   let minute, acc;
-  let totalKeys = inputField.value.length;
+  let totalKeys = wordList.length === currentWord ? -1 : inputField.value.length;
   const wpm = Math.floor(correctKeys / 5 / ((Date.now() - startDate) / 1000 / 60));
   switch (typingMode) {
     case 'wordcount':
