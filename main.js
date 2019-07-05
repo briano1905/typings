@@ -78,7 +78,6 @@ function addPunctuations() {
       if (i < wordList.length - 1) {
         if (ran < 0.03) {
           wordList[i] += ',';
-          wordList[i + 1] = wordList[i + 1][0].toUpperCase() + wordList[i + 1].slice(1);
         } else if (ran < 0.05) {
           wordList[i] += '.';
           wordList[i + 1] = wordList[i + 1][0].toUpperCase() + wordList[i + 1].slice(1);
@@ -90,7 +89,6 @@ function addPunctuations() {
           wordList[i + 1] = wordList[i + 1][0].toUpperCase() + wordList[i + 1].slice(1);
         } else if (ran < 0.08) {
           wordList[i] += ';';
-          wordList[i + 1] = wordList[i + 1][0].toUpperCase() + wordList[i + 1].slice(1);
         }
       }
     }
@@ -134,7 +132,7 @@ inputField.addEventListener('keydown', e => {
   }
 
   // If it is the first character entered
-  if (currentWord === 0 && inputField.value === '' && !e.altKey && !e.shiftKey && !e.ctrlKey && !e.metaKey) {
+  if (currentWord === 0 && inputField.value === '') {
     (function printResult() {
       if (realTime) {
         showResult();
@@ -198,30 +196,32 @@ inputField.addEventListener('keydown', e => {
   if (e.key === ' ') {
     e.preventDefault();
 
-    // Scroll down text when reach new line
-    if (typingMode === 'time') {
-      const currentWordPosition = textDisplay.childNodes[currentWord].getBoundingClientRect();
-      const nextWordPosition = textDisplay.childNodes[currentWord + 1].getBoundingClientRect();
-      if (currentWordPosition.top < nextWordPosition.top) {
-        for (i = 0; i < currentWord + 1; i++) textDisplay.childNodes[i].style.display = 'none';
+    if (inputField.value !== '') {
+      // Scroll down text when reach new line
+      if (typingMode === 'time') {
+        const currentWordPosition = textDisplay.childNodes[currentWord].getBoundingClientRect();
+        const nextWordPosition = textDisplay.childNodes[currentWord + 1].getBoundingClientRect();
+        if (currentWordPosition.top < nextWordPosition.top) {
+          for (i = 0; i < currentWord + 1; i++) textDisplay.childNodes[i].style.display = 'none';
+        }
       }
-    }
 
-    // If it is not the last word increment currentWord,
-    if (currentWord < wordList.length - 1) {
-      if (inputField.value === wordList[currentWord]) {
-        textDisplay.childNodes[currentWord].classList.add('correct');
-      } else {
+      // If it is not the last word increment currentWord,
+      if (currentWord < wordList.length - 1) {
+        if (inputField.value === wordList[currentWord]) {
+          textDisplay.childNodes[currentWord].classList.add('correct');
+        } else {
+          textDisplay.childNodes[currentWord].classList.add('wrong');
+        }
+        textDisplay.childNodes[currentWord + 1].classList.add('highlight');
+      } else if (currentWord === wordList.length - 1) {
         textDisplay.childNodes[currentWord].classList.add('wrong');
+        showResult();
       }
-      textDisplay.childNodes[currentWord + 1].classList.add('highlight');
-    } else if (currentWord === wordList.length - 1) {
-      textDisplay.childNodes[currentWord].classList.add('wrong');
-      showResult();
-    }
 
-    inputField.value = '';
-    currentWord++;
+      inputField.value = '';
+      currentWord++;
+    }
 
     // Else if it is the last word and input word is correct show the result
   } else if (currentWord === wordList.length - 1) {
