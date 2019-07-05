@@ -75,7 +75,6 @@ function addPunctuations() {
       if (i < wordList.length - 1) {
         if (ran < 0.03) {
           wordList[i] += ',';
-          wordList[i + 1] = wordList[i + 1][0].toUpperCase() + wordList[i + 1].slice(1);
         } else if (ran < 0.05) {
           wordList[i] += '.';
           wordList[i + 1] = wordList[i + 1][0].toUpperCase() + wordList[i + 1].slice(1);
@@ -87,7 +86,6 @@ function addPunctuations() {
           wordList[i + 1] = wordList[i + 1][0].toUpperCase() + wordList[i + 1].slice(1);
         } else if (ran < 0.08) {
           wordList[i] += ';';
-          wordList[i + 1] = wordList[i + 1][0].toUpperCase() + wordList[i + 1].slice(1);
         }
       }
     }
@@ -131,7 +129,8 @@ inputField.addEventListener('keydown', e => {
   }
 
   // If it is the first character entered
-  if (currentWord === 0 && inputField.value === '' && !e.altKey && !e.shiftKey && !e.ctrlKey && !e.metaKey) {
+  if (currentWord === 0 && inputField.value === '') {
+    console.log('hi');
     switch (typingMode) {
       case 'wordcount':
         startDate = Date.now();
