@@ -16,6 +16,8 @@ let startDate = 0;
 let timer;
 let timerActive = false;
 let punctuation = false;
+let realTime = false;
+let resultTimeout = null;
 
 // Get cookies
 getCookie('theme') === '' ? setTheme('light') : setTheme(getCookie('theme'));
@@ -24,6 +26,7 @@ getCookie('wordCount') === '' ? setWordCount(50) : setWordCount(getCookie('wordC
 getCookie('timeCount') === '' ? setTimeCount(60) : setTimeCount(getCookie('timeCount'));
 getCookie('typingMode') === '' ? setTypingMode('wordcount') : setTypingMode(getCookie('typingMode'));
 getCookie('punctuation') === '' ? setPunctuation('false') : setPunctuation(getCookie('punctuation'));
+setRealTime(getCookie("realTime"));
 
 // Find a list of words and display it to textDisplay
 function setText() {
@@ -130,12 +133,14 @@ inputField.addEventListener('keydown', e => {
 
   // If it is the first character entered
   if (currentWord === 0 && inputField.value === '') {
-    console.log('hi');
+    (function printResult() {
+      if (realTime) {
+        showResult();
+      }
+      resultTimeout = setTimeout(printResult, 1000);
+    })();
+    startDate = Date.now();
     switch (typingMode) {
-      case 'wordcount':
-        startDate = Date.now();
-        break;
-
       case 'time':
         if (!timerActive) {
           startTimer(timeCount);
@@ -154,8 +159,36 @@ inputField.addEventListener('keydown', e => {
             inputField.className = '';
             document.querySelector(`#tc-${timeCount}`).innerHTML = timeCount;
             showResult();
+            clearTimeout(timer);
+            clearTimeout(resultTimeout);
+            resultTimeout = null;
           }
         }
+    }
+  }
+
+  if (wordList[currentWord] !== undefined) {
+    if (e.key === "Backspace") {
+      if (inputField.value.length > 0 &&
+        inputField.value[inputField.value.length - 1] === wordList[currentWord][inputField.value.length - 1]) {
+        correctKeys -= 1;
+      }
+    } else if ((e.key >= "A" && e.key <= "Z") ||
+                (e.key >= "a" && e.key <= "z")) {
+      const word = `${inputField.value}${e.key}`;
+      if (word[word.length - 1] === wordList[currentWord][word.length - 1]) {
+        correctKeys += 1;
+      }
+    } else if (e.key === " ") {
+      if (inputField.value !== wordList[currentWord]) {
+        let i = 0;
+        while (inputField.value[i] == wordList[currentWord][i]) {
+          correctKeys -= 1;
+          i += 1;
+        }
+      } else {
+        correctKeys += 1;
+      }
     }
   }
 
@@ -177,7 +210,6 @@ inputField.addEventListener('keydown', e => {
       if (currentWord < wordList.length - 1) {
         if (inputField.value === wordList[currentWord]) {
           textDisplay.childNodes[currentWord].classList.add('correct');
-          correctKeys += wordList[currentWord].length + 1;
         } else {
           textDisplay.childNodes[currentWord].classList.add('wrong');
         }
@@ -195,36 +227,44 @@ inputField.addEventListener('keydown', e => {
   } else if (currentWord === wordList.length - 1) {
     if (inputField.value + e.key === wordList[currentWord]) {
       textDisplay.childNodes[currentWord].classList.add('correct');
-      correctKeys += wordList[currentWord].length;
       currentWord++;
       showResult();
+      clearTimeout(resultTimeout);
+      resultTimeout = null;
     }
   }
 });
 
 // Calculate and display result
 function showResult() {
-  let words, minute, acc;
+  let minute, acc;
+  let totalKeys = wordList.length === currentWord ? -1 : inputField.value.length;
+  const wpm = Math.floor(correctKeys / 5 / ((Date.now() - startDate) / 1000 / 60));
   switch (typingMode) {
     case 'wordcount':
-      words = correctKeys / 5;
       minute = (Date.now() - startDate) / 1000 / 60;
-      let totalKeys = -1;
-      wordList.forEach(e => (totalKeys += e.length + 1));
+      wordList.some((e, index) => {
+        if (currentWord === index) {
+          return true;
+        }
+        totalKeys += e.length + 1;
+        return false;
+      });
       acc = Math.floor((correctKeys / totalKeys) * 100);
       break;
 
     case 'time':
-      words = correctKeys / 5;
       minute = timeCount / 60;
-      let sumKeys = -1;
-      for (i = 0; i < currentWord; i++) {
-        sumKeys += wordList[i].length + 1;
-      }
-      acc = acc = Math.min(Math.floor((correctKeys / sumKeys) * 100), 100);
+      wordList.some((e, index) => {
+        if (currentWord === index) {
+          return true;
+        }
+        totalKeys += e.length + 1;
+        return false;
+      });
+      acc = Math.min(Math.floor((correctKeys / totalKeys) * 100), 100);
   }
-  let wpm = Math.floor(words / minute);
-  document.querySelector('#right-wing').innerHTML = `WPM: ${wpm} / ACC: ${acc}`;
+  document.querySelector('#right-wing').innerHTML = `WPM: ${wpm || 0} / ACC: ${acc || 0}`;
 }
 
 // Command actions
@@ -248,6 +288,11 @@ document.addEventListener('keydown', e => {
     // [mod + p] => Change punctuation active
     if (e.key === 'p') {
       setPunctuation(inputField.value);
+    }
+    
+    // [mod + r] => Real time stats
+    if (e.key === 'r') {
+      setRealTime(!realTime + "");
     }
   }
 });
@@ -283,6 +328,10 @@ function setLanguage(_lang) {
 }
 
 function setTypingMode(_mode) {
+  if (resultTimeout !== null) {
+    clearTimeout(resultTimeout);
+    resultTimeout = null;
+  }
   const mode = _mode.toLowerCase();
   switch (mode) {
     case 'wordcount':
@@ -357,4 +406,9 @@ function getCookie(cname) {
     }
   }
   return '';
+}
+
+function setRealTime(value) {
+  realTime = value === "true";
+  setCookie('realTime', realTime, 90);
 }
