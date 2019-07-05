@@ -163,6 +163,7 @@ inputField.addEventListener('keydown', e => {
             showResult();
             clearTimeout(timer);
             clearTimeout(resultTimeout);
+            resultTimeout = null;
           }
         }
     }
@@ -229,6 +230,7 @@ inputField.addEventListener('keydown', e => {
       currentWord++;
       showResult();
       clearTimeout(resultTimeout);
+      resultTimeout = null;
     }
   }
 });
@@ -326,6 +328,10 @@ function setLanguage(_lang) {
 }
 
 function setTypingMode(_mode) {
+  if (resultTimeout !== null) {
+    clearTimeout(resultTimeout);
+    resultTimeout = null;
+  }
   const mode = _mode.toLowerCase();
   switch (mode) {
     case 'wordcount':
