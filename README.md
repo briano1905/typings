@@ -10,26 +10,32 @@ type the theme code for example `dracula` in the text box then hit [ windows: `a
 
 available themes:
 
-- `light`
-- `dark`
 - `aurora`
-- `olivia` inspired by GMK Olivia by u/msollie
-- `dracula` inspired by GMK Dracula by u/pikku-allu
-- `phantom` inspired by GMK Phantom by u/briano1905
-- `hyperfuse` inspired by GMK HyperFuse origins by BunnyLake
-- `carbon` inspired by SA Carbon by u/spoonyluv47
+- `dark`
+- `light`
+
 - `burgundy` inspired by GMK Burgundy by cocobrais
-- `rama` inspired by ramaworks by u/kingrama
+- `carbon` inspired by SA Carbon by T0mb3ry
+- `denim` inspired by GMK Denim by T0mb3ry
+- `dracula` inspired by GMK Dracula by u/pikku-allu
+- `eclipse` inspired by GMK Eclipse by T0mb3ry
+- `hyperfuse` inspired by GMK HyperFuse origins by BunnyLake
+- `mizu` inspired by GMK Mizu by u/Rensuya
+- `moderndolch` inspired by GMK Modern Dolch by [Janglad](https://clavier.xyz)
+- `mrsleeves` inspired by GMK Mr. Sleeves by [Taeha Types](https://www.taehatypes.com/)
+- `nord` inspired by [Nord Theme](https://nordtheme.com)
+- `nautilus` inspired by GMK Nautilus by [Zambumon](https://zambumon.com)
 - `oblivion` inspired by SA Oblivion by u/Oblotzky
+- `olivia` inspired by GMK Olivia by [Olivia](https://github.com/olivia)
+- `phantom` inspired by GMK Phantom by u/briano1905
+- `rama` inspired by [Rama Works](https://rama.works)
+- `serika` inspired by GMK Serika by [Zambumon](https://zambumon.com)
 - `solarizeddark` [bonus: `solarizedlight`] inspired by GMK Solarized Dark by u/thesiscamper
 - `vilebloom` inspired by SA Vilebloom by u/UKKeycaps
-- `mizu` inspired by GMK Mizu by u/Rensuya
-- `denim` inspired by GMK Denim by u/T0mb3ry
-- `eclipse` inspired by GMK Eclipse by u/T0mb3ry
-- `yuri` inspired by GMK Yuri by u/T0mb3ry
-- `moderndolch` inspired by GMK Modern Dolch by u/janglad
-- `mrsleeves` inspired by GMK Mr. Sleeves by u/TaehaTypes
-- `nord` inspired by nordtheme.com
+- `yuri` inspired by GMK Yuri by T0mb3ry
+
+
+
 
 ## language
 
