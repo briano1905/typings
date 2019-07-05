@@ -132,12 +132,14 @@ inputField.addEventListener('keydown', e => {
   }
 
   // If it is the first character entered
-  if (currentWord === 0 && inputField.value === '') {
+  if (currentWord === 0 && inputField.value === '' && e.key >= '!' && e.key <= '~' && e.key.length === 1) {
     (function printResult() {
       if (realTime) {
         showResult();
       }
-      resultTimeout = setTimeout(printResult, 1000);
+      if (typingMode !== "time" || (typingMode === "time" && timerActive)) {
+        resultTimeout = setTimeout(printResult, 1000);
+      }
     })();
     startDate = Date.now();
     switch (typingMode) {
@@ -158,10 +160,8 @@ inputField.addEventListener('keydown', e => {
             textDisplay.style.display = 'none';
             inputField.className = '';
             document.querySelector(`#tc-${timeCount}`).innerHTML = timeCount;
-            showResult();
+            end();
             clearTimeout(timer);
-            clearTimeout(resultTimeout);
-            resultTimeout = null;
           }
         }
     }
@@ -173,8 +173,7 @@ inputField.addEventListener('keydown', e => {
         inputField.value[inputField.value.length - 1] === wordList[currentWord][inputField.value.length - 1]) {
         correctKeys -= 1;
       }
-    } else if ((e.key >= "A" && e.key <= "Z") ||
-                (e.key >= "a" && e.key <= "z")) {
+    } else if (e.key >= "!" && e.key <= "~") {
       const word = `${inputField.value}${e.key}`;
       if (word[word.length - 1] === wordList[currentWord][word.length - 1]) {
         correctKeys += 1;
@@ -216,7 +215,7 @@ inputField.addEventListener('keydown', e => {
         textDisplay.childNodes[currentWord + 1].classList.add('highlight');
       } else if (currentWord === wordList.length - 1) {
         textDisplay.childNodes[currentWord].classList.add('wrong');
-        showResult();
+        end();
       }
 
       inputField.value = '';
@@ -228,12 +227,18 @@ inputField.addEventListener('keydown', e => {
     if (inputField.value + e.key === wordList[currentWord]) {
       textDisplay.childNodes[currentWord].classList.add('correct');
       currentWord++;
-      showResult();
-      clearTimeout(resultTimeout);
-      resultTimeout = null;
+      end();
     }
   }
 });
+
+function end() {
+  if (resultTimeout !== null) {
+    clearTimeout(resultTimeout);
+  }
+  resultTimeout = null;
+  showResult();
+}
 
 // Calculate and display result
 function showResult() {
