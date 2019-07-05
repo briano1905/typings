@@ -130,7 +130,6 @@ inputField.addEventListener('keydown', e => {
 
   // If it is the first character entered
   if (currentWord === 0 && inputField.value === '') {
-    console.log('hi');
     switch (typingMode) {
       case 'wordcount':
         startDate = Date.now();

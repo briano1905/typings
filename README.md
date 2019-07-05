@@ -34,9 +34,6 @@ available themes:
 - `vilebloom` inspired by SA Vilebloom by u/UKKeycaps
 - `yuri` inspired by GMK Yuri by T0mb3ry
 
-
-
-
 ## language
 
 type the language code for example `german` in the text box then hit [ windows: `alt` + `l` ], [ mac: `cmd` + `ctrl`+`l` ] or [ linux: `super` + `ctrl` + `l` ]
