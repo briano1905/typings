@@ -1,6 +1,10 @@
-// Get document element
-const textDisplay = document.querySelector('#text-display');
-const inputField = document.querySelector('#input-field');
+window.addEventListener('beforeinstallprompt', beforeInstallPrompt);
+
+// document elements
+let textDisplay;
+let inputField;
+let installFields;
+let installButton;
 
 // Initialize typing mode variables
 let typingMode = 'wordcount';
@@ -16,14 +20,54 @@ let startDate = 0;
 let timer;
 let timerActive = false;
 let punctuation = false;
+let installPrompt;
 
-// Get cookies
-getCookie('theme') === '' ? setTheme('light') : setTheme(getCookie('theme'));
-getCookie('language') === '' ? setLanguage('english') : setLanguage(getCookie('language'));
-getCookie('wordCount') === '' ? setWordCount(50) : setWordCount(getCookie('wordCount'));
-getCookie('timeCount') === '' ? setTimeCount(60) : setTimeCount(getCookie('timeCount'));
-getCookie('typingMode') === '' ? setTypingMode('wordcount') : setTypingMode(getCookie('typingMode'));
-getCookie('punctuation') === '' ? setPunctuation('false') : setPunctuation(getCookie('punctuation'));
+
+function initPage() {
+  // Register service worker for PWA 
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js');
+  };
+
+  // Get document element
+  textDisplay = document.querySelector('#text-display');
+  inputField = document.querySelector('#input-field');
+  installFields = document.querySelector('.install-fields');
+  installButton = document.querySelector('#install-button');
+
+  // Get cookies
+  getCookie('theme') === '' ? setTheme('light') : setTheme(getCookie('theme'));
+  getCookie('language') === '' ? setLanguage('english') : setLanguage(getCookie('language'));
+  getCookie('wordCount') === '' ? setWordCount(50) : setWordCount(getCookie('wordCount'));
+  getCookie('timeCount') === '' ? setTimeCount(60) : setTimeCount(getCookie('timeCount'));
+  getCookie('typingMode') === '' ? setTypingMode('wordcount') : setTypingMode(getCookie('typingMode'));
+  getCookie('punctuation') === '' ? setPunctuation('false') : setPunctuation(getCookie('punctuation'));
+
+  // add event listeners
+  addEventListeners();
+}
+
+function addEventListeners() {
+  inputField.addEventListener('keydown', inputKeyDown);
+}
+
+function beforeInstallPrompt(e) {
+  e.preventDefault(); // prevent install prompt to automatically show up on page load
+  installPrompt = e; // store the event
+  installFields.style.display = 'inherit'; // view the install button
+
+  installPrompt.userChoice.then((choiceResult) => {
+    // reset install button on accepted install
+    if (choiceResult.outcome === 'accepted') {
+      installFields.style.display = 'none';
+    }
+  });
+
+  // Prompt the user to install och click
+  installButton.addEventListener('click', (e) => {
+    installPrompt.prompt();
+  });
+};
 
 // Find a list of words and display it to textDisplay
 function setText() {
@@ -106,7 +150,7 @@ function showText() {
 }
 
 // Key is pressed in input field
-inputField.addEventListener('keydown', e => {
+function inputKeyDown(e) {
   // Add wrong class to input field
   switch (typingMode) {
     case 'wordcount':
@@ -199,7 +243,7 @@ inputField.addEventListener('keydown', e => {
       showResult();
     }
   }
-});
+};
 
 // Calculate and display result
 function showResult() {
@@ -357,3 +401,5 @@ function getCookie(cname) {
   }
   return '';
 }
+
+window.onload = initPage;
