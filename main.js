@@ -133,6 +133,9 @@ inputField.addEventListener('keydown', e => {
 
   // If it is the first character entered
   if (currentWord === 0 && inputField.value === '' && e.key >= '!' && e.key <= '~' && e.key.length === 1) {
+    if (resultTimeout !== null) {
+      clearTimeout(resultTimeout);
+    }
     (function printResult() {
       if (realTime) {
         showResult();
@@ -168,12 +171,7 @@ inputField.addEventListener('keydown', e => {
   }
 
   if (wordList[currentWord] !== undefined) {
-    if (e.key === "Backspace") {
-      if (inputField.value.length > 0 &&
-        inputField.value[inputField.value.length - 1] === wordList[currentWord][inputField.value.length - 1]) {
-        correctKeys -= 1;
-      }
-    } else if (e.key >= "!" && e.key <= "~") {
+    if (e.key >= "!" && e.key <= "~") {
       const word = `${inputField.value}${e.key}`;
       if (word[word.length - 1] === wordList[currentWord][word.length - 1]) {
         correctKeys += 1;
