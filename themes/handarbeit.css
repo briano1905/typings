@@ -1,0 +1,68 @@
+/*
+Colors inspired by Handarbeit, CHERRY G81-3000 HBD
+https://pinchocodia.tistory.com/17
+red: #bb2e17
+blue: #214ab5
+pink: ##e7bac4
+yellow: #fcca34
+dark green: #147d36
+light green: #75bb29
+purple: #71399a
+orange: #f7782b
+mint: #bae3ba
+teal: #007290
+*/
+
+body {
+  background: #1a1a1a;
+}
+
+#header {
+  color: #e7bac4;
+}
+
+#left-wing {
+  color: #214ab5;
+}
+
+#right-wing {
+  color: #147d36;
+}
+
+#typing-area {
+  background: #bb2e17;
+}
+
+#text-display {
+  color: #fafafa;
+}
+
+#input-field {
+  background: #71399a;
+  color: #fafafa;
+}
+
+#input-field.wrong {
+  background: #f7782b;
+}
+
+#redo-button {
+  background: #fcca34;
+  color: #fafafa;
+}
+
+#footer {
+  color: #f7782b;
+}
+
+.highlight {
+  color: #fcca34;
+}
+
+.correct {
+  color: #75bb29;
+}
+
+.wrong {
+  color: #f7782b;
+}
