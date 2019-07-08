@@ -19,6 +19,7 @@ available themes:
 - `denim` inspired by GMK Denim by T0mb3ry
 - `dracula` inspired by GMK Dracula by u/pikku-allu
 - `eclipse` inspired by GMK Eclipse by T0mb3ry
+- `handarbeit` inspired by [Cherry Handarbeit](https://pinchocodia.tistory.com/17)
 - `hyperfuse` inspired by GMK HyperFuse origins by BunnyLake
 - `mizu` inspired by GMK Mizu by u/Rensuya
 - `moderndolch` inspired by GMK Modern Dolch by [Janglad](https://clavier.xyz)
