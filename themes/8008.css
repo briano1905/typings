@@ -1,0 +1,61 @@
+/*
+Colors inspired by GMK 8008 by Dixie Mech
+https://dixiemech.com/gmk8008
+Dark Blue:   #3c4756
+Light Blue:  #a2aebd
+Pink:        #f44c7f
+*/
+
+body {
+  background: #3c4756;
+}
+
+#header {
+  color: #f44c7f;
+}
+
+#left-wing {
+  color: #f44c7f;
+}
+
+#right-wing {
+  color: #f44c7f;
+}
+
+#typing-area {
+  background: #a2aebd;
+}
+
+#text-display {
+  color: #3c4756;
+}
+
+#input-field {
+  background: #adbac9;
+  color: #3c4756;
+}
+
+#input-field.wrong {
+  background: rgba(198, 38, 46, 0.3);
+}
+
+#redo-button {
+  background: #f44c7f;
+  color: #3c4756;
+}
+
+#footer {
+  color: #f44c7f;
+}
+
+.highlight {
+  color: #f44c7f;
+}
+
+.correct {
+  color: #6f7b8a;
+}
+
+.wrong {
+  color: #c6262e;
+}
