@@ -48,6 +48,7 @@ available languages:
 - `spanish`
 - `chinese`
 - `korean`
+- `polish`
 
 ## typing mode
 
