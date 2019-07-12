@@ -18,6 +18,7 @@ available themes:
 - `burgundy` inspired by GMK Burgundy by cocobrais
 - `carbon` inspired by SA Carbon by T0mb3ry
 - `denim` inspired by GMK Denim by T0mb3ry
+- `dots` inspired by GMK Dots by biip
 - `dracula` inspired by GMK Dracula by u/pikku-allu
 - `eclipse` inspired by GMK Eclipse by T0mb3ry
 - `handarbeit` inspired by [Cherry Handarbeit](https://pinchocodia.tistory.com/17)
@@ -50,6 +51,7 @@ available languages:
 - `chinese`
 - `korean`
 - `polish`
+- `dots`
 
 ## typing mode
 

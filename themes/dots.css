@@ -1,0 +1,65 @@
+/*
+Colors inspired by GMK Dots by biip
+https://novelkeys.xyz/products/gmk-dots-gb
+dark blue:  #191b25
+red:        #fe494e
+purple:     #9b57ff
+blue:       #36c1f6
+green:      #32cb8b
+yellow:     #ffd751
+orange:     #ff9552
+*/
+
+body {
+  background: #191b25;
+}
+
+#header {
+  color: #fafafa;
+}
+
+#left-wing {
+  color: #ff9552;
+}
+
+#right-wing {
+  color: #ffd751;
+}
+
+#typing-area {
+  background: #232533;
+}
+
+#text-display {
+  color: #fafafa;
+}
+
+#input-field {
+  background: #2c2e40;
+  color: #fafafa;
+}
+
+#input-field.wrong {
+  background: rgba(254, 73, 78, 0.3);
+}
+
+#redo-button {
+  background: #32cb8b;
+  color: #fafafa;
+}
+
+#footer {
+  color: #36c1f6;
+}
+
+.highlight {
+  color: #9b57ff;
+}
+
+.correct {
+  color: #32cb8b;
+}
+
+.wrong {
+  color: #fe494e;
+}
