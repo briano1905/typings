@@ -191,11 +191,11 @@ inputField.addEventListener('keydown', e => {
 
       inputField.value = '';
 
+      currentWord++;
       // If in rolling stats mode, update every 10 words
-      if (statMode == 'rolling' && (currentWord + 1) % 5 === 0 && currentWord != 0) {
+      if (statMode == 'rolling') {
         showResult();
       }
-      currentWord++;
     }
 
     // Else if it is the last word and input word is correct show the result
