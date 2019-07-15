@@ -9,7 +9,6 @@ let timeCount;
 
 // Initialize stat mode variables
 let statMode = 'final';
-let wordsTyped;
 
 // Initialize dynamic variables
 let randomWords = [];
