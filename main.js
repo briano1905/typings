@@ -10,6 +10,7 @@ let timeCount;
 // Initialize stat mode variables
 let statMode = 'final';
 
+
 // Initialize dynamic variables
 let randomWords = [];
 let wordList = [];
@@ -38,7 +39,6 @@ function setText() {
   inputField.value = '';
   timerActive = false;
   clearTimeout(timer);
-  wordsTyped
   textDisplay.style.display = 'block';
   inputField.className = '';
 
