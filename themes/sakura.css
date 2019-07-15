@@ -1,0 +1,64 @@
+/*
+Inspired by Ducky x Varmilo Sakura by fr3fou
+https://mechanicalkeyboards.com/shop/index.php?l=product_detail&p=2920
+pink: #ff98ac;
+red: #fa2f56;
+gray: #bbb;
+light-gray: #eee;
+dark-red: #a63054;
+*/
+
+body {
+  background: linear-gradient(-20deg, rgba(255,186,200,1) 0%, rgba(255,152,172,1) 100%);;
+}
+
+#header {
+  color: #fff;
+}
+
+#left-wing {
+  color: #fff;
+}
+
+#right-wing {
+  color: #fff;
+}
+
+#typing-area {
+  background: #fff;
+}
+
+#text-display {
+  color: #ff98ac;
+}
+
+#input-field {
+  background: #efefef;
+  color: #917075;
+}
+
+#input-field.wrong {
+  background: rgba(214, 0, 43, 0.3);
+  color: #fff;
+}
+
+#redo-button {
+  background: #ff98ac;
+  color: #fff;
+}
+
+#footer {
+  color: #fff;
+}
+
+.highlight {
+  color: #917075;
+}
+
+.correct {
+  color: #db7998;
+}
+
+.wrong {
+  color: #de1d57;
+}
