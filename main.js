@@ -7,6 +7,10 @@ let typingMode = 'wordcount';
 let wordCount;
 let timeCount;
 
+// Initialize stat mode variables
+let statMode = 'final';
+let wordsTyped;
+
 // Initialize dynamic variables
 let randomWords = [];
 let wordList = [];
@@ -24,6 +28,7 @@ getCookie('wordCount') === '' ? setWordCount(50) : setWordCount(getCookie('wordC
 getCookie('timeCount') === '' ? setTimeCount(60) : setTimeCount(getCookie('timeCount'));
 getCookie('typingMode') === '' ? setTypingMode('wordcount') : setTypingMode(getCookie('typingMode'));
 getCookie('punctuation') === '' ? setPunctuation('false') : setPunctuation(getCookie('punctuation'));
+getCookie('statMode') === '' ? setStatMode('rolling') : setStatMode(getCookie('statMode'));
 
 // Find a list of words and display it to textDisplay
 function setText() {
@@ -34,6 +39,7 @@ function setText() {
   inputField.value = '';
   timerActive = false;
   clearTimeout(timer);
+  wordsTyped
   textDisplay.style.display = 'block';
   inputField.className = '';
 
@@ -130,31 +136,27 @@ inputField.addEventListener('keydown', e => {
 
   // If it is the first character entered
   if (currentWord === 0 && inputField.value === '') {
-    switch (typingMode) {
-      case 'wordcount':
-        startDate = Date.now();
-        break;
-
-      case 'time':
-        if (!timerActive) {
-          startTimer(timeCount);
-          timerActive = true;
+    startDate = Date.now();
+    if (typingMode === 'time') {
+      if (!timerActive) {
+        startTimer(timeCount);
+        timerActive = true;
+      }
+      function startTimer(time) {
+        if (time > 0) {
+          document.querySelector(`#tc-${timeCount}`).innerHTML = time;
+          timer = setTimeout(() => {
+            time--;
+            startTimer(time);
+          }, 1000);
+        } else {
+          timerActive = false;
+          textDisplay.style.display = 'none';
+          inputField.className = '';
+          document.querySelector(`#tc-${timeCount}`).innerHTML = timeCount;
+          showResult();
         }
-        function startTimer(time) {
-          if (time > 0) {
-            document.querySelector(`#tc-${timeCount}`).innerHTML = time;
-            timer = setTimeout(() => {
-              time--;
-              startTimer(time);
-            }, 1000);
-          } else {
-            timerActive = false;
-            textDisplay.style.display = 'none';
-            inputField.className = '';
-            document.querySelector(`#tc-${timeCount}`).innerHTML = timeCount;
-            showResult();
-          }
-        }
+      }
     }
   }
 
@@ -183,10 +185,16 @@ inputField.addEventListener('keydown', e => {
         textDisplay.childNodes[currentWord + 1].classList.add('highlight');
       } else if (currentWord === wordList.length - 1) {
         textDisplay.childNodes[currentWord].classList.add('wrong');
+        console.log('currentWord:' + currentWord + ' ' + wordList.length - 1)
         showResult();
       }
 
       inputField.value = '';
+
+      // If in rolling stats mode, update every 10 words
+      if (statMode == 'rolling' && (currentWord + 1) % 5 === 0 && currentWord != 0) {
+        showResult();
+      }
       currentWord++;
     }
 
@@ -215,15 +223,21 @@ function showResult() {
 
     case 'time':
       words = correctKeys / 5;
-      minute = timeCount / 60;
+      if (statMode === 'final' || !timerActive) {
+        minute = timeCount / 60;
+      } else {
+        minute = (Date.now() - startDate) / 1000 / 60;
+      }
       let sumKeys = -1;
       for (i = 0; i < currentWord; i++) {
         sumKeys += wordList[i].length + 1;
       }
       acc = acc = Math.min(Math.floor((correctKeys / sumKeys) * 100), 100);
   }
+
   let wpm = Math.floor(words / minute);
   document.querySelector('#right-wing').innerHTML = `WPM: ${wpm} / ACC: ${acc}`;
+  
 }
 
 // Command actions
@@ -247,6 +261,11 @@ document.addEventListener('keydown', e => {
     // [mod + p] => Change punctuation active
     if (e.key === 'p') {
       setPunctuation(inputField.value);
+    }
+
+    // [mode + s] => Change the stat mode
+    if (e.key === 's') {
+      setStatMode(inputField.value);
     }
   }
 });
@@ -315,6 +334,25 @@ function setPunctuation(_punc) {
     setText();
   }
 }
+
+function setStatMode(_mode) {
+  const mode = _mode.toLowerCase();
+  switch (mode) {
+    case 'final': 
+      statMode = mode;
+      setCookie(statMode, mode, 90);
+      setText();
+      break;
+    case 'rolling':
+      statMode = mode;
+      setCookie('statMode', mode, 90);
+      setText();
+      break;
+    default:
+      console.error(`stat mode ${mode} is undefine`)
+  }
+}
+
 
 function setWordCount(wc) {
   setCookie('wordCount', wc, 90);

@@ -62,6 +62,15 @@ available modes:
 - `wordcount`
 - `time`
 
+## stat mode
+
+type the stat mode code for exampe `rolling` in the text box then hit [ windows: `alt` + `m` ], [ mac: `cmd` + `ctrl`+`m` ] or [ linux: `super` + `ctrl` + `m` ]
+
+available modes:
+
+- `final`
+- `rolling`
+
 ## punctuation
 
 type `true` or `false` then hit [ windows: `alt` + `p` ], [ mac: `cmd` + `ctrl`+`p` ] or [ linux: `super` + `ctrl` + `p` ] to activate/deactivate punctuations
