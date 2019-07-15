@@ -64,7 +64,7 @@ available modes:
 
 ## stat mode
 
-type the stat mode code for exampe `rolling` in the text box then hit [ windows: `alt` + `m` ], [ mac: `cmd` + `ctrl`+`m` ] or [ linux: `super` + `ctrl` + `m` ]
+type the stat mode code for exampe `rolling` in the text box then hit [ windows: `alt` + `s` ], [ mac: `cmd` + `ctrl`+`s` ] or [ linux: `super` + `ctrl` + `s` ]
 
 available modes:
 
