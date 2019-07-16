@@ -339,12 +339,12 @@ function setStatMode(_mode) {
   switch (mode) {
     case 'final': 
       statMode = mode;
-      setCookie(statMode, mode, 90);
+      setCookie('statMode', mode, 90);
       setText();
       break;
     case 'rolling':
       statMode = mode;
-      setCookie(statMode, mode, 90);
+      setCookie('statMode', mode, 90);
       setText();
       break;
     default:
