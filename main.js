@@ -344,7 +344,7 @@ function setStatMode(_mode) {
       break;
     case 'rolling':
       statMode = mode;
-      setCookie('statMode', mode, 90);
+      setCookie(statMode, mode, 90);
       setText();
       break;
     default:
