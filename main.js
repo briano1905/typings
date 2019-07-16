@@ -210,7 +210,7 @@ inputField.addEventListener('keydown', e => {
 
 // Calculate and display result
 function showResult() {
-  let words, minute,sumkeys, acc;
+  let words, minute,sumKeys, acc;
   switch (typingMode) {
     case 'wordcount':
       words = correctKeys / 5;
