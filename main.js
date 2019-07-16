@@ -210,18 +210,12 @@ inputField.addEventListener('keydown', e => {
 
 // Calculate and display result
 function showResult() {
-  let words, minute,sumKeys, acc;
+  let words, minute, acc;
   switch (typingMode) {
     case 'wordcount':
       words = correctKeys / 5;
       minute = (Date.now() - startDate) / 1000 / 60;
-      sumKeys = -1;
-      for (i = 0; i < currentWord; i++) {
-        sumKeys += wordList[i].length + 1;
-      }
-      acc = acc = Math.min(Math.floor((correctKeys / sumKeys) * 100), 100);
       break;
-
     case 'time':
       words = correctKeys / 5;
       if (statMode === 'final' || !timerActive) {
@@ -229,14 +223,17 @@ function showResult() {
       } else {
         minute = (Date.now() - startDate) / 1000 / 60;
       }
-      sumKeys = -1;
-      for (i = 0; i < currentWord; i++) {
-        sumKeys += wordList[i].length + 1;
-      }
-      acc = acc = Math.min(Math.floor((correctKeys / sumKeys) * 100), 100);
       break;
   }
 
+  // Calculate accuracy
+  let sumKeys = -1;
+  for (i = 0; i < currentWord; i++) {
+    sumKeys += wordList[i].length + 1;
+  }
+  acc = acc = Math.min(Math.floor((correctKeys / sumKeys) * 100), 100);
+
+  // Calculate WPM
   let wpm = Math.floor(words / minute);
   document.querySelector('#right-wing').innerHTML = `WPM: ${wpm} / ACC: ${acc}`;
   
