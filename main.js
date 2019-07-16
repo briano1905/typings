@@ -210,14 +210,16 @@ inputField.addEventListener('keydown', e => {
 
 // Calculate and display result
 function showResult() {
-  let words, minute, acc;
+  let words, minute,sumkeys, acc;
   switch (typingMode) {
     case 'wordcount':
       words = correctKeys / 5;
       minute = (Date.now() - startDate) / 1000 / 60;
-      let totalKeys = -1;
-      wordList.forEach(e => (totalKeys += e.length + 1));
-      acc = Math.floor((correctKeys / totalKeys) * 100);
+      sumKeys = -1;
+      for (i = 0; i < currentWord; i++) {
+        sumKeys += wordList[i].length + 1;
+      }
+      acc = acc = Math.min(Math.floor((correctKeys / sumKeys) * 100), 100);
       break;
 
     case 'time':
@@ -227,11 +229,12 @@ function showResult() {
       } else {
         minute = (Date.now() - startDate) / 1000 / 60;
       }
-      let sumKeys = -1;
+      sumKeys = -1;
       for (i = 0; i < currentWord; i++) {
         sumKeys += wordList[i].length + 1;
       }
       acc = acc = Math.min(Math.floor((correctKeys / sumKeys) * 100), 100);
+      break;
   }
 
   let wpm = Math.floor(words / minute);
