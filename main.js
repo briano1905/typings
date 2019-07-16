@@ -28,7 +28,7 @@ getCookie('wordCount') === '' ? setWordCount(50) : setWordCount(getCookie('wordC
 getCookie('timeCount') === '' ? setTimeCount(60) : setTimeCount(getCookie('timeCount'));
 getCookie('typingMode') === '' ? setTypingMode('wordcount') : setTypingMode(getCookie('typingMode'));
 getCookie('punctuation') === '' ? setPunctuation('false') : setPunctuation(getCookie('punctuation'));
-getCookie('statMode') === '' ? setStatMode('rolling') : setStatMode(getCookie('statMode'));
+getCookie('statMode') === '' ? setStatMode('final') : setStatMode(getCookie('statMode'));
 
 // Find a list of words and display it to textDisplay
 function setText() {
