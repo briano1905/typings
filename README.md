@@ -6,7 +6,7 @@
 
 ## theme
 
-type the theme code for example `dracula` in the text box then hit [ windows: `alt` + `t` ], [ mac: `cmd` + `ctrl`+`t` ] or [ linux: `super` + `ctrl` + `t` ]
+type the theme code for example `dracula` in the text box then hit [ windows: <kbd>alt</kbd> + <kbd>t</kbd> ], [ mac: <kbd>cmd</kbd> + <kbd>ctrl</kbd> + <kbd>t</kbd> ] or [ linux: <kbd>super</kbd> + <kbd>ctrl</kbd> + <kbd>t</kbd> ]
 
 available themes:
 
@@ -40,7 +40,7 @@ available themes:
 
 ## language
 
-type the language code for example `german` in the text box then hit [ windows: `alt` + `l` ], [ mac: `cmd` + `ctrl`+`l` ] or [ linux: `super` + `ctrl` + `l` ]
+type the language code for example `german` in the text box then hit [ windows: <kbd>alt</kbd> + <kbd>l</kbd> ], [ mac: <kbd>cmd</kbd> + <kbd>ctrl</kbd> + <kbd>l</kbd> ] or [ linux: <kbd>super</kbd> + <kbd>ctrl</kbd> + <kbd>l</kbd> ]
 
 available languages:
 
@@ -56,7 +56,7 @@ available languages:
 
 ## typing mode
 
-type the mode code for example `time` in the text box then hit [ windows: `alt` + `m` ], [ mac: `cmd` + `ctrl`+`m` ] or [ linux: `super` + `ctrl` + `m` ]
+type the mode code for example `time` in the text box then hit [ windows: <kbd>alt</kbd> + <kbd>m</kbd> ], [ mac: <kbd>cmd</kbd> + <kbd>ctrl</kbd> + <kbd>m</kbd> ] or [ linux: <kbd>super</kbd> + <kbd>ctrl</kbd> + <kbd>m</kbd> ]
 
 available modes:
 
@@ -65,7 +65,7 @@ available modes:
 
 ## punctuation
 
-type `true` or `false` then hit [ windows: `alt` + `p` ], [ mac: `cmd` + `ctrl`+`p` ] or [ linux: `super` + `ctrl` + `p` ] to activate/deactivate punctuations
+type `true` or `false` then hit [ windows: <kbd>alt</kbd> + <kbd>p</kbd> ], [ mac: <kbd>cmd</kbd> + <kbd>ctrl</kbd> + <kbd>p</kbd>] or [ linux: <kbd>super</kbd> + <kbd>ctrl</kbd> + <kbd>p</kbd> ] to activate/deactivate punctuations
 
 ## calculations
 
