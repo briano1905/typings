@@ -70,7 +70,27 @@ body {
   cursor: pointer;
 }
 
-#footer {
+#footer-content {
   margin-bottom: 0.4rem;
+  display: flex;
+}
+
+#footer-content > * {
+  display: flex;
+}
+
+#install-button {
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+}
+
+#spacer {
+  margin: 0;
+  padding: 0 0.6rem 0 0.6rem;
+}
+
+#footer {
   text-decoration: none;
+  text-align: center;
 }

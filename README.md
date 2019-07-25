@@ -4,6 +4,10 @@
 
 ![typings.gg](img/typings-screen-shot.png)
 
+## Install application
+
+typings.gg can be installed as a standalone application from browsers that support PWA. If your browser supports PWA there will be a install button available in the bottom of the page. To install click the install button and accept the install prompt and... thats it! You can now enjoy typings.gg even when you are offline!
+
 ## theme
 
 type the theme code for example `dracula` in the text box then hit [ windows: <kbd>alt</kbd> + <kbd>t</kbd> ], [ mac: <kbd>cmd</kbd> + <kbd>ctrl</kbd> + <kbd>t</kbd> ], [ linux: <kbd>super</kbd> + <kbd>ctrl</kbd> + <kbd>t</kbd> or <kbd>alt</kbd> + <kbd>t</kbd> ]

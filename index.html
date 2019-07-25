@@ -19,6 +19,8 @@
     <meta name="description" content="typings.gg is a sleek and modern typing test website. it support many custom themes" />
     <link rel="stylesheet" href="style.css" />
     <link id="theme" rel="stylesheet" href="themes/light.css" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="shortcut icon" type="image/png" href="img/favicon.png" />
   </head>
   <body>
     <h2 id="header">typings</h2>
@@ -58,7 +60,15 @@
         </div>
       </div>
     </div>
-    <a id="footer" href="https://github.com/briano1905/typings#typings" target="_blank">user guide</a>
+    <div id="footer-content">
+      <div id="footer" class="install-fields">
+        <p id="install-button" onclick="">install</p>
+        <p id="spacer">-</p>
+      </div>
+      <div>
+        <a id="footer" href="https://github.com/briano1905/typings#typings" target="_blank">user guide</a>
+      </div>
+    </div>
     <script src="main.js"></script>
   </body>
 </html>
