@@ -15,6 +15,7 @@ available themes:
 - `light`
 
 - `8008` inspired by GMK 8008 by Dixie Mech
+- `9009` inspired by GMK 9009 by Dixie Mech
 - `burgundy` inspired by GMK Burgundy by cocobrais
 - `carbon` inspired by SA Carbon by T0mb3ry
 - `denim` inspired by GMK Denim by T0mb3ry
