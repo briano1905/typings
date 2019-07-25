@@ -42,9 +42,11 @@ function setText() {
       textDisplay.style.height = 'auto';
       textDisplay.innerHTML = '';
       wordList = [];
-      for (i = 0; i < wordCount; i++) {
-        let n = Math.floor(Math.random() * randomWords.length);
-        wordList.push(randomWords[n]);
+      while (wordList.length < wordCount) {
+        const randomWord = randomWords[Math.floor(Math.random() * randomWords.length)];
+        if (wordList[wordList.length - 1] !== randomWord || wordList[wordList.length - 1] === undefined) {
+          wordList.push(randomWord);
+        }
       }
       break;
 
@@ -255,11 +257,12 @@ function setTheme(_theme) {
   const theme = _theme.toLowerCase();
   fetch(`themes/${theme}.css`)
     .then(response => {
-      if (response.status === 200){
-        response.text()     
+      if (response.status === 200) {
+        response
+          .text()
           .then(css => {
             setCookie('theme', theme, 90);
-            document.querySelector('#theme').setAttribute('href',`themes/${theme}.css`);
+            document.querySelector('#theme').setAttribute('href', `themes/${theme}.css`);
             setText();
           })
           .catch(err => console.error(err));
