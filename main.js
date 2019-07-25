@@ -253,16 +253,21 @@ document.addEventListener('keydown', e => {
 
 function setTheme(_theme) {
   const theme = _theme.toLowerCase();
-  const xhttp = new XMLHttpRequest();
-  xhttp.open('GET', `themes/${theme}.css`);
-  xhttp.onload = () => {
-    if (xhttp.status === 200) {
-      setCookie('theme', theme, 90);
-      document.querySelector('#theme').setAttribute('href', `themes/${theme}.css`);
-      setText();
-    }
-  };
-  xhttp.send();
+  fetch(`themes/${theme}.css`)
+    .then(response => {
+      if (response.status === 200){
+        response.text()     
+          .then(css => {
+            setCookie('theme', theme, 90);
+            document.querySelector('#theme').setAttribute('href',`themes/${theme}.css`);
+            setText();
+          })
+          .catch(err => console.error(err));
+      } else {
+        console.log(`theme ${theme} is undefine`);
+      }
+    })
+    .catch(err => console.error(err));
 }
 
 function setLanguage(_lang) {

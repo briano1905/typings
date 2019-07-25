@@ -32,6 +32,7 @@ available themes:
 - `olivia` inspired by GMK Olivia by [Olivia](https://github.com/olivia)
 - `phantom` inspired by GMK Phantom by u/briano1905
 - `rama` inspired by [Rama Works](https://rama.works)
+- `sakura` inspired by Varmilo Sakura by [fr3fou](https://github.com/fr3fou)
 - `serika` inspired by GMK Serika by [Zambumon](https://zambumon.com)
 - `solarizeddark` [bonus: `solarizedlight`] inspired by GMK Solarized Dark by u/thesiscamper
 - `vilebloom` inspired by SA Vilebloom by u/UKKeycaps
