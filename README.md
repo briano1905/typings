@@ -52,6 +52,7 @@ available languages:
 - `korean`
 - `polish`
 - `dots`
+- `punjabi`
 
 ## typing mode
 
