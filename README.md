@@ -54,6 +54,7 @@ available languages:
 - `chinese`
 - `korean`
 - `polish`
+- `swedish`
 - `dots`
 - `punjabi`
 
