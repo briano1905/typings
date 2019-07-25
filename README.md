@@ -6,7 +6,7 @@
 
 ## theme
 
-type the theme code for example `dracula` in the text box then hit [ windows and linux: `alt` + `t` ] or [ mac: `cmd` + `ctrl`+`t` ]
+type the theme code for example `dracula` in the text box then hit [ windows: <kbd>alt</kbd> + <kbd>t</kbd> ], [ mac: <kbd>cmd</kbd> + <kbd>ctrl</kbd> + <kbd>t</kbd> ], [ linux: <kbd>super</kbd> + <kbd>ctrl</kbd> + <kbd>t</kbd> or <kbd>alt</kbd> + <kbd>t</kbd> ]
 
 available themes:
 
@@ -15,6 +15,7 @@ available themes:
 - `light`
 
 - `8008` inspired by GMK 8008 by Dixie Mech
+- `9009` inspired by GMK 9009 by Dixie Mech
 - `burgundy` inspired by GMK Burgundy by cocobrais
 - `carbon` inspired by SA Carbon by T0mb3ry
 - `denim` inspired by GMK Denim by T0mb3ry
@@ -24,7 +25,8 @@ available themes:
 - `handarbeit` inspired by [Cherry Handarbeit](https://pinchocodia.tistory.com/17)
 - `hyperfuse` inspired by GMK HyperFuse origins by BunnyLake
 - `mizu` inspired by GMK Mizu by u/Rensuya
-- `moderndolch` inspired by GMK Modern Dolch by [Janglad](https://clavier.xyz)
+- `moderndolch` inspired by GMK Modern Dolch by [Janglad](https://clavier.xyz
+- `monokai` inspired by Monokai for TextMate by Wimer Hazenberg
 - `mrsleeves` inspired by GMK Mr. Sleeves by [Taeha Types](https://www.taehatypes.com/)
 - `nord` inspired by [Nord Theme](https://nordtheme.com)
 - `nautilus` inspired by GMK Nautilus by [Zambumon](https://zambumon.com)
@@ -40,7 +42,7 @@ available themes:
 
 ## language
 
-type the language code for example `german` in the text box then hit [ windows and linux: `alt` + `l` ] or [ mac: `cmd` + `ctrl`+`l` ]
+type the language code for example `german` in the text box then hit [ windows: <kbd>alt</kbd> + <kbd>l</kbd> ], [ mac: <kbd>cmd</kbd> + <kbd>ctrl</kbd> + <kbd>l</kbd> ], [ linux: <kbd>super</kbd> + <kbd>ctrl</kbd> + <kbd>l</kbd> or <kbd>alt</kbd> + <kbd>l</kbd> ]
 
 available languages:
 
@@ -53,10 +55,12 @@ available languages:
 - `korean`
 - `polish`
 - `dots`
+- `punjabi`
 
 ## typing mode
 
-type the mode code for example `time` in the text box then hit [ windows and linux: `alt` + `m` ] or [ mac: `cmd` + `ctrl`+`m` ]
+type the mode code for example `time` in the text box then hit [ windows: <kbd>alt</kbd> + <kbd>m</kbd> ], [ mac: <kbd>cmd</kbd> + <kbd>ctrl</kbd> + <kbd>m</kbd> ], [ linux: <kbd>super</kbd> + <kbd>ctrl</kbd> + <kbd>m</kbd> or <kbd>alt</kbd> + <kbd>m</kbd> ]
+
 available modes:
 
 - `wordcount`
@@ -64,7 +68,7 @@ available modes:
 
 ## punctuation
 
-type `true` or `false` then hit [ windows and linux: `alt` + `p` ] or [ mac: `cmd` + `ctrl`+`p` ] to activate/deactivate punctuations
+type `true` or `false` then hit [ windows: <kbd>alt</kbd> + <kbd>p</kbd> ], [ mac: <kbd>cmd</kbd> + <kbd>ctrl</kbd> + <kbd>p</kbd>], [ linux: <kbd>super</kbd> + <kbd>ctrl</kbd> + <kbd>p</kbd> or <kbd>alt</kbd> + <kbd>p</kbd> ] to activate/deactivate punctuations
 
 ## calculations
 
