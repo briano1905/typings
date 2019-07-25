@@ -6,7 +6,7 @@
 
 ## theme
 
-type the theme code for example `dracula` in the text box then hit [ windows: <kbd>alt</kbd> + <kbd>t</kbd> ], [ mac: <kbd>cmd</kbd> + <kbd>ctrl</kbd> + <kbd>t</kbd> ] or [ linux: <kbd>super</kbd> + <kbd>ctrl</kbd> + <kbd>t</kbd> ]
+type the theme code for example `dracula` in the text box then hit [ windows: <kbd>alt</kbd> + <kbd>t</kbd> ], [ mac: <kbd>cmd</kbd> + <kbd>ctrl</kbd> + <kbd>t</kbd> ], [ linux: <kbd>super</kbd> + <kbd>ctrl</kbd> + <kbd>t</kbd> or <kbd>alt</kbd> + <kbd>t</kbd> ]
 
 available themes:
 
@@ -42,7 +42,7 @@ available themes:
 
 ## language
 
-type the language code for example `german` in the text box then hit [ windows: <kbd>alt</kbd> + <kbd>l</kbd> ], [ mac: <kbd>cmd</kbd> + <kbd>ctrl</kbd> + <kbd>l</kbd> ] or [ linux: <kbd>super</kbd> + <kbd>ctrl</kbd> + <kbd>l</kbd> ]
+type the language code for example `german` in the text box then hit [ windows: <kbd>alt</kbd> + <kbd>l</kbd> ], [ mac: <kbd>cmd</kbd> + <kbd>ctrl</kbd> + <kbd>l</kbd> ], [ linux: <kbd>super</kbd> + <kbd>ctrl</kbd> + <kbd>l</kbd> or <kbd>alt</kbd> + <kbd>l</kbd> ]
 
 available languages:
 
@@ -59,7 +59,7 @@ available languages:
 
 ## typing mode
 
-type the mode code for example `time` in the text box then hit [ windows: <kbd>alt</kbd> + <kbd>m</kbd> ], [ mac: <kbd>cmd</kbd> + <kbd>ctrl</kbd> + <kbd>m</kbd> ] or [ linux: <kbd>super</kbd> + <kbd>ctrl</kbd> + <kbd>m</kbd> ]
+type the mode code for example `time` in the text box then hit [ windows: <kbd>alt</kbd> + <kbd>m</kbd> ], [ mac: <kbd>cmd</kbd> + <kbd>ctrl</kbd> + <kbd>m</kbd> ], [ linux: <kbd>super</kbd> + <kbd>ctrl</kbd> + <kbd>m</kbd> or <kbd>alt</kbd> + <kbd>m</kbd> ]
 
 available modes:
 
@@ -68,7 +68,7 @@ available modes:
 
 ## punctuation
 
-type `true` or `false` then hit [ windows: <kbd>alt</kbd> + <kbd>p</kbd> ], [ mac: <kbd>cmd</kbd> + <kbd>ctrl</kbd> + <kbd>p</kbd>] or [ linux: <kbd>super</kbd> + <kbd>ctrl</kbd> + <kbd>p</kbd> ] to activate/deactivate punctuations
+type `true` or `false` then hit [ windows: <kbd>alt</kbd> + <kbd>p</kbd> ], [ mac: <kbd>cmd</kbd> + <kbd>ctrl</kbd> + <kbd>p</kbd>], [ linux: <kbd>super</kbd> + <kbd>ctrl</kbd> + <kbd>p</kbd> or <kbd>alt</kbd> + <kbd>p</kbd> ] to activate/deactivate punctuations
 
 ## calculations
 
