@@ -22,7 +22,7 @@
   </head>
   <body>
     <h2 id="header">typings</h2>
-    <div id="command-center">
+    <div id="command-center" class="">
       <div class="bar">
         <div id="left-wing">
           <span id="word-count">
@@ -58,7 +58,14 @@
         </div>
       </div>
     </div>
-    <a id="footer" href="https://github.com/briano1905/typings#typings" target="_blank">user guide</a>
+    <div id="theme-center" class="hidden">
+      <div id="left-wing" onClick="hideThemeCenter();">< go back</div>
+      <div id="theme-area"></div>
+    </div>
+    <div id="footer">
+      <a href="https://github.com/briano1905/typings#typings" target="_blank">user guide</a>
+      <div class="button" onClick="showThemeCenter();">themes</div>
+    </div>
     <script src="main.js"></script>
   </body>
 </html>

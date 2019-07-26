@@ -28,7 +28,7 @@ body {
   color: #fafafa;
 }
 
-#typing-area {
+#typing-area, #theme-area {
   background: rgba(250, 250, 250, 0.6);
   backdrop-filter: blur(1rem);
 }
