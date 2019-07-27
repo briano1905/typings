@@ -22,7 +22,7 @@ body {
   color: #abc6dc;
 }
 
-#typing-area {
+#typing-area, #theme-area {
   background: #3a3a3a;
 }
 
