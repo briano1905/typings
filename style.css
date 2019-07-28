@@ -2,7 +2,7 @@
 
 body {
   margin: 0;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,6 +23,7 @@ body {
 #header {
   margin: 0;
   margin: 1.2rem 0 0 0;
+  line-height: 2rem;
 }
 
 #command-center {
@@ -33,6 +34,39 @@ body {
   flex-direction: column;
   justify-content: center;
   transform: translateY(-2vh);
+}
+
+#theme-area{
+  margin-top: 1rem;
+  padding: 1.4rem 1rem;
+  border-radius: 0.4rem;
+  background: #eaeaea;
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+#theme-center{
+  margin: 0 0.4rem;
+  width: 100%;
+  max-width: 40rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transform: translateY(-2vh);
+}
+
+.theme-button{
+  padding: 1rem 0;
+  background: gray;
+  border-radius: 0.4rem;
+  text-align: center;
+  font-size: .8rem;
+}
+
+.theme-button:hover{
+  cursor: pointer;
+  box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.2);
 }
 
 /* #left-wing {} */
@@ -71,6 +105,24 @@ body {
 }
 
 #footer {
-  margin-bottom: 0.4rem;
+  margin-bottom: 1.2rem;
+  display: flex;
+}
+
+#footer *{
   text-decoration: none;
+  margin: 0 .5rem;
+}
+
+#footer .button{
+  cursor: pointer;
+}
+
+#footer a:visited{
+  color: unset;
+}
+
+
+.hidden{ 
+  display: none !important;
 }
