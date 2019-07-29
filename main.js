@@ -428,13 +428,11 @@ document.addEventListener('keypress', (e) => {
 });
 
 function showThemeCenter() {
-  console.log('test');
   document.getElementById('theme-center').classList.remove('hidden');
   document.getElementById('command-center').classList.add('hidden');
 }
 
 function hideThemeCenter() {
-  console.log('test');
   document.getElementById('theme-center').classList.add('hidden');
   document.getElementById('command-center').classList.remove('hidden');
 }
