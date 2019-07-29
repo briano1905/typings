@@ -385,10 +385,16 @@ function showAllThemes(){
 
               let theme = document.createElement('div');
               theme.setAttribute('class', 'theme-button');
-              theme.setAttribute('onClick', `(setTheme)('${keys[i]}')`);
+              theme.setAttribute('onClick', `setTheme('${keys[i]}')`);
+              theme.setAttribute('id', keys[i]);
 
               // set tabindex to current theme index + 4 for the test page
               theme.setAttribute('tabindex', i + 5);
+              theme.addEventListener('keydown', e => {
+                if (e.key === 'Enter') {
+                  setTheme(theme.id);
+                }
+              })
 
               if(themes[keys[i]]['customHTML'] != undefined){
                 theme.style.background = themes[keys[i]]['background'];
@@ -410,14 +416,14 @@ function showAllThemes(){
 }
 
 // enter to open theme area
-document.getElementById('show-themes').addEventListener('keydown', e => {
+document.getElementById('show-themes').addEventListener('keydown', (e) => {
   if (e.key === 'Enter') {
     showThemeCenter();
   }
 });
 
 // escape to close theme area
-document.addEventListener('keypress', e => {
+document.addEventListener('keypress', (e) => {
   
 });
 
