@@ -422,11 +422,6 @@ document.getElementById('show-themes').addEventListener('keydown', (e) => {
   }
 });
 
-// escape to close theme area
-document.addEventListener('keypress', (e) => {
-  
-});
-
 function showThemeCenter() {
   document.getElementById('theme-center').classList.remove('hidden');
   document.getElementById('command-center').classList.add('hidden');
