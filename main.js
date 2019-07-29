@@ -253,6 +253,7 @@ document.addEventListener('keydown', e => {
   } else if (!document.querySelector('#theme-center').classList.contains('hidden')) {
     if (e.key === 'Escape'){
       hideThemeCenter();
+      inputField.focus();
     }
   }
 });
@@ -393,6 +394,8 @@ function showAllThemes(){
               theme.addEventListener('keydown', e => {
                 if (e.key === 'Enter') {
                   setTheme(theme.id);
+                  inputField.focus();
+
                 }
               })
 
@@ -419,6 +422,7 @@ function showAllThemes(){
 document.getElementById('show-themes').addEventListener('keydown', (e) => {
   if (e.key === 'Enter') {
     showThemeCenter();
+    inputField.focus();
   }
 });
 
