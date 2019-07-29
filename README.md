@@ -71,6 +71,10 @@ available modes:
 
 type `true` or `false` then hit [ windows: <kbd>alt</kbd> + <kbd>p</kbd> ], [ mac: <kbd>cmd</kbd> + <kbd>ctrl</kbd> + <kbd>p</kbd>], [ linux: <kbd>super</kbd> + <kbd>ctrl</kbd> + <kbd>p</kbd> or <kbd>alt</kbd> + <kbd>p</kbd> ] to activate/deactivate punctuations
 
+## theme menu
+
+in this menu you can see all the available themes to choose from, along with a small preview. hit <kbd>escape</kbd> or click 'back' to exit
+
 ## calculations
 
 wpm: total number of characters (including spaces) of words you got right divided by five then divided by the time starting from first character typed
