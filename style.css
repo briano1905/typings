@@ -122,7 +122,12 @@ body {
   color: unset;
 }
 
-
 .hidden{ 
   display: none !important;
+}
+
+body, #header, #left-wing, #right-wing, #typing-area, #theme-area, #theme-center,
+#text-display, #redo-button, #footer, #highlight {
+  transition: all .4s ease-in-out 0s;
+
 }
