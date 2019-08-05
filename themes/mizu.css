@@ -21,11 +21,11 @@ body {
   color: #fafafa;
 }
 
-#typing-area, #theme-area {
+#typing-area, #theme-area, .theme-bg {
   background: #b9d9eb;
 }
 
-#text-display {
+#text-display, .theme-text {
   color: #253746;
 }
 

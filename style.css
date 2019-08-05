@@ -26,7 +26,7 @@ body {
   line-height: 2rem;
 }
 
-#command-center {
+#command-center, #theme-center, #config-center{
   margin: 0 0.4rem;
   width: 100%;
   max-width: 40rem;
@@ -46,14 +46,37 @@ body {
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
-#theme-center{
-  margin: 0 0.4rem;
-  width: 100%;
-  max-width: 40rem;
+#config-area{
+  margin-top: 1rem;
+  padding: 1.4rem 1rem;
+  border-radius: 0.4rem;
+  display: grid;
+  grid-gap: 1rem;
+}
+
+.config-group{
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  transform: translateY(-2vh);
+}
+
+.config-group .title{
+  margin-right: 1rem;
+}
+
+.button-group{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.button-group .button{
+  cursor: pointer;
+}
+
+.button-group .active{
+  border-bottom: 2px solid;
+}
+
+.button-group .separator{
+  margin: 0 0.5rem;
 }
 
 .theme-button{

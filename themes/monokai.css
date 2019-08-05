@@ -18,11 +18,11 @@ body {
   color: #F8F8F2;
 }
 
-#typing-area, #theme-area {
+#typing-area, #theme-area, .theme-bg {
   background: #272822;
 }
 
-#text-display {
+#text-display, .theme-text {
   color: #F8F8F2;
 }
 

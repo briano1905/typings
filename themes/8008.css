@@ -22,11 +22,11 @@ body {
   color: #f44c7f;
 }
 
-#typing-area, #theme-area{
+#typing-area, #theme-area, .theme-bg{
   background: #a2aebd;
 }
 
-#text-display {
+#text-display, .theme-text{
   color: #3c4756;
 }
 

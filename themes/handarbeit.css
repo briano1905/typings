@@ -29,11 +29,11 @@ body {
   color: #147d36;
 }
 
-#typing-area, #theme-area {
+#typing-area, #theme-area, .theme-bg {
   background: #bb2e17;
 }
 
-#text-display {
+#text-display, .theme-text {
   color: #fafafa;
 }
 

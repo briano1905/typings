@@ -39,26 +39,26 @@ function setText() {
 
   switch (typingMode) {
     case 'wordcount':
-      textDisplay.style.height = 'auto';
-      textDisplay.innerHTML = '';
-      wordList = [];
-      while (wordList.length < wordCount) {
-        const randomWord = randomWords[Math.floor(Math.random() * randomWords.length)];
-        if (wordList[wordList.length - 1] !== randomWord || wordList[wordList.length - 1] === undefined) {
-          wordList.push(randomWord);
-        }
+    textDisplay.style.height = 'auto';
+    textDisplay.innerHTML = '';
+    wordList = [];
+    while (wordList.length < wordCount) {
+      const randomWord = randomWords[Math.floor(Math.random() * randomWords.length)];
+      if (wordList[wordList.length - 1] !== randomWord || wordList[wordList.length - 1] === undefined) {
+        wordList.push(randomWord);
       }
-      break;
+    }
+    break;
 
     case 'time':
-      textDisplay.style.height = '3.2rem';
-      document.querySelector(`#tc-${timeCount}`).innerHTML = timeCount;
-      textDisplay.innerHTML = '';
-      wordList = [];
-      for (i = 0; i < 500; i++) {
-        let n = Math.floor(Math.random() * randomWords.length);
-        wordList.push(randomWords[n]);
-      }
+    textDisplay.style.height = '3.2rem';
+    document.querySelector(`#tc-${timeCount}`).innerHTML = timeCount;
+    textDisplay.innerHTML = '';
+    wordList = [];
+    for (i = 0; i < 500; i++) {
+      let n = Math.floor(Math.random() * randomWords.length);
+      wordList.push(randomWords[n]);
+    }
   }
 
   if (punctuation) addPunctuations();
@@ -112,9 +112,9 @@ inputField.addEventListener('keydown', e => {
   // Add wrong class to input field
   switch (typingMode) {
     case 'wordcount':
-      if (currentWord < wordList.length) inputFieldClass();
+    if (currentWord < wordList.length) inputFieldClass();
     case 'time':
-      if (timerActive) inputFieldClass();
+    if (timerActive) inputFieldClass();
   }
   function inputFieldClass() {
     if (e.key >= 'a' && e.key <= 'z' || (e.key === `'` || e.key === ',' || e.key === '.' || e.key === ';')) {
@@ -134,29 +134,29 @@ inputField.addEventListener('keydown', e => {
   if (currentWord === 0 && inputField.value === '') {
     switch (typingMode) {
       case 'wordcount':
-        startDate = Date.now();
-        break;
+      startDate = Date.now();
+      break;
 
       case 'time':
-        if (!timerActive) {
-          startTimer(timeCount);
-          timerActive = true;
+      if (!timerActive) {
+        startTimer(timeCount);
+        timerActive = true;
+      }
+      function startTimer(time) {
+        if (time > 0) {
+          document.querySelector(`#tc-${timeCount}`).innerHTML = time;
+          timer = setTimeout(() => {
+            time--;
+            startTimer(time);
+          }, 1000);
+        } else {
+          timerActive = false;
+          textDisplay.style.display = 'none';
+          inputField.className = '';
+          document.querySelector(`#tc-${timeCount}`).innerHTML = timeCount;
+          showResult();
         }
-        function startTimer(time) {
-          if (time > 0) {
-            document.querySelector(`#tc-${timeCount}`).innerHTML = time;
-            timer = setTimeout(() => {
-              time--;
-              startTimer(time);
-            }, 1000);
-          } else {
-            timerActive = false;
-            textDisplay.style.display = 'none';
-            inputField.className = '';
-            document.querySelector(`#tc-${timeCount}`).innerHTML = timeCount;
-            showResult();
-          }
-        }
+      }
     }
   }
 
@@ -172,7 +172,7 @@ inputField.addEventListener('keydown', e => {
         if (currentWordPosition.top < nextWordPosition.top) {
           for (i = 0; i < currentWord + 1; i++) textDisplay.childNodes[i].style.display = 'none';
         }
-      }
+    }
 
       // If it is not the last word increment currentWord,
       if (currentWord < wordList.length - 1) {
@@ -208,21 +208,21 @@ function showResult() {
   let words, minute, acc;
   switch (typingMode) {
     case 'wordcount':
-      words = correctKeys / 5;
-      minute = (Date.now() - startDate) / 1000 / 60;
-      let totalKeys = -1;
-      wordList.forEach(e => (totalKeys += e.length + 1));
-      acc = Math.floor((correctKeys / totalKeys) * 100);
-      break;
+    words = correctKeys / 5;
+    minute = (Date.now() - startDate) / 1000 / 60;
+    let totalKeys = -1;
+    wordList.forEach(e => (totalKeys += e.length + 1));
+    acc = Math.floor((correctKeys / totalKeys) * 100);
+    break;
 
     case 'time':
-      words = correctKeys / 5;
-      minute = timeCount / 60;
-      let sumKeys = -1;
-      for (i = 0; i < currentWord; i++) {
-        sumKeys += wordList[i].length + 1;
-      }
-      acc = acc = Math.min(Math.floor((correctKeys / sumKeys) * 100), 100);
+    words = correctKeys / 5;
+    minute = timeCount / 60;
+    let sumKeys = -1;
+    for (i = 0; i < currentWord; i++) {
+      sumKeys += wordList[i].length + 1;
+    }
+    acc = acc = Math.min(Math.floor((correctKeys / sumKeys) * 100), 100);
   }
   let wpm = Math.floor(words / minute);
   document.querySelector('#right-wing').innerHTML = `WPM: ${wpm} / ACC: ${acc}`;
@@ -256,59 +256,62 @@ document.addEventListener('keydown', e => {
 function setTheme(_theme) {
   const theme = _theme.toLowerCase();
   fetch(`themes/${theme}.css`)
-    .then(response => {
-      if (response.status === 200) {
-        response
-          .text()
-          .then(css => {
-            setCookie('theme', theme, 90);
-            document.querySelector('#theme').setAttribute('href', `themes/${theme}.css`);
-            setText();
-          })
-          .catch(err => console.error(err));
-      } else {
-        console.log(`theme ${theme} is undefine`);
-      }
-    })
-    .catch(err => console.error(err));
+  .then(response => {
+    if (response.status === 200) {
+      response
+      .text()
+      .then(css => {
+        setCookie('theme', theme, 90);
+        document.querySelector('#theme').setAttribute('href', `themes/${theme}.css`);
+        setText();
+      })
+      .catch(err => console.error(err));
+    } else {
+      console.log(`theme ${theme} is undefine`);
+    }
+  })
+  .catch(err => console.error(err));
 }
 
 function setLanguage(_lang) {
   const lang = _lang.toLowerCase();
   fetch('texts/random.json')
-    .then(response => response.json())
-    .then(json => {
-      if (typeof json[lang] !== 'undefined') {
-        randomWords = json[lang];
-        setCookie('language', lang, 90);
-        setText();
-      } else {
-        console.error(`language ${lang} is undefine`);
-      }
-    })
-    .catch(err => console.error(err));
+  .then(response => response.json())
+  .then(json => {
+    if (typeof json[lang] !== 'undefined') {
+      randomWords = json[lang];
+      setCookie('language', lang, 90);
+      setText();
+      refreshConfigButtons();
+    } else {
+      console.error(`language ${lang} is undefine`);
+    }
+  })
+  .catch(err => console.error(err));
+  
 }
 
 function setTypingMode(_mode) {
   const mode = _mode.toLowerCase();
   switch (mode) {
     case 'wordcount':
-      typingMode = mode;
-      setCookie('typingMode', mode, 90);
-      document.querySelector('#word-count').style.display = 'inline';
-      document.querySelector('#time-count').style.display = 'none';
-      setText();
-      break;
+    typingMode = mode;
+    setCookie('typingMode', mode, 90);
+    document.querySelector('#word-count').style.display = 'inline';
+    document.querySelector('#time-count').style.display = 'none';
+    setText();
+    break;
     case 'time':
-      typingMode = mode;
-      setCookie('typingMode', mode, 90);
-      document.querySelector('#word-count').style.display = 'none';
-      document.querySelector('#time-count').style.display = 'inline';
-      setText();
-      break;
+    typingMode = mode;
+    setCookie('typingMode', mode, 90);
+    document.querySelector('#word-count').style.display = 'none';
+    document.querySelector('#time-count').style.display = 'inline';
+    setText();
+    break;
     default:
-      console.error(`mode ${mode} is undefine`);
+    console.error(`mode ${mode} is undefine`);
   }
+  refreshConfigButtons();
 }
 
 function setPunctuation(_punc) {
@@ -322,6 +325,7 @@ function setPunctuation(_punc) {
     setCookie('punctuation', false, 90);
     setText();
   }
+  refreshConfigButtons();
 }
 
 function setWordCount(wc) {
@@ -339,6 +343,7 @@ function setTimeCount(tc) {
     e.style.borderBottom = '';
     e.innerHTML = e.id.substring(3, 6);
   });
+  document.querySelector('#time-count .wing-title').innerText = 'time:';
   document.querySelector(`#tc-${timeCount}`).style.borderBottom = '2px solid';
   setText();
 }
@@ -366,51 +371,135 @@ function getCookie(cname) {
   return '';
 }
 
-showAllThemes();
-function showAllThemes(){
-    fetch(`themes/theme-list.json`)
-    .then(response => {
-      if (response.status === 200) {
-        response
-          .text()
-          .then(body => {
-            let themes = JSON.parse(body);
-            let keys = Object.keys(themes);
-            for(let i = 0;i < keys.length; i ++){
+initThemes();
 
-              let theme = document.createElement('div');
-              theme.setAttribute('class', 'theme-button');
-              theme.setAttribute('onClick', `setTheme('${keys[i]}')`);
-              if(themes[keys[i]]['customHTML'] != undefined){
-                theme.style.background = themes[keys[i]]['background'];
-                theme.innerHTML = themes[keys[i]]['customHTML']
-              }else{
-                theme.textContent = keys[i];
-                theme.style.background = themes[keys[i]]['background'];
-                theme.style.color = themes[keys[i]]['color'];
-              }
-              document.getElementById('theme-area').appendChild(theme);
+function initThemes(){
+  fetch(`themes/theme-list.json`)
+  .then(response => {
+    if (response.status === 200) {
+      response
+      .text()
+      .then(body => {
+        let themes = JSON.parse(body);
+        let keys = Object.keys(themes);
+        for(let i = 0;i < keys.length; i ++){
 
-            }
-          })
-          .catch(err => console.error(err));
-      } else {
-        console.log(`Cant find theme-list.json`);
-      }
-    })
-    .catch(err => console.error(err));
+          let theme = document.createElement('div');
+          theme.setAttribute('class', 'theme-button');
+          theme.setAttribute('onClick', `setTheme('${keys[i]}')`);
+          if(themes[keys[i]]['customHTML'] != undefined){
+            theme.style.background = themes[keys[i]]['background'];
+            theme.innerHTML = themes[keys[i]]['customHTML']
+          }else{
+            theme.textContent = keys[i];
+            theme.style.background = themes[keys[i]]['background'];
+            theme.style.color = themes[keys[i]]['color'];
+          }
+          document.getElementById('theme-area').appendChild(theme);
+
+        }
+      })
+      .catch(err => console.error(err));
+    } else {
+      console.log(`Cant find theme-list.json`);
+    }
+  })
+  .catch(err => console.error(err));
+}
+
+initConfig();
+
+function initConfig(){
+  fetch(`texts/random.json`)
+  .then(response => {
+    if (response.status === 200) {
+      response
+      .text()
+      .then(body => {
+        let themes = JSON.parse(body);
+        let langs = Object.keys(themes);
+
+
+
+        for(let i = 0;i < langs.length; i ++){
+
+          let language = document.createElement('div');
+          language.setAttribute('class', 'button');
+          language.setAttribute('onClick', `setLanguage('${langs[i]}')`);
+          language.textContent = langs[i];
+          let separator = document.createElement('div');
+          separator.setAttribute('class', 'separator');
+          separator.innerHTML = '/';
+          document.querySelector('#config-area #languages').appendChild(language);
+          document.querySelector('#config-area #languages').appendChild(separator);
+        }
+
+        refreshConfigButtons();
+
+      })
+      .catch(err => console.error(err));
+    } else {
+      console.log(`Cant find random.json`);
+    }
+  })
+  .catch(err => console.error(err));
+}
+
+function refreshConfigButtons(){
+  let typingMode = getCookie('typingMode');
+  let punctuation = getCookie('punctuation');
+  let language = getCookie('language');
+
+  let buttons = document.querySelectorAll('#config-area .button');
+
+  for(let i = 0;i < buttons.length; i ++){
+    buttons[i].classList.remove('active');
+  }
+
+  if(typingMode == 'wordcount'){
+    document.querySelector('#config-area #typingMode-wordcount').classList.add('active');
+  }else if(typingMode == 'time'){
+    document.querySelector('#config-area #typingMode-time').classList.add('active');
+  }
+
+  if(punctuation == 'true'){
+    document.querySelector('#config-area #punctuation-true').classList.add('active');
+  }else if(punctuation == 'false'){
+    document.querySelector('#config-area #punctuation-false').classList.add('active');
+  }
+
+  let langs = document.querySelectorAll('#config-area #languages .button');
+  let langsCookie = getCookie('language');
+
+  for(let i = 0;i < langs.length; i ++){
+
+    if(langs[i].innerText == langsCookie){
+      langs[i].classList.add('active');
+    }
+
+  }
+
 }
 
 function showThemeCenter() {
-  console.log('test');
   document.getElementById('theme-center').classList.remove('hidden');
+  document.getElementById('config-center').classList.add('hidden');
   document.getElementById('command-center').classList.add('hidden');
 }
 
 function hideThemeCenter() {
-  console.log('test');
   document.getElementById('theme-center').classList.add('hidden');
   document.getElementById('command-center').classList.remove('hidden');
 }
 
+function showConfigCenter() {
+  document.getElementById('theme-center').classList.add('hidden');
+  document.getElementById('config-center').classList.remove('hidden');
+  document.getElementById('command-center').classList.add('hidden');
+}
+
+function hideConfigCenter() {
+  document.getElementById('config-center').classList.add('hidden');
+  document.getElementById('command-center').classList.remove('hidden');
+}
 

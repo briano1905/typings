@@ -25,7 +25,9 @@
     <div id="command-center" class="">
       <div class="bar">
         <div id="left-wing">
+
           <span id="word-count">
+            <span class="wing-title">word:</span>
             <span id="wc-10" onclick="setWordCount(10)">10</span>
             <text> / </text>
             <span id="wc-25" onclick="setWordCount(25)">25</span>
@@ -37,6 +39,7 @@
             <span id="wc-250" onclick="setWordCount(250)">250</span>
           </span>
           <span id="time-count">
+            <span class="wing-title">time:</span>
             <span id="tc-15" onclick="setTimeCount(15)">15</span>
             <text> / </text>
             <span id="tc-30" onclick="setTimeCount(30)">30</span>
@@ -48,7 +51,7 @@
             <span id="tc-240" onclick="setTimeCount(240)">240</span>
           </span>
         </div>
-        <div id="right-wing">WPM: XX / ACC: XX</div>
+        <div id="right-wing">wpm: XX / acc: XX</div>
       </div>
       <div id="typing-area">
         <div id="text-display"></div>
@@ -62,9 +65,38 @@
       <div id="left-wing" onClick="hideThemeCenter();">< back</div>
       <div id="theme-area"></div>
     </div>
+    <div id="config-center" class="hidden">
+      <div id="left-wing" onClick="hideConfigCenter();">< back</div>
+      <div id="config-area" class="theme-bg theme-text">
+        <div class="config-group">
+          <div class="title">test mode:</div>
+          <div class="button-group">
+            <div class="button" id="typingMode-time" onclick="setTypingMode('time')">time</div>
+            <div class="separator">/</div>
+            <div class="button" id="typingMode-wordcount" onclick="setTypingMode('wordcount')">word</div>
+          </div>
+        </div>
+        <div class="config-group">
+          <div class="title">punctuation:</div>
+          <div class="button-group">
+            <div class="button" id="punctuation-true" onclick="setPunctuation('true')">true</div>
+            <div class="separator">/</div>
+            <div class="button" id="punctuation-false" onclick="setPunctuation('false')">false</div>
+          </div>
+        </div>
+        <div class="config-group">
+          <div class="title">language:</div>
+          <div class="button-group" id="languages">
+          </div>
+        </div>
+      </div>
+    </div>
     <div id="footer">
-      <a href="https://github.com/briano1905/typings#typings" target="_blank">user guide</a>/
+      <a href="https://github.com/briano1905/typings#typings" target="_blank">user guide</a>
+      /
       <div class="button" onClick="showThemeCenter();">themes</div>
+      /
+      <div class="button" onClick="showConfigCenter();">config</div>
     </div>
     <script src="main.js"></script>
   </body>
