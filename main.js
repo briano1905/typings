@@ -44,7 +44,7 @@ function setText() {
       wordList = [];
       while (wordList.length < wordCount) {
         const randomWord = randomWords[Math.floor(Math.random() * randomWords.length)];
-        if (wordList[wordList.length - 1] !== randomWord || wordList[wordList.length - 1] === undefined) {
+        if (wordList[wordList.length - 1] !== randomWord || wordList[wordList.length - 1] === undefined || getCookie('language') === 'dots') {
           wordList.push(randomWord);
         }
       }
