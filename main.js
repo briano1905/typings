@@ -250,6 +250,11 @@ document.addEventListener('keydown', e => {
     if (e.key === 'p') {
       setPunctuation(inputField.value);
     }
+  } else if (!document.querySelector('#theme-center').classList.contains('hidden')) {
+    if (e.key === 'Escape'){
+      hideThemeCenter();
+      inputField.focus();
+    }
   }
 });
 
@@ -376,11 +381,24 @@ function showAllThemes(){
           .then(body => {
             let themes = JSON.parse(body);
             let keys = Object.keys(themes);
-            for(let i = 0;i < keys.length; i ++){
+            let i;
+            for(i = 0;i < keys.length; i ++){
 
               let theme = document.createElement('div');
               theme.setAttribute('class', 'theme-button');
               theme.setAttribute('onClick', `setTheme('${keys[i]}')`);
+              theme.setAttribute('id', keys[i]);
+
+              // set tabindex to current theme index + 4 for the test page
+              theme.setAttribute('tabindex', i + 5);
+              theme.addEventListener('keydown', e => {
+                if (e.key === 'Enter') {
+                  setTheme(theme.id);
+                  inputField.focus();
+
+                }
+              })
+
               if(themes[keys[i]]['customHTML'] != undefined){
                 theme.style.background = themes[keys[i]]['background'];
                 theme.innerHTML = themes[keys[i]]['customHTML']
@@ -390,7 +408,6 @@ function showAllThemes(){
                 theme.style.color = themes[keys[i]]['color'];
               }
               document.getElementById('theme-area').appendChild(theme);
-
             }
           })
           .catch(err => console.error(err));
@@ -401,14 +418,20 @@ function showAllThemes(){
     .catch(err => console.error(err));
 }
 
+// enter to open theme area
+document.getElementById('show-themes').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    showThemeCenter();
+    inputField.focus();
+  }
+});
+
 function showThemeCenter() {
-  console.log('test');
   document.getElementById('theme-center').classList.remove('hidden');
   document.getElementById('command-center').classList.add('hidden');
 }
 
 function hideThemeCenter() {
-  console.log('test');
   document.getElementById('theme-center').classList.add('hidden');
   document.getElementById('command-center').classList.remove('hidden');
 }
