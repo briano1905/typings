@@ -418,20 +418,22 @@ function initConfig(){
       .then(body => {
         let themes = JSON.parse(body);
         let langs = Object.keys(themes);
-
-
-
+        
         for(let i = 0;i < langs.length; i ++){
 
           let language = document.createElement('div');
           language.setAttribute('class', 'button');
           language.setAttribute('onClick', `setLanguage('${langs[i]}')`);
           language.textContent = langs[i];
-          let separator = document.createElement('div');
-          separator.setAttribute('class', 'separator');
-          separator.innerHTML = '/';
           document.querySelector('#config-area #languages').appendChild(language);
-          document.querySelector('#config-area #languages').appendChild(separator);
+
+          if(i !== langs.length - 1){
+            let separator = document.createElement('div');
+            separator.setAttribute('class', 'separator');
+            separator.innerHTML = '/';
+            document.querySelector('#config-area #languages').appendChild(separator);
+          }
+
         }
 
         refreshConfigButtons();
