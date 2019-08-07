@@ -56,8 +56,8 @@
       <div id="typing-area">
         <div id="text-display"></div>
         <div class="bar">
-          <input id="input-field" type="text" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off" />
-          <button id="redo-button" onclick="setText()">redo</button>
+          <input id="input-field" type="text" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off" tabindex="1"/>
+          <button id="redo-button" onclick="setText()" tabindex="2">redo</button>
         </div>
       </div>
     </div>
@@ -92,11 +92,11 @@
       </div>
     </div>
     <div id="footer">
-      <a href="https://github.com/briano1905/typings#typings" target="_blank">user guide</a>
+      <a href="https://github.com/briano1905/typings#typings" target="_blank" tabindex="3">user guide</a>
       /
-      <div class="button" onClick="showThemeCenter();">themes</div>
+      <div id="show-themes" class="button" onClick="showThemeCenter();" tabindex="4">themes</div>
       /
-      <div class="button" onClick="showConfigCenter();">config</div>
+      <div id="show-config" class="button" onClick="showConfigCenter();" tabindex="5">config</div>
     </div>
     <script src="main.js"></script>
   </body>

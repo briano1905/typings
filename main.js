@@ -39,13 +39,14 @@ function setText() {
 
   switch (typingMode) {
     case 'wordcount':
-    textDisplay.style.height = 'auto';
-    textDisplay.innerHTML = '';
-    wordList = [];
-    while (wordList.length < wordCount) {
-      const randomWord = randomWords[Math.floor(Math.random() * randomWords.length)];
-      if (wordList[wordList.length - 1] !== randomWord || wordList[wordList.length - 1] === undefined) {
-        wordList.push(randomWord);
+      textDisplay.style.height = 'auto';
+      textDisplay.innerHTML = '';
+      wordList = [];
+      while (wordList.length < wordCount) {
+        const randomWord = randomWords[Math.floor(Math.random() * randomWords.length)];
+        if (wordList[wordList.length - 1] !== randomWord || wordList[wordList.length - 1] === undefined || getCookie('language') === 'dots') {
+          wordList.push(randomWord);
+        }
       }
     }
     break;
@@ -249,6 +250,11 @@ document.addEventListener('keydown', e => {
     // [mod + p] => Change punctuation active
     if (e.key === 'p') {
       setPunctuation(inputField.value);
+    }
+  } else if (!document.querySelector('#theme-center').classList.contains('hidden')) {
+    if (e.key === 'Escape'){
+      hideThemeCenter();
+      inputField.focus();
     }
   }
 });
@@ -480,8 +486,15 @@ function refreshConfigButtons(){
     }
 
   }
-
 }
+
+// enter to open theme area
+document.getElementById('show-themes').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    showThemeCenter();
+    inputField.focus();
+  }
+});
 
 function showThemeCenter() {
   document.getElementById('theme-center').classList.remove('hidden');
