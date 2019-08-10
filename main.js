@@ -42,10 +42,15 @@ function setText() {
       textDisplay.style.height = 'auto';
       textDisplay.innerHTML = '';
       wordList = [];
-      while (wordList.length < wordCount) {
-        const randomWord = randomWords[Math.floor(Math.random() * randomWords.length)];
-        if (wordList[wordList.length - 1] !== randomWord || wordList[wordList.length - 1] === undefined || getCookie('language') === 'dots') {
-          wordList.push(randomWord);
+      if (getCookie('language') === 'dots') {
+        // initialize array of dots
+        wordList = [...new Array(Number(wordCount))].map(() => randomWords[0]);
+      } else {
+        while (wordList.length < wordCount) {
+          const randomWord = randomWords[Math.floor(Math.random() * randomWords.length)];
+          if (wordList[wordList.length - 1] !== randomWord || wordList[wordList.length - 1] === undefined) {
+            wordList.push(randomWord);
+          }
         }
       }
       break;
