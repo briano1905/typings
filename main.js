@@ -1,6 +1,7 @@
 // Get document element
 const textDisplay = document.querySelector('#text-display');
 const inputField = document.querySelector('#input-field');
+const redoButton = document.querySelector('#redo-button');
 
 // Initialize typing mode variables
 let typingMode = 'wordcount';
@@ -199,6 +200,7 @@ inputField.addEventListener('keydown', e => {
       correctKeys += wordList[currentWord].length;
       currentWord++;
       showResult();
+      redoButton.focus()
     }
   }
 });
@@ -435,5 +437,3 @@ function hideThemeCenter() {
   document.getElementById('theme-center').classList.add('hidden');
   document.getElementById('command-center').classList.remove('hidden');
 }
-
-
