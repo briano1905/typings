@@ -57,6 +57,8 @@ available languages:
 - `swedish`
 - `dots`
 - `punjabi`
+- `french`
+- `portuguese`
 
 ## typing mode
 
