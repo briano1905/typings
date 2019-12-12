@@ -258,6 +258,14 @@ document.addEventListener('keydown', e => {
   }
 });
 
+// mouse actions
+document.addEventListener('mouseup', e => {
+  if (e.target.nodeName === 'BODY' && !document.querySelector('#theme-center').classList.contains('hidden')) {
+    hideThemeCenter();
+    inputField.focus();
+  }
+});
+
 function setTheme(_theme) {
   const theme = _theme.toLowerCase();
   fetch(`themes/${theme}.css`)
