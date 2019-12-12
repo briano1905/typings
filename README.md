@@ -40,6 +40,10 @@ available themes:
 - `vilebloom` inspired by SA Vilebloom by u/UKKeycaps
 - `yuri` inspired by GMK Yuri by T0mb3ry
 
+## Redo
+
+ - Press `esc` to restart a typing test
+
 ## language
 
 type the language code for example `german` in the text box then hit [ windows: <kbd>alt</kbd> + <kbd>l</kbd> ], [ mac: <kbd>cmd</kbd> + <kbd>ctrl</kbd> + <kbd>l</kbd> ], [ linux: <kbd>super</kbd> + <kbd>ctrl</kbd> + <kbd>l</kbd> or <kbd>alt</kbd> + <kbd>l</kbd> ]
