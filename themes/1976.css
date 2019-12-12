@@ -1,0 +1,73 @@
+/*
+teal: #5DCFB8
+red: #D73811
+orange: #E16B06
+yellow: #E1BA45
+brown: #5B3217
+*/
+
+body {
+  background-color: #5dcfb8;
+  background-image: linear-gradient(
+    135deg,
+    #5dcfb8 23%,
+    #d73811 23%,
+    #d73811 46%,
+    #e16b06 46%,
+    #e16b06 69%,
+    #e1ba45 69%,
+    #e1ba45 92%,
+    #5b3217 92%
+  ); /* background-image: linear-gradient(135deg, #34657f 50%, #cd6c8f 50%); */ /* background-image: -webkit-linear-gradient(135deg, #cd6c8f 50%, #34657f 50%); */ /* background-image: -moz-linear-gradient(135deg, #cd6c8f 50%, #34657f 50%); */ /* background-image: -ms-linear-gradient(135deg, #cd6c8f 50%, #34657f 50%); */
+}
+#header {
+  color: #ffffff;
+}
+
+#left-wing {
+  color: #ffffff;
+}
+
+#right-wing {
+  color: #ffffff;
+}
+
+#typing-area,
+#theme-area {
+  background: #5b3217;
+}
+
+#input-field {
+  background: #ffffff;
+  /* background: #E1BA45; */
+}
+
+#input-field.wrong {
+  background: #d73811;
+  color: #ffffff;
+}
+
+#redo-button {
+  background: #e16b06;
+  color: #ffffff;
+}
+
+#text-display {
+  color: #5dcfb8;
+}
+
+#footer {
+  color: #ffffff;
+}
+
+.highlight {
+  color: #e16b06;
+}
+
+.correct {
+  color: #e1ba45;
+}
+
+.wrong {
+  color: #d73811;
+}

@@ -39,6 +39,12 @@ available themes:
 - `solarizeddark` [bonus: `solarizedlight`] inspired by GMK Solarized Dark by u/thesiscamper
 - `vilebloom` inspired by SA Vilebloom by u/UKKeycaps
 - `yuri` inspired by GMK Yuri by T0mb3ry
+- `honeywell` inspired by GMK Honeywell by Living Speedbump
+- `spacecadet` inspired by SA Space Cadet by 7bit
+- `1976` inspired by SA 1976 by Engicoder
+- `godspeed` inspired by SA Godspeed by Mito
+- `leviathan` inspired by SA Leviathan by OneCreativeMind
+- `kobayashi` inspired by SA Kobayashi by Madēo
 
 ## language
 
