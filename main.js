@@ -26,9 +26,14 @@ getCookie('typingMode') === '' ? setTypingMode('wordcount') : setTypingMode(getC
 getCookie('punctuation') === '' ? setPunctuation('false') : setPunctuation(getCookie('punctuation'));
 
 // Find a list of words and display it to textDisplay
-function setText() {
+function setText(e) {
+  e = e || window.event;
+  var keepWordList = e && e.shiftKey;
+
   // Reset
-  wordList = [];
+  if (!keepWordList) {
+    wordList = [];
+  }
   currentWord = 0;
   correctKeys = 0;
   inputField.value = '';
@@ -41,11 +46,13 @@ function setText() {
     case 'wordcount':
       textDisplay.style.height = 'auto';
       textDisplay.innerHTML = '';
-      wordList = [];
-      while (wordList.length < wordCount) {
-        const randomWord = randomWords[Math.floor(Math.random() * randomWords.length)];
-        if (wordList[wordList.length - 1] !== randomWord || wordList[wordList.length - 1] === undefined || getCookie('language') === 'dots') {
-          wordList.push(randomWord);
+      if (!keepWordList) {
+        wordList = [];
+        while (wordList.length < wordCount) {
+          const randomWord = randomWords[Math.floor(Math.random() * randomWords.length)];
+          if (wordList[wordList.length - 1] !== randomWord || wordList[wordList.length - 1] === undefined || getCookie('language') === 'dots') {
+            wordList.push(randomWord);
+          }
         }
       }
       break;
@@ -54,10 +61,12 @@ function setText() {
       textDisplay.style.height = '3.2rem';
       document.querySelector(`#tc-${timeCount}`).innerHTML = timeCount;
       textDisplay.innerHTML = '';
-      wordList = [];
-      for (i = 0; i < 500; i++) {
-        let n = Math.floor(Math.random() * randomWords.length);
-        wordList.push(randomWords[n]);
+      if (!keepWordList) {
+        wordList = [];
+        for (i = 0; i < 500; i++) {
+          let n = Math.floor(Math.random() * randomWords.length);
+          wordList.push(randomWords[n]);
+        }
       }
   }
 
