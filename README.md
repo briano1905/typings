@@ -22,6 +22,7 @@ available themes:
 - `dots` inspired by GMK Dots by biip
 - `dracula` inspired by GMK Dracula by u/pikku-allu
 - `eclipse` inspired by GMK Eclipse by T0mb3ry
+- `gruvbox` adapted from [Gruvbox](https://github.com/morhetz/gruvbox)
 - `handarbeit` inspired by [Cherry Handarbeit](https://pinchocodia.tistory.com/17)
 - `hyperfuse` inspired by GMK HyperFuse origins by BunnyLake
 - `mizu` inspired by GMK Mizu by u/Rensuya

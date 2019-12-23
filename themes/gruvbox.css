@@ -1,0 +1,57 @@
+/*
+Adapted from the Gruvbox theme
+*/
+
+body {
+  background: #282828;
+}
+
+#header {
+  color: #d79921;
+}
+
+.bar {
+  color: #d79921;
+}
+
+#right-wing text {
+  color: #ebdbb2;
+}
+
+#typing-area, #theme-area {
+  background: #1d2021;
+}
+
+#text-display {
+  color: #ebdbb2;
+}
+
+#input-field {
+  background: #3c3836;
+  color: #ebdbb2;
+}
+
+#input-field.wrong {
+  background: rgba(204,36,29, 0.3);
+}
+
+#redo-button {
+  background: #689d6a;
+  color: #ebdbb2;
+}
+
+#footer {
+  color: #d79921;
+}
+
+.highlight {
+  color: #83a598;
+}
+
+.correct {
+  color: #98971a;
+}
+
+.wrong {
+  color: #cc241d;
+}

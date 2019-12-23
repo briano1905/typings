@@ -40,6 +40,10 @@
         "background":"#314f6f",
         "color":"#abc6dc"
     },
+    "gruvbox":{
+        "background":"#282828",
+        "color":"#d79921"
+    },
     "handarbeit":{
         "background":"#1a1a1a",
         "color":"#bb2e17"
