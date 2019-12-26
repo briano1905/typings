@@ -119,5 +119,29 @@
     "yuri":{
         "background":"#293649",
         "color":"#ea4221"
+    },
+    "honeywell":{
+        "background":"#4d5151",
+        "color":"#cc2c24"
+    },
+    "spacecadet":{
+        "background":"#136EA3",
+        "color":"#dfeaef"
+    },
+    "1976":{
+        "background":"linear-gradient(135deg, #5dcfb8 20%, #d73811 20%, #d73811 40%, #e16b06 40%, #e16b06 60%, #e1ba45 60%, #e1ba45 80%, #5b3217 80%)",
+        "color":"#5DCFB8"
+    },
+    "godspeed":{
+        "background":"#faee69",
+        "color":"#32321d"
+    },
+    "leviathan":{
+        "background":"#182031",
+        "color":"#BAEE75"
+    },
+    "kobayashi":{
+        "background":"#EBCD01",
+        "color":"#F00D00"
     }
 }
