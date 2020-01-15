@@ -117,7 +117,7 @@ inputField.addEventListener('keydown', e => {
       if (timerActive) inputFieldClass();
   }
   function inputFieldClass() {
-    if (e.key >= 'a' && e.key <= 'z' || (e.key === `'` || e.key === ',' || e.key === '.' || e.key === ';')) {
+    if ((e.keyCode >= '97' && e.keyCode <= '172')  || (e.keyCode >= '65' && e.keyCode <= '90') || (e.key === `'` || e.key === ',' || e.key === '.' || e.key === ';')) {
       let inputWordSlice = inputField.value + e.key;
       let currentWordSlice = wordList[currentWord].slice(0, inputWordSlice.length);
       inputField.className = inputWordSlice === currentWordSlice ? '' : 'wrong';
