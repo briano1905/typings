@@ -286,6 +286,15 @@ function setLanguage(_lang) {
       if (typeof json[lang] !== 'undefined') {
         randomWords = json[lang];
         setCookie('language', lang, 90);
+
+        if (lang === "arabic") {
+            textDisplay.style.direction = "rtl"
+            inputField.style.direction = "rtl"
+        } else {
+            textDisplay.style.direction = "ltr"
+            inputField.style.direction = "ltr"
+        }
+
         setText();
       } else {
         console.error(`language ${lang} is undefine`);
