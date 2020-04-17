@@ -112,6 +112,7 @@ body {
 #footer *{
   text-decoration: none;
   margin: 0 .5rem;
+  color: inherit;
 }
 
 #footer .button{
