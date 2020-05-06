@@ -27,6 +27,7 @@ getCookie('punctuation') === '' ? setPunctuation('false') : setPunctuation(getCo
 
 // Find a list of words and display it to textDisplay
 function setText() {
+	console.log("set text called")
   // Reset
   wordList = [];
   currentWord = 0;
@@ -38,6 +39,13 @@ function setText() {
   inputField.className = '';
 
   switch (typingMode) {
+		case 'custom':
+			textDisplay.style.height = 'auto';
+			textDisplay.innerHTML = '';
+			console.log(inputField.value);
+			wordList = betterSplit(inputField.value);
+			break;
+			
     case 'wordcount':
       textDisplay.style.height = 'auto';
       textDisplay.innerHTML = '';
@@ -111,6 +119,7 @@ function showText() {
 inputField.addEventListener('keydown', e => {
   // Add wrong class to input field
   switch (typingMode) {
+		case 'custom':
     case 'wordcount':
       if (currentWord < wordList.length) inputFieldClass();
     case 'time':
@@ -133,6 +142,7 @@ inputField.addEventListener('keydown', e => {
   // If it is the first character entered
   if (currentWord === 0 && inputField.value === '') {
     switch (typingMode) {
+			case 'custom':
       case 'wordcount':
         startDate = Date.now();
         break;
@@ -162,6 +172,7 @@ inputField.addEventListener('keydown', e => {
 
   // If it is the space key check the word and add correct/wrong class
   if (e.key === ' ') {
+		console.log("SPACE DETECTED");
     e.preventDefault();
 
     if (inputField.value !== '') {
@@ -207,6 +218,7 @@ inputField.addEventListener('keydown', e => {
 function showResult() {
   let words, minute, acc;
   switch (typingMode) {
+		case 'custom':
     case 'wordcount':
       words = correctKeys / 5;
       minute = (Date.now() - startDate) / 1000 / 60;
@@ -310,16 +322,26 @@ function setTypingMode(_mode) {
       typingMode = mode;
       setCookie('typingMode', mode, 90);
       document.querySelector('#word-count').style.display = 'inline';
-      document.querySelector('#time-count').style.display = 'none';
+			document.querySelector('#time-count').style.display = 'none';
+			document.querySelector('#custom').style.display = 'none';
       setText();
       break;
     case 'time':
       typingMode = mode;
       setCookie('typingMode', mode, 90);
       document.querySelector('#word-count').style.display = 'none';
-      document.querySelector('#time-count').style.display = 'inline';
+			document.querySelector('#time-count').style.display = 'inline';
+			document.querySelector('#custom').style.display = 'none';
       setText();
-      break;
+			break;
+		case 'custom':
+			typingMode = mode;
+			setCookie('typingMode', mode, 90);
+			document.querySelector('#word-count').style.display = 'none';
+			document.querySelector('#time-count').style.display = 'none';
+			document.querySelector('#custom').style.display = 'inline';
+			setText();
+			break;
     default:
       console.error(`mode ${mode} is undefine`);
   }
@@ -445,4 +467,15 @@ function hideThemeCenter() {
   document.getElementById('command-center').classList.remove('hidden');
 }
 
-
+function betterSplit(str) {
+	// Regex tester for:
+		// Normal a-z, A-Z
+		// punjabi,
+		// CJK,
+		// Russian
+	// TODO: Add support for remaining European languages
+	// Cleaner way to do this???
+	const regex = /[\u0A00-\u0A7F\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff\uff66-\uff9f\u3131-\uD79D]|[0-9]+|[\u0400-\u04FFa-zA-Z!:;'",./?!@#$%^&*()-_{}\[\]]+\'*[a-z]*/g;	
+	let array = [...str.matchAll(regex)];
+	return array;
+}
