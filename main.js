@@ -39,13 +39,16 @@ function setText() {
 
   switch (typingMode) {
 		case 'custom':
+      const helpText = "Paste your custom text and click redo!"
+      wordList = (inputField.value === 'custom' || inputField.value === '') ? helpText.split(" "): betterSplit(inputField.value);
+      punctuation = false;
 			textDisplay.style.height = 'auto';
 			textDisplay.innerHTML = '';
-			console.log(inputField.value);
-			wordList = betterSplit(inputField.value);
+      inputField.value='';
 			break;
 			
     case 'wordcount':
+      inputField.value = '';
       textDisplay.style.height = 'auto';
       textDisplay.innerHTML = '';
       wordList = [];
@@ -58,6 +61,7 @@ function setText() {
       break;
 
     case 'time':
+      inputField.value = '';
       textDisplay.style.height = '3.2rem';
       document.querySelector(`#tc-${timeCount}`).innerHTML = timeCount;
       textDisplay.innerHTML = '';
@@ -67,7 +71,6 @@ function setText() {
         wordList.push(randomWords[n]);
       }
   }
-  inputField.value = '';
   if (punctuation) addPunctuations();
   showText();
   inputField.focus();
@@ -322,9 +325,7 @@ function setTypingMode(_mode) {
       setCookie('typingMode', mode, 90);
       document.querySelector('#word-count').style.display = 'inline';
 			document.querySelector('#time-count').style.display = 'none';
-			document.querySelector('#custom').style.display = 'none';
-			document.querySelector('#redo-button').style.display = 'inline';
-			document.querySelector('#set-button').style.display = 'none';
+      document.querySelector('#custom').style.display = 'none';
       setText();
       break;
     case 'time':
@@ -333,8 +334,6 @@ function setTypingMode(_mode) {
       document.querySelector('#word-count').style.display = 'none';
 			document.querySelector('#time-count').style.display = 'inline';
 			document.querySelector('#custom').style.display = 'none';
-			document.querySelector('#redo-button').style.display = 'inline';
-			document.querySelector('#set-button').style.display = 'none';
       setText();
 			break;
 		case 'custom':
@@ -343,8 +342,6 @@ function setTypingMode(_mode) {
 			document.querySelector('#word-count').style.display = 'none';
 			document.querySelector('#time-count').style.display = 'none';
 			document.querySelector('#custom').style.display = 'inline';
-			document.querySelector('#redo-button').style.display = 'none';
-			document.querySelector('#set-button').style.display = 'inline';
 			setText();
 			break;
     default:
@@ -480,7 +477,7 @@ function betterSplit(str) {
 		// Russian
 	// TODO: Add support for remaining European languages
 	// Cleaner way to do this???
-	const regex = /[\u0A00-\u0A7F\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff\uff66-\uff9f\u3131-\uD79D]|[0-9]+|[\u0400-\u04FFa-zA-Z!:;'",./?!@#$%^&*()-_{}\[\]]+\'*[a-z]*/g;	
+	const regex = /[\u0A00-\u0A7F\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff\uff66-\uff9f\u3131-\uD79D]+|[\u0400-\u04FFa-zA-Z0-9!:;'",./?!@#$%^&*()-_{}\[\]]+\'*[a-z]*/g;	
 	let array = [...str.match(regex)];
 	return array;
 }
