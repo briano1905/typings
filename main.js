@@ -27,7 +27,6 @@ getCookie('punctuation') === '' ? setPunctuation('false') : setPunctuation(getCo
 
 // Find a list of words and display it to textDisplay
 function setText() {
-	console.log("set text called")
   // Reset
   wordList = [];
   currentWord = 0;
@@ -175,7 +174,6 @@ inputField.addEventListener('keydown', e => {
 
   // If it is the space key check the word and add correct/wrong class
   if (e.key === ' ') {
-		console.log("SPACE DETECTED");
     e.preventDefault();
 
     if (inputField.value !== '') {
