@@ -42,7 +42,7 @@ function setText() {
       const helpText = "Paste your custom text and click redo!"
       wordList = (inputField.value === 'custom' || inputField.value === '') ? helpText.split(" "): betterSplit(inputField.value);
       punctuation = false;
-			textDisplay.style.height = 'auto';
+			textDisplay.style.height = '3.2rem';
 			textDisplay.innerHTML = '';
       inputField.value='';
 			break;
@@ -179,7 +179,7 @@ inputField.addEventListener('keydown', e => {
 
     if (inputField.value !== '') {
       // Scroll down text when reach new line
-      if (typingMode === 'time') {
+      if (typingMode === 'time' || typingMode === 'custom') {
         const currentWordPosition = textDisplay.childNodes[currentWord].getBoundingClientRect();
         const nextWordPosition = textDisplay.childNodes[currentWord + 1].getBoundingClientRect();
         if (currentWordPosition.top < nextWordPosition.top) {
