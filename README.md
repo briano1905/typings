@@ -75,6 +75,7 @@ available modes:
 
 - `wordcount`
 - `time`
+- `custom`
 
 ## punctuation
 
