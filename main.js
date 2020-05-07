@@ -32,7 +32,6 @@ function setText() {
   wordList = [];
   currentWord = 0;
   correctKeys = 0;
-  inputField.value = '';
   timerActive = false;
   clearTimeout(timer);
   textDisplay.style.display = 'block';
@@ -68,7 +67,7 @@ function setText() {
         wordList.push(randomWords[n]);
       }
   }
-
+  inputField.value = '';
   if (punctuation) addPunctuations();
   showText();
   inputField.focus();
@@ -324,6 +323,8 @@ function setTypingMode(_mode) {
       document.querySelector('#word-count').style.display = 'inline';
 			document.querySelector('#time-count').style.display = 'none';
 			document.querySelector('#custom').style.display = 'none';
+			document.querySelector('#redo-button').style.display = 'inline';
+			document.querySelector('#set-button').style.display = 'none';
       setText();
       break;
     case 'time':
@@ -332,6 +333,8 @@ function setTypingMode(_mode) {
       document.querySelector('#word-count').style.display = 'none';
 			document.querySelector('#time-count').style.display = 'inline';
 			document.querySelector('#custom').style.display = 'none';
+			document.querySelector('#redo-button').style.display = 'inline';
+			document.querySelector('#set-button').style.display = 'none';
       setText();
 			break;
 		case 'custom':
@@ -340,6 +343,8 @@ function setTypingMode(_mode) {
 			document.querySelector('#word-count').style.display = 'none';
 			document.querySelector('#time-count').style.display = 'none';
 			document.querySelector('#custom').style.display = 'inline';
+			document.querySelector('#redo-button').style.display = 'none';
+			document.querySelector('#set-button').style.display = 'inline';
 			setText();
 			break;
     default:
@@ -476,6 +481,6 @@ function betterSplit(str) {
 	// TODO: Add support for remaining European languages
 	// Cleaner way to do this???
 	const regex = /[\u0A00-\u0A7F\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff\uff66-\uff9f\u3131-\uD79D]|[0-9]+|[\u0400-\u04FFa-zA-Z!:;'",./?!@#$%^&*()-_{}\[\]]+\'*[a-z]*/g;	
-	let array = [...str.matchAll(regex)];
+	let array = [...str.match(regex)];
 	return array;
 }
