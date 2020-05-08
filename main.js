@@ -37,15 +37,15 @@ function setText() {
   inputField.className = '';
 
   switch (typingMode) {
-		case 'custom':
+    case 'custom':
       const helpText = "Paste your custom text and click redo!"
       wordList = (inputField.value === 'custom' || inputField.value === '') ? helpText.split(" "): betterSplit(inputField.value);
       punctuation = false;
-			textDisplay.style.height = '3.2rem';
-			textDisplay.innerHTML = '';
+      textDisplay.style.height = '3.2rem';
+      textDisplay.innerHTML = '';
       inputField.value='';
-			break;
-			
+      break;
+      
     case 'wordcount':
       inputField.value = '';
       textDisplay.style.height = 'auto';
@@ -120,7 +120,7 @@ function showText() {
 inputField.addEventListener('keydown', e => {
   // Add wrong class to input field
   switch (typingMode) {
-		case 'custom':
+    case 'custom':
     case 'wordcount':
       if (currentWord < wordList.length) inputFieldClass();
     case 'time':
@@ -144,7 +144,7 @@ inputField.addEventListener('keydown', e => {
   // If it is the first character entered
   if (currentWord === 0 && inputField.value === '') {
     switch (typingMode) {
-			case 'custom':
+      case 'custom':
       case 'wordcount':
         startDate = Date.now();
         break;
@@ -219,7 +219,7 @@ inputField.addEventListener('keydown', e => {
 function showResult() {
   let words, minute, acc;
   switch (typingMode) {
-		case 'custom':
+    case 'custom':
     case 'wordcount':
       words = correctKeys / 5;
       minute = (Date.now() - startDate) / 1000 / 60;
@@ -323,7 +323,7 @@ function setTypingMode(_mode) {
       typingMode = mode;
       setCookie('typingMode', mode, 90);
       document.querySelector('#word-count').style.display = 'inline';
-			document.querySelector('#time-count').style.display = 'none';
+      document.querySelector('#time-count').style.display = 'none';
       document.querySelector('#custom').style.display = 'none';
       setText();
       break;
@@ -331,18 +331,18 @@ function setTypingMode(_mode) {
       typingMode = mode;
       setCookie('typingMode', mode, 90);
       document.querySelector('#word-count').style.display = 'none';
-			document.querySelector('#time-count').style.display = 'inline';
-			document.querySelector('#custom').style.display = 'none';
+      document.querySelector('#time-count').style.display = 'inline';
+      document.querySelector('#custom').style.display = 'none';
       setText();
-			break;
-		case 'custom':
-			typingMode = mode;
-			setCookie('typingMode', mode, 90);
-			document.querySelector('#word-count').style.display = 'none';
-			document.querySelector('#time-count').style.display = 'none';
-			document.querySelector('#custom').style.display = 'inline';
-			setText();
-			break;
+      break;
+    case 'custom':
+      typingMode = mode;
+      setCookie('typingMode', mode, 90);
+      document.querySelector('#word-count').style.display = 'none';
+      document.querySelector('#time-count').style.display = 'none';
+      document.querySelector('#custom').style.display = 'inline';
+      setText();
+      break;
     default:
       console.error(`mode ${mode} is undefine`);
   }
@@ -469,14 +469,14 @@ function hideThemeCenter() {
 }
 
 function betterSplit(str) {
-	// Regex tester for:
-		// Normal a-z, A-Z
-		// punjabi,
-		// CJK,
-		// Russian
-	// TODO: Add support for remaining European languages
-	// Cleaner way to do this???
-	const regex = /[\u0A00-\u0A7F\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff\uff66-\uff9f\u3131-\uD79D]+|[\u0400-\u04FFa-zA-Z0-9!:;'",.\/?!@#$%^&*()_}{\[\]-]+\'*[a-z]*/g;	
-	let array = [...str.match(regex)];
+  // Regex tester for:
+    // Normal a-z, A-Z
+    // punjabi,
+    // CJK,
+    // Russian
+  // TODO: Add support for remaining European languages
+  // Cleaner way to do this???
+  const regex = /[\u0A00-\u0A7F\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff\uff66-\uff9f\u3131-\uD79D]+|[\u0400-\u04FFa-zA-Z0-9!:;'",.\/?!@#$%^&*()_}{\[\]-]+\'*[a-z]*/g;	
+  let array = [...str.match(regex)];
   return array;
 }
