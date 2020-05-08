@@ -41,7 +41,8 @@ function setText() {
       const helpText = "Paste your custom text and click redo!"
       wordList = (inputField.value === 'custom' || inputField.value === '') ? helpText.split(" "): betterSplit(inputField.value);
       punctuation = false;
-			textDisplay.style.height = '3.2rem';
+			textDisplay.style.maxHeight = '3.2rem';
+
 			textDisplay.innerHTML = '';
       inputField.value='';
 			break;
@@ -127,7 +128,7 @@ inputField.addEventListener('keydown', e => {
       if (timerActive) inputFieldClass();
   }
   function inputFieldClass() {
-    const puncRegex = /[!:;'",.\/?!@#$%^&*()_}{\[\]-]/;
+    const puncRegex = /[!:;'",.\/?!@#$%^&*()_}{\[\]-\+\=]/;
     if (e.key >= 'a' && e.key <= 'z' || puncRegex.test(e.key)) {
       let inputWordSlice = inputField.value + e.key;
       let currentWordSlice = wordList[currentWord].slice(0, inputWordSlice.length);
@@ -476,7 +477,8 @@ function betterSplit(str) {
 		// Russian
 	// TODO: Add support for remaining European languages
 	// Cleaner way to do this???
-	const regex = /[\u0A00-\u0A7F\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff\uff66-\uff9f\u3131-\uD79D]+|[\u0400-\u04FFa-zA-Z0-9!:;'",.\/?!@#$%^&*()_}{\[\]-]+\'*[a-z]*/g;	
+	const regex = /[\u0A00-\u0A7F\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff\uff66-\uff9f\u3131-\uD79D]+|[\u0400-\u04FFa-zA-Z0-9!:;'",.\/?!@#$%^&*()_\+\=}{\[\]-]+\'*[a-z]*/g;	
+
 	let array = [...str.match(regex)];
   return array;
 }
