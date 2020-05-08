@@ -47,6 +47,10 @@ available themes:
 - `leviathan` inspired by SA Leviathan by OneCreativeMind
 - `kobayashi` inspired by SA Kobayashi by Madēo
 
+## Redo
+
+- Hold `shift` while pressing Redo to Restart the typing test using the same word list.
+
 ## language
 
 type the language code for example `german` in the text box then hit [ windows: <kbd>alt</kbd> + <kbd>l</kbd> ], [ mac: <kbd>cmd</kbd> + <kbd>ctrl</kbd> + <kbd>l</kbd> ], [ linux: <kbd>super</kbd> + <kbd>ctrl</kbd> + <kbd>l</kbd> or <kbd>alt</kbd> + <kbd>l</kbd> ]
