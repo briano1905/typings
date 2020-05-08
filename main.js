@@ -17,6 +17,9 @@ let timer;
 let timerActive = false;
 let punctuation = false;
 
+// Initialize global constants
+const PUNCREGEX = /!:;'",.\/?!@#$%^&*()_}{\[\]\-s\+\=/;
+
 // Get cookies
 getCookie('theme') === '' ? setTheme('light') : setTheme(getCookie('theme'));
 getCookie('language') === '' ? setLanguage('english') : setLanguage(getCookie('language'));
@@ -42,7 +45,6 @@ function setText() {
       wordList = (inputField.value === 'custom' || inputField.value === '') ? helpText.split(" "): betterSplit(inputField.value);
       punctuation = false;
       textDisplay.style.maxHeight = '3.2rem';
-
       textDisplay.innerHTML = '';
       inputField.value='';
       break;
@@ -128,7 +130,7 @@ inputField.addEventListener('keydown', e => {
       if (timerActive) inputFieldClass();
   }
   function inputFieldClass() {
-    const puncRegex = /[!:;'",.\/?!@#$%^&*()_}{\[\]-\+\=]/;
+    var puncRegex = new RegExp('[' + PUNCREGEX.source + ']');
     if (e.key >= 'a' && e.key <= 'z' || puncRegex.test(e.key)) {
       let inputWordSlice = inputField.value + e.key;
       let currentWordSlice = wordList[currentWord].slice(0, inputWordSlice.length);
@@ -477,8 +479,11 @@ function betterSplit(str) {
     // Russian
   // TODO: Add support for remaining European languages
   // Cleaner way to do this???
-  const regex = /[\u0A00-\u0A7F\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff\uff66-\uff9f\u3131-\uD79D]+|[\u0400-\u04FFa-zA-Z0-9!:;'",.\/?!@#$%^&*()_\+\=}{\[\]-]+\'*[a-z]*/g;	
+  const regex1 = "[\u0A00-\u0A7F\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff\uff66-\uff9f\u3131-\uD79D]+|[\u0400-\u04FFa-zA-Z0-9";
+  const regex2 = "]+\'*[a-z]*";	
+  
 
+  const regex = new RegExp(regex1 + PUNCREGEX.source + regex2, "g");
   let array = [...str.match(regex)];
   return array;
 }
