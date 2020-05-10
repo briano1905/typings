@@ -1,6 +1,8 @@
 // Get document element
 const textDisplay = document.querySelector('#text-display');
 const inputField = document.querySelector('#input-field');
+const canvas = document.createElement('canvas');
+const favicon = document.querySelector('#favicon');
 
 // Initialize typing mode variables
 let typingMode = 'wordcount';
@@ -16,6 +18,16 @@ let startDate = 0;
 let timer;
 let timerActive = false;
 let punctuation = false;
+let ctx = canvas.getContext("2d");
+
+// Initialize favicon canvas
+canvas.width = 64;
+canvas.height = 64;
+canvas.style.position = "absolute";
+canvas.style.visibility= "hidden";
+ctx.font = "Bold 56px Roboto Mono";
+ctx.textAlign = "center";
+ctx.textBaseline = "middle"
 
 // Get cookies
 getCookie('theme') === '' ? setTheme('light') : setTheme(getCookie('theme'));
@@ -277,6 +289,7 @@ function setTheme(_theme) {
           .then(css => {
             setCookie('theme', theme, 90);
             document.querySelector('#theme').setAttribute('href', `themes/${theme}.css`);
+	    setFavicon();
             setText();
           })
           .catch(err => console.error(err));
@@ -285,6 +298,18 @@ function setTheme(_theme) {
       }
     })
     .catch(err => console.error(err));
+}
+
+function setFavicon(){
+  ctx.fillStyle = window.getComputedStyle(document.getElementById("typing-area"), null).getPropertyValue("background-color");
+  ctx.beginPath();
+  ctx.arc(32, 32, 32, 0, 2 * Math.PI);
+  ctx.fill();
+  ctx.fillStyle = window.getComputedStyle(document.getElementById("text-display"), null).getPropertyValue("color");
+  ctx.fillText("t", 32, 32);
+  ctx.fillRect(32,32,1,1);
+
+  favicon.href = canvas.toDataURL();
 }
 
 function setLanguage(_lang) {
@@ -453,5 +478,3 @@ function hideThemeCenter() {
   document.getElementById('theme-center').classList.add('hidden');
   document.getElementById('command-center').classList.remove('hidden');
 }
-
-
