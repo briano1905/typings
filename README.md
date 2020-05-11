@@ -51,6 +51,10 @@ available themes:
 
 - Hold `shift` while pressing Redo to Restart the typing test using the same word list.
 
+## Redo
+
+ - Press `esc` to restart a typing test
+
 ## language
 
 type the language code for example `german` in the text box then hit [ windows: <kbd>alt</kbd> + <kbd>l</kbd> ], [ mac: <kbd>cmd</kbd> + <kbd>ctrl</kbd> + <kbd>l</kbd> ], [ linux: <kbd>super</kbd> + <kbd>ctrl</kbd> + <kbd>l</kbd> or <kbd>alt</kbd> + <kbd>l</kbd> ]

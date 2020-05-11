@@ -264,6 +264,8 @@ document.addEventListener('keydown', e => {
       hideThemeCenter();
       inputField.focus();
     }
+  } else if (e.key === 'Escape') {
+    setText(e);
   }
 });
 
