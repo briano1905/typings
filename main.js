@@ -261,7 +261,7 @@ document.addEventListener('keydown', e => {
     }
   } else if (!document.querySelector('#theme-center').classList.contains('hidden')) {
     if (e.key === 'Escape'){
-      hideThemeCenter();
+      themeCenter();
       inputField.focus();
     }
   } else if (e.key === 'Escape') {
@@ -441,19 +441,22 @@ function showAllThemes(){
 // enter to open theme area
 document.getElementById('show-themes').addEventListener('keydown', (e) => {
   if (e.key === 'Enter') {
-    showThemeCenter();
+    themeCenter();
     inputField.focus();
   }
 });
 
-function showThemeCenter() {
-  document.getElementById('theme-center').classList.remove('hidden');
-  document.getElementById('command-center').classList.add('hidden');
+function themeCenter() {
+  let themeCenter = document.getElementById('theme-center').classList;
+  let commandCenter = document.getElementById('command-center').classList;
+
+  if (themeCenter.contains("hidden")) {
+    themeCenter.remove('hidden');
+    commandCenter.add("hidden");
+  }
+  // Will assume they want to close theme center.
+  else {
+    themeCenter.add('hidden');
+    commandCenter.remove("hidden");
+  }
 }
-
-function hideThemeCenter() {
-  document.getElementById('theme-center').classList.add('hidden');
-  document.getElementById('command-center').classList.remove('hidden');
-}
-
-
