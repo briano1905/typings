@@ -4,6 +4,7 @@ const inputField = document.querySelector('#input-field');
 const canvas = document.createElement('canvas');
 const favicon = document.querySelector('#favicon');
 let ctx = canvas.getContext("2d");
+const redoButton = document.querySelector('#redo-button');
 
 // Initialize typing mode variables
 let typingMode = 'wordcount';
@@ -211,6 +212,7 @@ inputField.addEventListener('keydown', e => {
       correctKeys += wordList[currentWord].length;
       currentWord++;
       showResult();
+      redoButton.focus()
     }
   }
 });
