@@ -126,7 +126,8 @@ inputField.addEventListener('keydown', e => {
       if (timerActive) inputFieldClass();
   }
   function inputFieldClass() {
-    if (e.key >= 'a' && e.key <= 'z' || (e.key === `'` || e.key === ',' || e.key === '.' || e.key === ';')) {
+    if (isValid(e) == true) {
+      console.log(e.key);
       let inputWordSlice = inputField.value + e.key;
       let currentWordSlice = wordList[currentWord].slice(0, inputWordSlice.length);
       inputField.className = inputWordSlice === currentWordSlice ? '' : 'wrong';
@@ -456,4 +457,22 @@ function hideThemeCenter() {
   document.getElementById('command-center').classList.remove('hidden');
 }
 
-
+// Determines if the input is valid.
+function isValid(e) {
+  if (
+    (e.key >= 'a' && e.key <= 'z') || (e.key >= '0' && e.key <= '9') || 
+    (e.key >= '!' && e.key <= '/') || (e.key >= ':' && e.key <= '@') || 
+    (e.key >= '[' && e.key <= '`') || (e.key >= '{' && e.key <= '~') ||
+    e.key == 'A' || e.key == 'B' || e.key == 'C' || e.key == 'D' || 
+    e.key == 'E' || e.key == 'F' || e.key == 'G' || e.key == 'H' ||
+    e.key == 'I' || e.key == 'J' || e.key == 'K' || e.key == 'L' ||
+    e.key == 'M' || e.key == 'N' || e.key == 'O' || e.key == 'P' ||
+    e.key == 'Q' || e.key == 'R' || e.key == 'S' || e.key == 'T' ||
+    e.key == 'U' || e.key == 'V' || e.key == 'W' || e.key == 'X' ||
+    e.key == 'Y' || e.key == 'Z'
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+}
