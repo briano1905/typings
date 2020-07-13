@@ -127,7 +127,6 @@ inputField.addEventListener('keydown', e => {
   }
   function inputFieldClass() {
     if (isValid(e.key) == true) {
-      console.log(e.key);
       let inputWordSlice = inputField.value + e.key;
       let currentWordSlice = wordList[currentWord].slice(0, inputWordSlice.length);
       inputField.className = inputWordSlice === currentWordSlice ? '' : 'wrong';
