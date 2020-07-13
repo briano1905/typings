@@ -126,7 +126,7 @@ inputField.addEventListener('keydown', e => {
       if (timerActive) inputFieldClass();
   }
   function inputFieldClass() {
-    if (isValid(e) == true) {
+    if (isValid(e.key) == true) {
       console.log(e.key);
       let inputWordSlice = inputField.value + e.key;
       let currentWordSlice = wordList[currentWord].slice(0, inputWordSlice.length);
@@ -458,18 +458,18 @@ function hideThemeCenter() {
 }
 
 // Determines if the input is valid.
-function isValid(e) {
+function isValid(key) {
   if (
-    (e.key >= 'a' && e.key <= 'z') || (e.key >= '0' && e.key <= '9') || 
-    (e.key >= '!' && e.key <= '/') || (e.key >= ':' && e.key <= '@') || 
-    (e.key >= '[' && e.key <= '`') || (e.key >= '{' && e.key <= '~') ||
-    e.key == 'A' || e.key == 'B' || e.key == 'C' || e.key == 'D' || 
-    e.key == 'E' || e.key == 'F' || e.key == 'G' || e.key == 'H' ||
-    e.key == 'I' || e.key == 'J' || e.key == 'K' || e.key == 'L' ||
-    e.key == 'M' || e.key == 'N' || e.key == 'O' || e.key == 'P' ||
-    e.key == 'Q' || e.key == 'R' || e.key == 'S' || e.key == 'T' ||
-    e.key == 'U' || e.key == 'V' || e.key == 'W' || e.key == 'X' ||
-    e.key == 'Y' || e.key == 'Z'
+    (key >= 'a' && key <= 'z') || (key >= '0' && key <= '9') || 
+    (key >= '!' && key <= '/') || (key >= ':' && key <= '@') || 
+    (key >= '[' && key <= '`') || (key >= '{' && key <= '~') ||
+    key == 'A' || key == 'B' || key == 'C' || key == 'D' || 
+    key == 'E' || key == 'F' || key == 'G' || key == 'H' ||
+    key == 'I' || key == 'J' || key == 'K' || key == 'L' ||
+    key == 'M' || key == 'N' || key == 'O' || key == 'P' ||
+    key == 'Q' || key == 'R' || key == 'S' || key == 'T' ||
+    key == 'U' || key == 'V' || key == 'W' || key == 'X' ||
+    key == 'Y' || key == 'Z'
   ) {
     return true;
   } else {
