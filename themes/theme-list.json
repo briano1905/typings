@@ -143,5 +143,9 @@
     "kobayashi":{
         "background":"#EBCD01",
         "color":"#F00D00"
+    },
+    "ishtar":{
+        "background":"#2a292a",
+        "color":"#fae1c3"
     }
 }

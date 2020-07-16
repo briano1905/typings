@@ -46,6 +46,8 @@ available themes:
 - `godspeed` inspired by SA Godspeed by Mito
 - `leviathan` inspired by SA Leviathan by OneCreativeMind
 - `kobayashi` inspired by SA Kobayashi by Madēo
+- `ishtar` inspired by GMK Ishtar by Bachoo
+
 
 ## Redo
 
