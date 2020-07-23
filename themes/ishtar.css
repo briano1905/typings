@@ -1,0 +1,54 @@
+body {
+    background: #2a292a;
+  }
+  
+  #header {
+    color: #bb1e10;
+  }
+  
+  #left-wing {
+    color: #fae1c3;
+  }
+  
+  #right-wing {
+    color: #fae1c3;
+  }
+  
+  #typing-area, #theme-area {
+    background: rgb(75, 73, 73);
+  }
+  
+  #text-display {
+    color: #fae1c3;
+  }
+  
+  #input-field {
+    background: #2a292a;
+    color: #fae1c3;
+  }
+  
+  #input-field.wrong {
+    background: #bb1e10;
+  }
+  
+  #redo-button {
+    background: #2a292a;
+    color: #bb1e10;
+  }
+  
+  #footer {
+    color: #bb1e10;
+  }
+  
+  .highlight {
+    color: #fae1c3;
+  }
+  
+  .correct {
+    color: #F6A950;
+  }
+  
+  .wrong {
+    color: #bb1e10;
+  }
+  

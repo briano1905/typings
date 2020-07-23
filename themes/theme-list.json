@@ -143,5 +143,17 @@
     "kobayashi":{
         "background":"#EBCD01",
         "color":"#F00D00"
+    },
+    "ishtar":{
+        "background":"#2a292a",
+        "color":"#fae1c3"
+    },
+    "alter":{
+        "background":"#2b2c42",
+        "color":"#bb1e10"
+    },
+    "deku":{
+        "background":"#058B8C",
+        "color":"#F7F2EA"
     }
 }
