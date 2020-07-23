@@ -1,0 +1,50 @@
+body {
+    background: #312f36;
+  }
+  
+  #header {
+    color: #bb1e10;
+  }
+  
+  #left-wing {
+    color: #bb1e10;
+  }
+  
+  #right-wing {
+    color: #bb1e10;
+  }
+  
+  #typing-area, #theme-area {
+    background: #2b2c42;
+  }
+  
+  #text-display {
+    color: #bb1e10;
+  }
+  
+  #input-field {
+    background: #2a292a;
+    color: #ffffff;
+  }
+  
+  #redo-button {
+    background: #2a292a;
+    color: #bb1e10;
+  }
+  
+  #footer {
+    color: #bb1e10;
+  }
+  
+  .highlight {
+    color: #ffffff;
+  }
+  
+  .correct {
+    color: #F6A950;
+  }
+  
+  .wrong {
+    color: #bb1e10;
+  }
+  
