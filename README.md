@@ -26,7 +26,7 @@ available themes:
 - `handarbeit` inspired by [Cherry Handarbeit](https://pinchocodia.tistory.com/17)
 - `hyperfuse` inspired by GMK HyperFuse origins by BunnyLake
 - `mizu` inspired by GMK Mizu by u/Rensuya
-- `moderndolch` inspired by GMK Modern Dolch by [Janglad](https://clavier.xyz
+- `moderndolch` inspired by GMK Modern Dolch by [Janglad](https://clavier.xyz)
 - `monokai` inspired by Monokai for TextMate by Wimer Hazenberg
 - `mrsleeves` inspired by GMK Mr. Sleeves by [Taeha Types](https://www.taehatypes.com/)
 - `nord` inspired by [Nord Theme](https://nordtheme.com)
