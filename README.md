@@ -46,6 +46,8 @@ available themes:
 - `godspeed` inspired by SA Godspeed by Mito
 - `leviathan` inspired by SA Leviathan by OneCreativeMind
 - `kobayashi` inspired by SA Kobayashi by Madēo
+- `tomorrow` inspired by Tomorrow theme by [Chris Kempson](https://github.com/chriskempson/tomorrow-theme)
+- `tomorrow night` inspired by Tomorrow theme by [Chris Kempson](https://github.com/chriskempson/tomorrow-theme)
 
 ## Redo
 
