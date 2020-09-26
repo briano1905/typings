@@ -1,0 +1,59 @@
+/*
+Inspired by Tomorrow theme by Chris Kempson
+https://github.com/chriskempson/tomorrow-theme
+*/
+
+body {
+  background: #1d1f21;
+}
+
+#header {
+  color: #de935f;
+}
+
+#left-wing {
+  color: #f0c674;
+}
+
+#right-wing {
+  color: #f0c674;
+}
+
+#typing-area, #theme-area {
+  background: #282a2e;
+}
+
+#text-display {
+  color: #c5c8c6;
+}
+
+#input-field {
+  background: #373b41;
+  color: #c5c8c6;
+}
+
+#input-field.wrong {
+  background: #cc6666;
+  color: #26292c;
+}
+
+#redo-button {
+  background: #81a2be;
+  color: #26292c;
+}
+
+#footer {
+  color: #de935f;
+}
+
+.highlight {
+  color: #b294bb;
+}
+
+.correct {
+  color: #b5bd68;
+}
+
+.wrong {
+  color: #cc6666;
+}

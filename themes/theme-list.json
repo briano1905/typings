@@ -1,147 +1,155 @@
 {
-    "8008":{
-        "background":"#3c4756",
-        "color":"#f44c7f"
+    "8008": {
+        "background": "#3c4756",
+        "color": "#f44c7f"
     },
-    "9009":{
-        "background":"#b6b09a",
-        "color":"#2e2f33"
+    "9009": {
+        "background": "#b6b09a",
+        "color": "#2e2f33"
     },
-    "aurora":{
-        "background":"linear-gradient(-20deg, #e73c7e, #23a6d5, #23d5ab)",
-        "color":"#1a1a1a"
+    "aurora": {
+        "background": "linear-gradient(-20deg, #e73c7e, #23a6d5, #23d5ab)",
+        "color": "#1a1a1a"
     },
-    "burgundy":{
-        "background":"#1a1a1a",
-        "color":"#691f28"
+    "burgundy": {
+        "background": "#1a1a1a",
+        "color": "#691f28"
     },
-    "carbon":{
-        "background":"#575d5e",
-        "color":"#ed6b21"
+    "carbon": {
+        "background": "#575d5e",
+        "color": "#ed6b21"
     },
-    "dark":{
-        "background":"#1a1a1a",
-        "color":"#fafafa"
+    "dark": {
+        "background": "#1a1a1a",
+        "color": "#fafafa"
     },
-    "denim":{
-        "background":"#454f63",
-        "color":"#b8835f"
+    "denim": {
+        "background": "#454f63",
+        "color": "#b8835f"
     },
-    "dots":{
-        "background":"#191b25",
-        "color":"#ff9552",
-        "customHTML":"<span style='color:#fe494e'>d</span><span style='color:#36c1f6'>o</span><span style='color:#32cb8b'>t</span><span style='color:#ffd751'>s</span>"
+    "dots": {
+        "background": "#191b25",
+        "color": "#ff9552",
+        "customHTML": "<span style='color:#fe494e'>d</span><span style='color:#36c1f6'>o</span><span style='color:#32cb8b'>t</span><span style='color:#ffd751'>s</span>"
     },
-    "dracula":{
-        "background":"#282a36",
-        "color":"#bd93f9"
+    "dracula": {
+        "background": "#282a36",
+        "color": "#bd93f9"
     },
-    "eclipse":{
-        "background":"#314f6f",
-        "color":"#abc6dc"
+    "eclipse": {
+        "background": "#314f6f",
+        "color": "#abc6dc"
     },
-    "gruvbox":{
-        "background":"#282828",
-        "color":"#d79921"
+    "gruvbox": {
+        "background": "#282828",
+        "color": "#d79921"
     },
-    "handarbeit":{
-        "background":"#1a1a1a",
-        "color":"#bb2e17"
+    "handarbeit": {
+        "background": "#1a1a1a",
+        "color": "#bb2e17"
     },
-    "hyperfuse":{
-        "background":"#555761",
-        "color":"#6c3c9d"
+    "hyperfuse": {
+        "background": "#555761",
+        "color": "#6c3c9d"
     },
-    "light":{
-        "background":"#fafafa",
-        "color":"#1a1a1a"
+    "light": {
+        "background": "#fafafa",
+        "color": "#1a1a1a"
     },
-    "mizu":{
-        "background":"#253746",
-        "color":"#fafafa"
+    "mizu": {
+        "background": "#253746",
+        "color": "#fafafa"
     },
-    "moderndolch":{
-        "background":"#494b4f",
-        "color":"#81d8d0"
+    "moderndolch": {
+        "background": "#494b4f",
+        "color": "#81d8d0"
     },
-    "monokai":{
-        "background":"#171812",
-        "color":"#A6E22E"
+    "monokai": {
+        "background": "#171812",
+        "color": "#A6E22E"
     },
-    "mrsleeves":{
-        "background":"#d4d4d4",
-        "color":"#f5c7b8"
+    "mrsleeves": {
+        "background": "#d4d4d4",
+        "color": "#f5c7b8"
     },
-    "nautilus":{
-        "background":"#102c4e",
-        "color":"#eac004"
+    "nautilus": {
+        "background": "#102c4e",
+        "color": "#eac004"
     },
-    "nord":{
-        "background":"#242933",
-        "color":"#eceff4"
+    "nord": {
+        "background": "#242933",
+        "color": "#eceff4"
     },
-    "oblivion":{
-        "background":"#464746",
-        "color":"#ffac00"
+    "oblivion": {
+        "background": "#464746",
+        "color": "#ffac00"
     },
-    "olivia":{
-        "background":"#363434",
-        "color":"#e8c4b8"
+    "olivia": {
+        "background": "#363434",
+        "color": "#e8c4b8"
     },
-    "phantom":{
-        "background":"#211333",
-        "color":"#eed484"
+    "phantom": {
+        "background": "#211333",
+        "color": "#eed484"
     },
-    "rama":{
-        "background":"#eaeaea",
-        "color":"#ffc700"
+    "rama": {
+        "background": "#eaeaea",
+        "color": "#ffc700"
     },
-    "sakura":{
-        "background":"linear-gradient(-20deg, rgba(255,186,200,1) 0%, rgba(255,152,172,1) 100%)",
-        "color":"#efefef"
+    "sakura": {
+        "background": "linear-gradient(-20deg, rgba(255,186,200,1) 0%, rgba(255,152,172,1) 100%)",
+        "color": "#efefef"
     },
-    "serika":{
-        "background":"#ffcd00",
-        "color":"#302f2b"
+    "serika": {
+        "background": "#ffcd00",
+        "color": "#302f2b"
     },
-    "solarizeddark":{
-        "background":"#1a1a1a",
-        "color":"#002b36"
+    "solarizeddark": {
+        "background": "#1a1a1a",
+        "color": "#002b36"
     },
-    "solarizedlight":{
-        "background":"#e3ddcc",
-        "color":"#1a1a1a"
+    "solarizedlight": {
+        "background": "#e3ddcc",
+        "color": "#1a1a1a"
     },
-    "vilebloom":{
-        "background":"linear-gradient(135deg, #34657f 50%, #cd6c8f 50%)",
-        "color":"#ffffff"
+    "vilebloom": {
+        "background": "linear-gradient(135deg, #34657f 50%, #cd6c8f 50%)",
+        "color": "#ffffff"
     },
-    "yuri":{
-        "background":"#293649",
-        "color":"#ea4221"
+    "yuri": {
+        "background": "#293649",
+        "color": "#ea4221"
     },
-    "honeywell":{
-        "background":"#4d5151",
-        "color":"#cc2c24"
+    "honeywell": {
+        "background": "#4d5151",
+        "color": "#cc2c24"
     },
-    "spacecadet":{
-        "background":"#136EA3",
-        "color":"#dfeaef"
+    "spacecadet": {
+        "background": "#136EA3",
+        "color": "#dfeaef"
     },
-    "1976":{
-        "background":"linear-gradient(135deg, #5dcfb8 20%, #d73811 20%, #d73811 40%, #e16b06 40%, #e16b06 60%, #e1ba45 60%, #e1ba45 80%, #5b3217 80%)",
-        "color":"#5DCFB8"
+    "1976": {
+        "background": "linear-gradient(135deg, #5dcfb8 20%, #d73811 20%, #d73811 40%, #e16b06 40%, #e16b06 60%, #e1ba45 60%, #e1ba45 80%, #5b3217 80%)",
+        "color": "#5DCFB8"
     },
-    "godspeed":{
-        "background":"#faee69",
-        "color":"#32321d"
+    "godspeed": {
+        "background": "#faee69",
+        "color": "#32321d"
     },
-    "leviathan":{
-        "background":"#182031",
-        "color":"#BAEE75"
+    "leviathan": {
+        "background": "#182031",
+        "color": "#BAEE75"
     },
-    "kobayashi":{
-        "background":"#EBCD01",
-        "color":"#F00D00"
+    "kobayashi": {
+        "background": "#EBCD01",
+        "color": "#F00D00"
+    },
+    "tomorrow": {
+        "background": "#EFEFEF",
+        "color": "#4D4D4C"
+    },
+    "tomorrownight": {
+        "background": "#1D1F21",
+        "color": "#C5C8C6"
     }
 }
