@@ -1,6 +1,9 @@
 // Get document element
 const textDisplay = document.querySelector('#text-display');
 const inputField = document.querySelector('#input-field');
+const canvas = document.createElement('canvas');
+const favicon = document.querySelector('#favicon');
+let ctx = canvas.getContext("2d");
 
 // Initialize typing mode variables
 let typingMode = 'wordcount';
@@ -16,6 +19,15 @@ let startDate = 0;
 let timer;
 let timerActive = false;
 let punctuation = false;
+
+// Initialize favicon canvas
+canvas.width = 64;
+canvas.height = 64;
+canvas.style.position = "absolute";
+canvas.style.visibility = "hidden";
+ctx.font = "Bold 56px Roboto Mono";
+ctx.textAlign = "center";
+ctx.textBaseline = "middle"
 
 // Get cookies
 getCookie('theme') === '' ? setTheme('light') : setTheme(getCookie('theme'));
@@ -260,7 +272,7 @@ document.addEventListener('keydown', e => {
       setPunctuation(inputField.value);
     }
   } else if (!document.querySelector('#theme-center').classList.contains('hidden')) {
-    if (e.key === 'Escape'){
+    if (e.key === 'Escape') {
       hideThemeCenter();
       inputField.focus();
     }
@@ -289,6 +301,18 @@ function setTheme(_theme) {
     .catch(err => console.error(err));
 }
 
+function setFavicon() {
+  ctx.fillStyle = window.getComputedStyle(document.querySelector("#typing-area"), null).getPropertyValue("background-color");
+  ctx.beginPath();
+  ctx.arc(32, 32, 32, 0, 2 * Math.PI);
+  ctx.fill();
+  ctx.fillStyle = window.getComputedStyle(document.querySelector("#text-display"), null).getPropertyValue("color");
+  ctx.fillText("t", 32, 32);
+  ctx.fillRect(32, 32, 1, 1);
+
+  favicon.href = canvas.toDataURL();
+}
+
 function setLanguage(_lang) {
   const lang = _lang.toLowerCase();
   fetch('texts/random.json')
@@ -299,11 +323,11 @@ function setLanguage(_lang) {
         setCookie('language', lang, 90);
 
         if (lang === "arabic") {
-            textDisplay.style.direction = "rtl"
-            inputField.style.direction = "rtl"
+          textDisplay.style.direction = "rtl"
+          inputField.style.direction = "rtl"
         } else {
-            textDisplay.style.direction = "ltr"
-            inputField.style.direction = "ltr"
+          textDisplay.style.direction = "ltr"
+          inputField.style.direction = "ltr"
         }
 
         setText();
@@ -392,8 +416,8 @@ function getCookie(cname) {
 }
 
 showAllThemes();
-function showAllThemes(){
-    fetch(`themes/theme-list.json`)
+function showAllThemes() {
+  fetch(`themes/theme-list.json`)
     .then(response => {
       if (response.status === 200) {
         response
@@ -402,7 +426,7 @@ function showAllThemes(){
             let themes = JSON.parse(body);
             let keys = Object.keys(themes);
             let i;
-            for(i = 0;i < keys.length; i ++){
+            for (i = 0; i < keys.length; i++) {
 
               let theme = document.createElement('div');
               theme.setAttribute('class', 'theme-button');
@@ -419,10 +443,10 @@ function showAllThemes(){
                 }
               })
 
-              if(themes[keys[i]]['customHTML'] != undefined){
+              if (themes[keys[i]]['customHTML'] != undefined) {
                 theme.style.background = themes[keys[i]]['background'];
                 theme.innerHTML = themes[keys[i]]['customHTML']
-              }else{
+              } else {
                 theme.textContent = keys[i];
                 theme.style.background = themes[keys[i]]['background'];
                 theme.style.color = themes[keys[i]]['color'];
@@ -456,4 +480,8 @@ function hideThemeCenter() {
   document.getElementById('command-center').classList.remove('hidden');
 }
 
+document.querySelector('body').addEventListener('transitionend', function () {
+  setFavicon();
+});
 
+setFavicon();
