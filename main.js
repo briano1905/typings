@@ -49,7 +49,7 @@ function setText(e) {
       const helpText = "Paste your custom text and click redo!"
       wordList = (inputField.value === 'custom' || inputField.value === '') ? helpText.split(" "): betterSplit(inputField.value);
       punctuation = false;
-      textDisplay.style.maxHeight = '3.2rem';
+      textDisplay.style.height = '3.2rem';
       textDisplay.innerHTML = '';
       inputField.value='';
       break;
