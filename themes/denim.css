@@ -24,11 +24,11 @@ body {
   color: #e3d5b9;
 }
 
-#typing-area, #theme-area {
+.area {
   background: #687796;
 }
 
-#text-display {
+#text-display, #language-area {
   color: #e3d5b9;
 }
 

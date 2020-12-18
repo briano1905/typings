@@ -23,11 +23,11 @@ body {
   color: #eac004;
 }
 
-#typing-area, #theme-area {
+.area {
   background: #155d94;
 }
 
-#text-display {
+#text-display, #language-area {
   color: #1ae7ea;
 }
 

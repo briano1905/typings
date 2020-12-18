@@ -28,12 +28,12 @@ body {
   color: #fafafa;
 }
 
-#typing-area, #theme-area {
+.area {
   background: rgba(250, 250, 250, 0.6);
   backdrop-filter: blur(1rem);
 }
 
-#text-display {
+#text-display, #language-area {
   color: #1a1a1a;
 }
 

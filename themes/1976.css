@@ -32,8 +32,7 @@ body {
   color: #ffffff;
 }
 
-#typing-area,
-#theme-area {
+.area {
   background: #5b3217;
 }
 
@@ -52,7 +51,7 @@ body {
   color: #ffffff;
 }
 
-#text-display {
+#text-display, #language-area {
   color: #5dcfb8;
 }
 
