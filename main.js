@@ -17,6 +17,9 @@ let timer;
 let timerActive = false;
 let punctuation = false;
 
+// Initialize global constants
+const PUNCREGEX = /!:;'",.\/?!@#$%^&*()_}{\[\]\-s\+\=/;
+
 // Get cookies
 getCookie('theme') === '' ? setTheme('light') : setTheme(getCookie('theme'));
 getCookie('language') === '' ? setLanguage('english') : setLanguage(getCookie('language'));
@@ -36,14 +39,23 @@ function setText(e) {
   }
   currentWord = 0;
   correctKeys = 0;
-  inputField.value = '';
   timerActive = false;
   clearTimeout(timer);
   textDisplay.style.display = 'block';
   inputField.className = '';
 
   switch (typingMode) {
+    case 'custom':
+      const helpText = "Paste your custom text and click redo!"
+      wordList = (inputField.value === 'custom' || inputField.value === '') ? helpText.split(" "): betterSplit(inputField.value);
+      punctuation = false;
+      textDisplay.style.maxHeight = '3.2rem';
+      textDisplay.innerHTML = '';
+      inputField.value='';
+      break;
+      
     case 'wordcount':
+      inputField.value = '';
       textDisplay.style.height = 'auto';
       textDisplay.innerHTML = '';
       if (!keepWordList) {
@@ -58,6 +70,7 @@ function setText(e) {
       break;
 
     case 'time':
+      inputField.value = '';
       textDisplay.style.height = '3.2rem';
       document.querySelector(`#tc-${timeCount}`).innerHTML = timeCount;
       textDisplay.innerHTML = '';
@@ -69,7 +82,6 @@ function setText(e) {
         }
       }
   }
-
   if (punctuation) addPunctuations();
   showText();
   inputField.focus();
@@ -120,13 +132,15 @@ function showText() {
 inputField.addEventListener('keydown', e => {
   // Add wrong class to input field
   switch (typingMode) {
+    case 'custom':
     case 'wordcount':
       if (currentWord < wordList.length) inputFieldClass();
     case 'time':
       if (timerActive) inputFieldClass();
   }
   function inputFieldClass() {
-    if (e.key >= 'a' && e.key <= 'z' || (e.key === `'` || e.key === ',' || e.key === '.' || e.key === ';')) {
+    var puncRegex = new RegExp('[' + PUNCREGEX.source + ']');
+    if (e.key >= 'a' && e.key <= 'z' || puncRegex.test(e.key)) {
       let inputWordSlice = inputField.value + e.key;
       let currentWordSlice = wordList[currentWord].slice(0, inputWordSlice.length);
       inputField.className = inputWordSlice === currentWordSlice ? '' : 'wrong';
@@ -142,6 +156,7 @@ inputField.addEventListener('keydown', e => {
   // If it is the first character entered
   if (currentWord === 0 && inputField.value === '') {
     switch (typingMode) {
+      case 'custom':
       case 'wordcount':
         startDate = Date.now();
         break;
@@ -175,7 +190,7 @@ inputField.addEventListener('keydown', e => {
 
     if (inputField.value !== '') {
       // Scroll down text when reach new line
-      if (typingMode === 'time') {
+      if (typingMode === 'time' || typingMode === 'custom') {
         const currentWordPosition = textDisplay.childNodes[currentWord].getBoundingClientRect();
         const nextWordPosition = textDisplay.childNodes[currentWord + 1].getBoundingClientRect();
         if (currentWordPosition.top < nextWordPosition.top) {
@@ -216,6 +231,7 @@ inputField.addEventListener('keydown', e => {
 function showResult() {
   let words, minute, acc;
   switch (typingMode) {
+    case 'custom':
     case 'wordcount':
       words = correctKeys / 5;
       minute = (Date.now() - startDate) / 1000 / 60;
@@ -322,6 +338,7 @@ function setTypingMode(_mode) {
       setCookie('typingMode', mode, 90);
       document.querySelector('#word-count').style.display = 'inline';
       document.querySelector('#time-count').style.display = 'none';
+      document.querySelector('#custom').style.display = 'none';
       setText();
       break;
     case 'time':
@@ -329,6 +346,15 @@ function setTypingMode(_mode) {
       setCookie('typingMode', mode, 90);
       document.querySelector('#word-count').style.display = 'none';
       document.querySelector('#time-count').style.display = 'inline';
+      document.querySelector('#custom').style.display = 'none';
+      setText();
+      break;
+    case 'custom':
+      typingMode = mode;
+      setCookie('typingMode', mode, 90);
+      document.querySelector('#word-count').style.display = 'none';
+      document.querySelector('#time-count').style.display = 'none';
+      document.querySelector('#custom').style.display = 'inline';
       setText();
       break;
     default:
@@ -456,4 +482,19 @@ function hideThemeCenter() {
   document.getElementById('command-center').classList.remove('hidden');
 }
 
+function betterSplit(str) {
+  // Regex tester for:
+    // Normal a-z, A-Z
+    // punjabi,
+    // CJK,
+    // Russian
+  // TODO: Add support for remaining European languages
+  // Cleaner way to do this???
+  const regex1 = "[\u0A00-\u0A7F\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff\uff66-\uff9f\u3131-\uD79D]+|[\u0400-\u04FFa-zA-Z0-9";
+  const regex2 = "]+\'*[a-z]*";	
+  
 
+  const regex = new RegExp(regex1 + PUNCREGEX.source + regex2, "g");
+  let array = [...str.match(regex)];
+  return array;
+}
