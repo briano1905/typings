@@ -27,7 +27,7 @@ body {
   color: #ffffff;
 }
 
-#typing-area, #theme-area {
+.center-area {
   background: #f6bd9d;
 }
 
@@ -45,7 +45,7 @@ body {
   color: #ffffff;
 }
 
-#text-display {
+#text-display, #language-area {
   color: #cd6c8f;
 }
 

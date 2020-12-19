@@ -14,11 +14,11 @@ body {
   color: #bd93f9;
 }
 
-#typing-area, #theme-area {
+.center-area {
   background: #44475a;
 }
 
-#text-display {
+#text-display, #language-area {
   color: #f8f8f2;
 }
 

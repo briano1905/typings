@@ -50,7 +50,7 @@
         </div>
         <div id="right-wing">WPM: XX / ACC: XX</div>
       </div>
-      <div id="typing-area">
+      <div id="typing-area" class="center-area">
         <div id="text-display"></div>
         <div class="bar">
           <input id="input-field" type="text" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off" tabindex="1"/>
@@ -58,13 +58,18 @@
         </div>
       </div>
     </div>
+    <div id="language-center" class="hidden">
+      <div id="left-wing" onClick="hideLanguageCenter();">< back</div>
+      <div id="language-area" class="center-area"></div>
+    </div>
     <div id="theme-center" class="hidden">
       <div id="left-wing" onClick="hideThemeCenter();">< back</div>
-      <div id="theme-area"></div>
+      <div id="theme-area" class="center-area"></div>
     </div>
     <div id="footer">
       <a href="https://github.com/briano1905/typings#typings" target="_blank" tabindex="3">user guide</a>/
-      <div id="show-themes"class="button" onClick="showThemeCenter();" tabindex="4">themes</div>
+      <div id="show-languages"class="button" onClick="showLanguageCenter();" tabindex="4">language</div>/
+      <div id="show-themes"class="button" onClick="showThemeCenter();" tabindex="5">themes</div>
     </div>
     <script src="main.js"></script>
   </body>

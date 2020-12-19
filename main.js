@@ -259,6 +259,11 @@ document.addEventListener('keydown', e => {
     if (e.key === 'p') {
       setPunctuation(inputField.value);
     }
+  } else if (!document.querySelector('#language-center').classList.contains('hidden')) {
+    if (e.key === 'Escape'){
+      hideLanguageCenter();
+      inputField.focus();
+    }
   } else if (!document.querySelector('#theme-center').classList.contains('hidden')) {
     if (e.key === 'Escape'){
       hideThemeCenter();
@@ -307,6 +312,7 @@ function setLanguage(_lang) {
         }
 
         setText();
+        hideLanguageCenter();
       } else {
         console.error(`language ${lang} is undefine`);
       }
@@ -391,6 +397,29 @@ function getCookie(cname) {
   return '';
 }
 
+showAllLanguages();
+function showAllLanguages() {
+  fetch(`texts/random.json`)
+    .then(response => {
+      if (response.status === 200) {
+        response
+          .text()
+          .then(body => {
+            let languages = JSON.parse(body);
+            let keys = Object.keys(languages);
+            let i;
+            for (i = 0; i < keys.length; i++) {
+              let language = document.createElement('div');
+              language.setAttribute('class', 'language-button')
+              language.setAttribute('onClick', `setLanguage('${keys[i]}')`)
+              language.textContent = keys[i];
+              document.getElementById('language-area').appendChild(language);
+            }
+          })
+      }
+    })
+}
+
 showAllThemes();
 function showAllThemes(){
     fetch(`themes/theme-list.json`)
@@ -446,7 +475,19 @@ document.getElementById('show-themes').addEventListener('keydown', (e) => {
   }
 });
 
+function showLanguageCenter() {
+  hideThemeCenter();
+  document.getElementById('language-center').classList.remove('hidden');
+  document.getElementById('command-center').classList.add('hidden');
+}
+
+function hideLanguageCenter() {
+  document.getElementById('language-center').classList.add('hidden');
+  document.getElementById('command-center').classList.remove('hidden');
+}
+
 function showThemeCenter() {
+  hideLanguageCenter();
   document.getElementById('theme-center').classList.remove('hidden');
   document.getElementById('command-center').classList.add('hidden');
 }
