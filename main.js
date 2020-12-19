@@ -259,6 +259,11 @@ document.addEventListener('keydown', e => {
     if (e.key === 'p') {
       setPunctuation(inputField.value);
     }
+  } else if (!document.querySelector('#language-center').classList.contains('hidden')) {
+    if (e.key === 'Escape'){
+      hideLanguageCenter();
+      inputField.focus();
+    }
   } else if (!document.querySelector('#theme-center').classList.contains('hidden')) {
     if (e.key === 'Escape'){
       hideThemeCenter();
