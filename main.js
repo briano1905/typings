@@ -195,7 +195,7 @@ inputField.addEventListener('keydown', e => {
 
     if (inputField.value !== '') {
       // Scroll down text when reach new line
-      if (typingMode === 'time' || typingMode === 'custom') {
+      if (typingMode === 'time') {
         const currentWordPosition = textDisplay.childNodes[currentWord].getBoundingClientRect();
         const nextWordPosition = textDisplay.childNodes[currentWord + 1].getBoundingClientRect();
         if (currentWordPosition.top < nextWordPosition.top) {
