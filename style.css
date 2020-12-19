@@ -36,7 +36,7 @@ body {
   transform: translateY(-2vh);
 }
 
-.area {
+.center-area {
   margin-top: 1rem;
   padding: 1.4rem 1rem;
   border-radius: 0.4rem;
@@ -123,7 +123,7 @@ body {
   display: none !important;
 }
 
-body, #header, #left-wing, #right-wing, .area, #theme-center,
+body, #header, #left-wing, #right-wing, .center-area, #theme-center,
 #text-display, #redo-button, #footer, #highlight {
   transition: all .4s ease-in-out 0s;
 
