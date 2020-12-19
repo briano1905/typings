@@ -471,6 +471,7 @@ document.getElementById('show-themes').addEventListener('keydown', (e) => {
 });
 
 function showLanguageCenter() {
+  hideThemeCenter();
   document.getElementById('language-center').classList.remove('hidden');
   document.getElementById('command-center').classList.add('hidden');
 }
@@ -481,6 +482,7 @@ function hideLanguageCenter() {
 }
 
 function showThemeCenter() {
+  hideLanguageCenter();
   document.getElementById('theme-center').classList.remove('hidden');
   document.getElementById('command-center').classList.add('hidden');
 }
