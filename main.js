@@ -145,12 +145,12 @@ inputField.addEventListener('keydown', e => {
   }
   function inputFieldClass() {
     var puncRegex = new RegExp('[' + PUNCREGEX.source + ']');
-    if (e.key >= 'a' && e.key <= 'z' || puncRegex.test(e.key)) {
-      let inputWordSlice = inputField.value + e.key;
+    if (e.key === 'Backspace') {
+      let inputWordSlice = e.ctrlKey ? '' : inputField.value.slice(0, inputField.value.length - 1);
       let currentWordSlice = wordList[currentWord].slice(0, inputWordSlice.length);
       inputField.className = inputWordSlice === currentWordSlice ? '' : 'wrong';
-    } else if (e.key === 'Backspace') {
-      let inputWordSlice = e.ctrlKey ? '' : inputField.value.slice(0, inputField.value.length - 1);
+    } else if (e.key >= 'a' && e.key <= 'z' || puncRegex.test(e.key)) {
+      let inputWordSlice = inputField.value + e.key;
       let currentWordSlice = wordList[currentWord].slice(0, inputWordSlice.length);
       inputField.className = inputWordSlice === currentWordSlice ? '' : 'wrong';
     } else if (e.key === ' ') {
