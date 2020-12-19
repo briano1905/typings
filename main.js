@@ -54,7 +54,7 @@ function setText(e) {
       }
       wordList = betterSplit(customText);
       punctuation = false;
-      textDisplay.style.height = '3.2rem';
+      textDisplay.style.height = 'auto';
       textDisplay.innerHTML = '';
       inputField.value='';
       break;
