@@ -70,7 +70,7 @@ function setText(e) {
       }
   }
 
-  if (punctuation) addPunctuations();
+  if (punctuation && !keepWordList) addPunctuations();
   showText();
   inputField.focus();
 }
