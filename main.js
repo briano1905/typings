@@ -16,6 +16,7 @@ let startDate = 0;
 let timer;
 let timerActive = false;
 let punctuation = false;
+let retryWord = false;
 
 // Get cookies
 getCookie('theme') === '' ? setTheme('light') : setTheme(getCookie('theme'));
@@ -24,11 +25,12 @@ getCookie('wordCount') === '' ? setWordCount(50) : setWordCount(getCookie('wordC
 getCookie('timeCount') === '' ? setTimeCount(60) : setTimeCount(getCookie('timeCount'));
 getCookie('typingMode') === '' ? setTypingMode('wordcount') : setTypingMode(getCookie('typingMode'));
 getCookie('punctuation') === '' ? setPunctuation('false') : setPunctuation(getCookie('punctuation'));
+getCookie('retryWord') === '' ? setRetryWord('false') : setRetryWord(getCookie('retryWord'));
 
 // Find a list of words and display it to textDisplay
 function setText(e) {
   e = e || window.event;
-  var keepWordList = e && e.shiftKey;
+  let keepWordList = e && e.shiftKey;
 
   // Reset
   if (!keepWordList) {
@@ -63,7 +65,7 @@ function setText(e) {
       textDisplay.innerHTML = '';
       if (!keepWordList) {
         wordList = [];
-        for (i = 0; i < 500; i++) {
+        for (let i = 0; i < 500; i++) {
           let n = Math.floor(Math.random() * randomWords.length);
           wordList.push(randomWords[n]);
         }
@@ -122,9 +124,11 @@ inputField.addEventListener('keydown', e => {
   switch (typingMode) {
     case 'wordcount':
       if (currentWord < wordList.length) inputFieldClass();
+      break;
     case 'time':
       if (timerActive) inputFieldClass();
   }
+
   function inputFieldClass() {
     if (e.key >= 'a' && e.key <= 'z' || (e.key === `'` || e.key === ',' || e.key === '.' || e.key === ';')) {
       let inputWordSlice = inputField.value + e.key;
@@ -142,11 +146,11 @@ inputField.addEventListener('keydown', e => {
   // If it is the first character entered
   if (currentWord === 0 && inputField.value === '') {
     switch (typingMode) {
-      case 'wordcount':
+      case 'wordcount': {
         startDate = Date.now();
         break;
-
-      case 'time':
+      }
+      case 'time': {
         if (!timerActive) {
           startTimer(timeCount);
           timerActive = true;
@@ -166,6 +170,7 @@ inputField.addEventListener('keydown', e => {
             showResult();
           }
         }
+      }
     }
   }
 
@@ -179,31 +184,37 @@ inputField.addEventListener('keydown', e => {
         const currentWordPosition = textDisplay.childNodes[currentWord].getBoundingClientRect();
         const nextWordPosition = textDisplay.childNodes[currentWord + 1].getBoundingClientRect();
         if (currentWordPosition.top < nextWordPosition.top) {
-          for (i = 0; i < currentWord + 1; i++) textDisplay.childNodes[i].style.display = 'none';
+          for (let i = 0; i < currentWord + 1; i++) textDisplay.childNodes[i].style.display = 'none';
         }
       }
 
       // If it is not the last word increment currentWord,
       if (currentWord < wordList.length - 1) {
         if (inputField.value === wordList[currentWord]) {
+          textDisplay.childNodes[currentWord].classList.remove('wrong');
           textDisplay.childNodes[currentWord].classList.add('correct');
           correctKeys += wordList[currentWord].length + 1;
         } else {
           textDisplay.childNodes[currentWord].classList.add('wrong');
         }
-        textDisplay.childNodes[currentWord + 1].classList.add('highlight');
       } else if (currentWord === wordList.length - 1) {
         textDisplay.childNodes[currentWord].classList.add('wrong');
-        showResult();
+        if(!retryWord) {
+          showResult();
+        }
       }
 
+      if (!retryWord || (inputField.value === wordList[currentWord] && currentWord !== wordList.length - 1)) {
+        currentWord++;
+        textDisplay.childNodes[currentWord].classList.add('highlight');
+      }
       inputField.value = '';
-      currentWord++;
     }
 
     // Else if it is the last word and input word is correct show the result
   } else if (currentWord === wordList.length - 1) {
     if (inputField.value + e.key === wordList[currentWord]) {
+      textDisplay.childNodes[currentWord].classList.remove('wrong');
       textDisplay.childNodes[currentWord].classList.add('correct');
       correctKeys += wordList[currentWord].length;
       currentWord++;
@@ -228,7 +239,7 @@ function showResult() {
       words = correctKeys / 5;
       minute = timeCount / 60;
       let sumKeys = -1;
-      for (i = 0; i < currentWord; i++) {
+      for (let i = 0; i < currentWord; i++) {
         sumKeys += wordList[i].length + 1;
       }
       acc = acc = Math.min(Math.floor((correctKeys / sumKeys) * 100), 100);
@@ -245,6 +256,7 @@ document.addEventListener('keydown', e => {
     if (e.key === 't') {
       setTheme(inputField.value);
     }
+
     // [mod + l] => Change the language
     if (e.key === 'l') {
       setLanguage(inputField.value);
@@ -259,8 +271,14 @@ document.addEventListener('keydown', e => {
     if (e.key === 'p') {
       setPunctuation(inputField.value);
     }
+
+    // [mod + r] => Change punctuation active
+    if (e.key === 'r') {
+      setRetryWord(inputField.value);
+    }
+
   } else if (!document.querySelector('#theme-center').classList.contains('hidden')) {
-    if (e.key === 'Escape'){
+    if (e.key === 'Escape') {
       hideThemeCenter();
       inputField.focus();
     }
@@ -299,19 +317,37 @@ function setLanguage(_lang) {
         setCookie('language', lang, 90);
 
         if (lang === "arabic") {
-            textDisplay.style.direction = "rtl"
-            inputField.style.direction = "rtl"
+          textDisplay.style.direction = "rtl"
+          inputField.style.direction = "rtl"
         } else {
-            textDisplay.style.direction = "ltr"
-            inputField.style.direction = "ltr"
+          textDisplay.style.direction = "ltr"
+          inputField.style.direction = "ltr"
         }
 
         setText();
       } else {
-        console.error(`language ${lang} is undefine`);
+        console.error(`language ${lang} is undefined`);
       }
     })
     .catch(err => console.error(err));
+}
+
+function setRetryWord(_mode) {
+  const mode = _mode.toLowerCase();
+  switch (mode) {
+    case 'true':
+      retryWord = true;
+      setCookie('retryWord', true, 89);
+      setText();
+      break;
+    case 'false':
+      retryWord = false;
+      setCookie('retryWord', false, 90);
+      setText();
+      break;
+    default:
+      console.error(`mode ${mode} is undefined`);
+  }
 }
 
 function setTypingMode(_mode) {
@@ -392,8 +428,9 @@ function getCookie(cname) {
 }
 
 showAllThemes();
-function showAllThemes(){
-    fetch(`themes/theme-list.json`)
+
+function showAllThemes() {
+  fetch(`themes/theme-list.json`)
     .then(response => {
       if (response.status === 200) {
         response
@@ -402,7 +439,7 @@ function showAllThemes(){
             let themes = JSON.parse(body);
             let keys = Object.keys(themes);
             let i;
-            for(i = 0;i < keys.length; i ++){
+            for (i = 0; i < keys.length; i++) {
 
               let theme = document.createElement('div');
               theme.setAttribute('class', 'theme-button');
@@ -419,10 +456,10 @@ function showAllThemes(){
                 }
               })
 
-              if(themes[keys[i]]['customHTML'] != undefined){
+              if (themes[keys[i]]['customHTML'] != undefined) {
                 theme.style.background = themes[keys[i]]['background'];
                 theme.innerHTML = themes[keys[i]]['customHTML']
-              }else{
+              } else {
                 theme.textContent = keys[i];
                 theme.style.background = themes[keys[i]]['background'];
                 theme.style.color = themes[keys[i]]['color'];
