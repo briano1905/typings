@@ -1,12 +1,25 @@
 # typings
 
-<a href="https://typings.gg" target="_blank">typings.gg</a> is a sleek and modern typing test website. it supports many custom themes
+[![typings.gg](img/typings-screen-shot.png)](https://typings.gg)
 
-![typings.gg](img/typings-screen-shot.png)
+# About
 
-## theme
+[typings.gg](https://typings.gg) is a sleek and modern typing test website featuring many test modes and custom themes.
 
-type the theme code for example `dracula` in the text box then hit [ windows: <kbd>alt</kbd> + <kbd>t</kbd> ], [ mac: <kbd>cmd</kbd> + <kbd>ctrl</kbd> + <kbd>t</kbd> ], [ linux: <kbd>super</kbd> + <kbd>ctrl</kbd> + <kbd>t</kbd> or <kbd>alt</kbd> + <kbd>t</kbd> ]
+# Features
+- minimalistic design with no ads
+- look at what you are typing
+- different test modes
+- support for several languages
+- themes
+- and much more
+
+# Bug Report or Feature Request
+If you encounter a bug, or have a feature request, [create an issue](https://github.com/briano1905/typings/issues).
+
+# themes
+
+type the theme code for example `dracula` in the text box then hit <kbd>alt</kbd> + <kbd>t</kbd> (windows),<kbd>cmd</kbd> + <kbd>ctrl</kbd> + <kbd>t</kbd> (mac), <kbd>super</kbd> + <kbd>ctrl</kbd> + <kbd>t</kbd> (linux) or <kbd>alt</kbd> + <kbd>t</kbd> (Linux)
 
 available themes:
 
@@ -47,22 +60,22 @@ available themes:
 - `leviathan` inspired by SA Leviathan by OneCreativeMind
 - `kobayashi` inspired by SA Kobayashi by Madēo
 
-## Redo
+# Redo
 
 - Hold `shift` while pressing Redo to Restart the typing test using the same word list.
 
-## Redo
+# Redo
 
  - Press `esc` to restart a typing test
 
-## language
+# language
 
-type the language code for example `german` in the text box then hit [ windows: <kbd>alt</kbd> + <kbd>l</kbd> ], [ mac: <kbd>cmd</kbd> + <kbd>ctrl</kbd> + <kbd>l</kbd> ], [ linux: <kbd>super</kbd> + <kbd>ctrl</kbd> + <kbd>l</kbd> or <kbd>alt</kbd> + <kbd>l</kbd> ]
+type the language code for example `german` in the text box then hit <kbd>alt</kbd> + <kbd>l</kbd> (windows), <kbd>cmd</kbd> + <kbd>ctrl</kbd> + <kbd>l</kbd> (mac),  <kbd>super</kbd> + <kbd>ctrl</kbd> + <kbd>l</kbd> or <kbd>alt</kbd> + <kbd>l</kbd> (linux)
 
 available languages:
 
 - `english`
-- `english1000`
+- `english 1k`
 - `italian`
 - `german`
 - `spanish`
@@ -75,29 +88,29 @@ available languages:
 - `french`
 - `portuguese`
 
-## typing mode
+# typing mode
 
-type the mode code for example `time` in the text box then hit [ windows: <kbd>alt</kbd> + <kbd>m</kbd> ], [ mac: <kbd>cmd</kbd> + <kbd>ctrl</kbd> + <kbd>m</kbd> ], [ linux: <kbd>super</kbd> + <kbd>ctrl</kbd> + <kbd>m</kbd> or <kbd>alt</kbd> + <kbd>m</kbd> ]
+type the mode code for example `time` in the text box then hit  <kbd>alt</kbd> + <kbd>m</kbd> (windows), <kbd>cmd</kbd> + <kbd>ctrl</kbd> + <kbd>m</kbd> (mac),  <kbd>super</kbd> + <kbd>ctrl</kbd> + <kbd>m</kbd> or <kbd>alt</kbd> + <kbd>m</kbd> (linux)
 
 available modes:
 
 - `wordcount`
 - `time`
 
-## punctuation
+# punctuation
 
-type `true` or `false` then hit [ windows: <kbd>alt</kbd> + <kbd>p</kbd> ], [ mac: <kbd>cmd</kbd> + <kbd>ctrl</kbd> + <kbd>p</kbd>], [ linux: <kbd>super</kbd> + <kbd>ctrl</kbd> + <kbd>p</kbd> or <kbd>alt</kbd> + <kbd>p</kbd> ] to activate/deactivate punctuations
+type `true` or `false` then hit <kbd>alt</kbd> + <kbd>p</kbd> (windows), <kbd>cmd</kbd> + <kbd>ctrl</kbd> + <kbd>p</kbd> (mac),  <kbd>super</kbd> + <kbd>ctrl</kbd> + <kbd>p</kbd> or <kbd>alt</kbd> + <kbd>p</kbd> (linux)  to activate/deactivate punctuations
 
-## theme menu
+# theme menu
 
 in this menu you can see all the available themes to choose from, along with a small preview. hit <kbd>escape</kbd> or click 'back' to exit
 
-## calculations
+# calculations
 
 wpm: total number of characters (including spaces) of words you got right divided by five then divided by the time starting from first character typed
 
 acc: total number of characters (including spaces) of words you got right divided by all character in the list of words
 
-## support
+# support
 
-- <a href="https://www.paypal.me/briano1905" target="_blank">PayPal</a>
+If you wish to support further development and feel extra awesome, you can do so [here](https://www.paypal.me/briano1905)
