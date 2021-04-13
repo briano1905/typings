@@ -1,4 +1,14 @@
+# About
 
+[typings.gg](https://typings.gg) is a sleek and modern typing test website featuring many test modes and custom themes.
+
+# Features
+- minimalistic design with no ads
+- look at what you are typing
+- different test modes
+- support for several languages
+- themes
+- and much more
 
 # themes
 
