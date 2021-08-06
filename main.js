@@ -16,6 +16,8 @@ let startDate = 0;
 let timer;
 let timerActive = false;
 let punctuation = false;
+let acc_global = 0;
+let wpm_global = 0;
 
 // Get cookies
 getCookie('theme') === '' ? setTheme('light') : setTheme(getCookie('theme'));
@@ -24,6 +26,9 @@ getCookie('wordCount') === '' ? setWordCount(50) : setWordCount(getCookie('wordC
 getCookie('timeCount') === '' ? setTimeCount(60) : setTimeCount(getCookie('timeCount'));
 getCookie('typingMode') === '' ? setTypingMode('wordcount') : setTypingMode(getCookie('typingMode'));
 getCookie('punctuation') === '' ? setPunctuation('false') : setPunctuation(getCookie('punctuation'));
+getCookie('n_tries') === '' ? setN_tries(0) : setN_tries(getCookie('n_tries'));
+getCookie('sumacc') === '' ? setSumAcc(0) : setSumAcc(getCookie('sumacc'));
+getCookie('sumwpm') === '' ? setSumWpm(0) : setSumWpm(getCookie('sumwpm'));
 
 // Find a list of words and display it to textDisplay
 function setText(e) {
@@ -164,6 +169,10 @@ inputField.addEventListener('keydown', e => {
             inputField.className = '';
             document.querySelector(`#tc-${timeCount}`).innerHTML = timeCount;
             showResult();
+            setN_tries(parseFloat(getCookie('n_tries'))+1);
+            setSumAcc(parseFloat(getCookie('sumacc'))+acc_global);
+            setSumWpm(parseFloat(getCookie('sumwpm'))+wpm_global);
+            showResultAvg();
           }
         }
     }
@@ -195,6 +204,10 @@ inputField.addEventListener('keydown', e => {
       } else if (currentWord === wordList.length - 1) {
         textDisplay.childNodes[currentWord].classList.add('wrong');
         showResult();
+        setN_tries(parseFloat(getCookie('n_tries'))+1);
+        setSumAcc(parseFloat(getCookie('sumacc'))+acc_global);
+        setSumWpm(parseFloat(getCookie('sumwpm'))+wpm_global);
+        showResultAvg();
       }
 
       inputField.value = '';
@@ -208,11 +221,16 @@ inputField.addEventListener('keydown', e => {
       correctKeys += wordList[currentWord].length;
       currentWord++;
       showResult();
+      setN_tries(parseFloat(getCookie('n_tries'))+1);
+      setSumAcc(parseFloat(getCookie('sumacc'))+acc_global);
+      setSumWpm(parseFloat(getCookie('sumwpm'))+wpm_global);
+      showResultAvg();
     }
   }
 });
 
 // Calculate and display result
+
 function showResult() {
   let words, minute, acc;
   switch (typingMode) {
@@ -234,7 +252,16 @@ function showResult() {
       acc = acc = Math.min(Math.floor((correctKeys / sumKeys) * 100), 100);
   }
   let wpm = Math.floor(words / minute);
+  acc_global = acc
+  wpm_global = wpm
   document.querySelector('#right-wing').innerHTML = `WPM: ${wpm} / ACC: ${acc}`;
+}
+
+function showResultAvg() {
+  let acc_avg = Math.floor(parseFloat(getCookie('sumacc'))/parseFloat(getCookie('n_tries')));
+  let wpm_avg = Math.floor(parseFloat(getCookie('sumwpm'))/parseFloat(getCookie('n_tries')));
+  let ntries = Math.floor(parseInt(getCookie('n_tries')));
+  document.querySelector('#bottom-left-wing').innerHTML = `N: ${ntries} / WPM AVG: ${wpm_avg} / ACC AVG: ${acc_avg}`;
 }
 
 // Command actions
@@ -347,6 +374,19 @@ function setPunctuation(_punc) {
     setCookie('punctuation', false, 90);
     setText();
   }
+}
+
+function setN_tries(_nt) {
+  if (_nt != 0){
+    showResultAvg();
+  }
+  setCookie('n_tries', parseInt(_nt), 90);
+}
+function setSumAcc(_sumacc) {
+  setCookie('sumacc', parseInt(_sumacc), 90);
+}
+function setSumWpm(_sumwpm) {
+  setCookie('sumwpm', parseInt(_sumwpm), 90);
 }
 
 function setWordCount(wc) {
