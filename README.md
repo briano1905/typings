@@ -98,6 +98,17 @@ wpm: total number of characters (including spaces) of words you got right divide
 
 acc: total number of characters (including spaces) of words you got right divided by all character in the list of words
 
+## docker container
+
+assuming you have docker installed, stand in the root of this project and run the following
+
+```
+docker build -t typings .
+docker run -d -p 3000:3000 --name typings typings
+```
+
+now you can reach the site in your browser on the url `http://localhost:3000`
+
 ## support
 
 - <a href="https://www.paypal.me/briano1905" target="_blank">PayPal</a>
