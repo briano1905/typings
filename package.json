@@ -1,0 +1,26 @@
+{
+  "name": "typings",
+  "version": "0.0.1",
+  "description": "typings.gg is a sleek and modern typing test website. it support many custom themes",
+  "main": "docker/start.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node start.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/briano1905/typings.git"
+  },
+  "keywords": [
+    "typings"
+  ],
+  "author": "briano1905",
+  "license": "SEE LICENCE IN LICENCE",
+  "bugs": {
+    "url": "https://github.com/briano1905/typings/issues"
+  },
+  "homepage": "https://github.com/briano1905/typings#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
