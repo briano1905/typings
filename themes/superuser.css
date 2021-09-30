@@ -19,16 +19,16 @@ body {
   }
   
   #typing-area, #theme-area { 
-    background: #272a33;
+    background: #28282B; 
   }
   
   #text-display { 
-    color: #4e5e6d;
+    color: #F8F8F2; 
   }
   
   #input-field { 
-    background: #272a33;
-    color: #516676;
+    background: #171812;
+    color: #F8F8F2;
   }
   
   #input-field.wrong { 
@@ -36,8 +36,8 @@ body {
   }
   
   #redo-button { 
-    background: #6bfcab;
-    color: #F8F8F2;
+    background: #4b9973;
+    color: #4e5e6d;
   }
   
   #footer { 
@@ -45,7 +45,7 @@ body {
   }
   
   .highlight { 
-    color: #4b9973;
+    color: #6bfcab;
   }
   
   .correct { 
