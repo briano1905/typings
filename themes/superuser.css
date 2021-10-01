@@ -1,0 +1,57 @@
+/*
+Colors inspired by Monokai syntax theme
+*/
+
+body {
+    background: #171812;
+  }
+  
+  #header { 
+    color: #6bfcab;
+  }
+  
+  .bar { 
+    color: #6bfcab;
+  }
+  
+  #right-wing text {
+    color: #F8F8F2;
+  }
+  
+  #typing-area, #theme-area { 
+    background: #28282B; 
+  }
+  
+  #text-display { 
+    color: #F8F8F2; 
+  }
+  
+  #input-field { 
+    background: #171812;
+    color: #F8F8F2;
+  }
+  
+  #input-field.wrong { 
+    background: #f25c5c;
+  }
+  
+  #redo-button { 
+    background: #4b9973;
+    color: #4e5e6d;
+  }
+  
+  #footer { 
+    color: #6bfcab;
+  }
+  
+  .highlight { 
+    color: #6bfcab;
+  }
+  
+  .correct { 
+    color: #def0e9;
+  }
+  
+  .wrong {
+    color: #f25c5c;
+  }

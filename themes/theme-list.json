@@ -143,5 +143,9 @@
     "kobayashi":{
         "background":"#EBCD01",
         "color":"#F00D00"
+    },
+    "superuser":{
+        "background":"#262a33",
+        "color":"#43dc9c"
     }
 }
