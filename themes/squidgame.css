@@ -1,0 +1,54 @@
+body {
+    background: #de3a7b;
+  }
+  
+  #header {
+    color: #f8f8f2;
+  }
+  
+  #left-wing {
+    color: #8be9fd;
+  }
+  
+  #right-wing {
+    color: #bd93f9;
+  }
+  
+  #typing-area, #theme-area {
+    background: #44475a;
+  }
+  
+  #text-display {
+    color: #f8f8f2;
+  }
+  
+  #input-field {
+    background: #282a36;
+    color: #c9c9c1;
+  }
+  
+  #input-field.wrong {
+    background: rgba(198, 38, 46, 0.3);
+  }
+  
+  #redo-button {
+    background: #282a36;
+    color: #ff79c6;
+  }
+  
+  #footer {
+    color: #f8f8f2;
+  }
+  
+  .highlight {
+    color: #ffff85;
+  }
+  
+  .correct {
+    color: #50fa7b;
+  }
+  
+  .wrong {
+    color: #ff5555;
+  }
+  
