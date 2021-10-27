@@ -143,5 +143,9 @@
     "kobayashi":{
         "background":"#EBCD01",
         "color":"#F00D00"
+    },
+    "squidgame":{
+        "background":"#de3a7b",
+        "color":"#50fa7b"
     }
 }
