@@ -11,6 +11,10 @@
         "background":"linear-gradient(-20deg, #e73c7e, #23a6d5, #23d5ab)",
         "color":"#1a1a1a"
     },
+    "xp":{
+        "background":"green",
+        "color":"#1a1a1a"
+    },
     "burgundy":{
         "background":"#1a1a1a",
         "color":"#691f28"
