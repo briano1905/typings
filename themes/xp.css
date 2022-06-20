@@ -32,7 +32,7 @@ body {
 }
 
 #redo-button {
-  background: #1a1a1a;
+  background: #3B77BC;
   color: #fafafa;
 }
 
@@ -41,13 +41,13 @@ body {
 }
 
 .highlight {
-  color: #a56de2;
+  color: #3B77BC;
 }
 
 .correct {
-  color: #68b723;
+  color: #81C046;
 }
 
 .wrong {
-  color: #c6262e;
+  color: #DE482B;
 }
